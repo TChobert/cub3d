@@ -62,13 +62,15 @@ CLANG_ANALYZE_OPTIONS = --analyze \
 						-Xanalyzer -analyzer-config \
 						-Xanalyzer aggressive-binary-operation-simplification=true \
 						-Xanalyzer -analyzer-config \
-						-Xanalyzer unroll-loops=true
+						-Xanalyzer unroll-loops=true \
+						-I includes/
 
 CPPCHECK_OPTIONS =  --enable=all \
 					--inconclusive \
 					--error-exitcode=1 \
 					--suppress=missingIncludeSystem \
-					--suppress=variableScope
+					--suppress=variableScope \
+					-I includes/
 
 
 ##### RULES #####
