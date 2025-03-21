@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 16:58:22 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:00:43 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	main(void)
 {
 	int a;
-	
+
+	a = 10;
 	printf("Test\n");
 	printf("Hello\n");
 	return (EXIT_SUCCESS);
