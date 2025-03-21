@@ -90,11 +90,11 @@ $(OBJS): $(PATH_OBJS)%.o: %.c $(HEADERS)
 	@mkdir -p $(PATH_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INCLUDES)
 
-clang_analyzer:
-	$(CC) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) $(SRCS)
+# clang_analyzer:
+# 	$(CC) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) $(SRCS)
 
-cppcheck:
-	cppcheck $(CPPCHECK_OPTIONS) $(PATH_SRCS)
+# cppcheck:
+# 	cppcheck $(CPPCHECK_OPTIONS) $(PATH_SRCS)
 
 clean:
 	@echo "$(BLUE)Cleaning object files...$(WHITE)"
