@@ -15,6 +15,6 @@
 int	main(void)
 {
 	printf("Test\n");
-	printf("push\n");
+	printf("pushhhhhh\n");
 	return (EXIT_SUCCESS);
 }
