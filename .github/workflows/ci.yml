@@ -50,7 +50,7 @@ cppcheck:
       - name: Run cppcheck
         run: make cppcheck
 
-  clang-analyze:
+clang-analyze:
     name: Static Analysis - Clang Static Analyzer
     runs-on: ubuntu-latest
 
