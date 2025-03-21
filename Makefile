@@ -55,6 +55,7 @@ WHITE := \033[0;37m
 ##### LINT #####
 
 CLANG_ANALYZE_OPTIONS = --analyze \
+						-Werror \
 						-Weverything \
 						-Wno-unknown-warning-option \
 						-Werror \
