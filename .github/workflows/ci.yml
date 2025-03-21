@@ -65,3 +65,10 @@ jobs:
 
       - name: Run Clang Static Analyzer
         run: make clang_analyzer
+
+      - name: Check for Clang Analyzer Warnings
+        run: |
+          if make clang_analyzer 2>&1 | tee clang_analyzer.log | grep "warning:"; then
+            echo "❌ Clang Analyzer found warnings! Failing the CI."
+            exit 1
+          fi
