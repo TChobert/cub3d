@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 14:41:42 by tchobert         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:56:00 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 int	main(void)
 {
 	printf("Test\n");
+	printf("Hello\n");
 	return (EXIT_SUCCESS);
 }
