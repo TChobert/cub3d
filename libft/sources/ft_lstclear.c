@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 14:41:42 by tchobert         ###   ########.fr       */
+/*   Created: 2024/05/23 19:31:52 by tchobert          #+#    #+#             */
+/*   Updated: 2024/05/26 16:58:21 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_main.h"
 #include "libft.h"
 
-int	main(void)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	ft_printf("Test libft\n");
-	printf("Test\n");
-	printf("pushhhhhh\n");
-	return (EXIT_SUCCESS);
+	t_list	*current;
+	t_list	*next;
+
+	current = *lst;
+	while (current != NULL)
+	{
+		next = current->next;
+		if (del != NULL)
+		{
+			del(current->content);
+		}
+		free(current);
+		current = next;
+	}
+	*lst = NULL;
 }

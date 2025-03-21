@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 14:41:42 by tchobert         ###   ########.fr       */
+/*   Created: 2024/05/20 20:09:21 by tchobert          #+#    #+#             */
+/*   Updated: 2024/05/20 20:09:30 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_main.h"
 #include "libft.h"
 
-int	main(void)
+static bool	is_lower(int c)
 {
-	ft_printf("Test libft\n");
-	printf("Test\n");
-	printf("pushhhhhh\n");
+	return (c >= 'a' && c <= 'z');
+}
+
+static bool	is_upper(int c)
+{
+	return (c >= 'A' && c <= 'Z');
+}
+
+int	ft_isalpha(int c)
+{
+	return (is_lower(c) || is_upper(c));
+}
+
+/*
+int	main(int ac, char **av)
+{
+	(void)ac;
+	printf("%d\n", ft_isalpha(av[1][0]));
 	return (EXIT_SUCCESS);
 }
+*/

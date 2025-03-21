@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 14:41:42 by tchobert         ###   ########.fr       */
+/*   Created: 2024/05/24 11:54:52 by tchobert          #+#    #+#             */
+/*   Updated: 2024/05/24 11:56:05 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_main.h"
 #include "libft.h"
 
-int	main(void)
+char	*ft_striter(char *s, int (*f)(int))
 {
-	ft_printf("Test libft\n");
-	printf("Test\n");
-	printf("pushhhhhh\n");
-	return (EXIT_SUCCESS);
+	size_t			i;
+
+	if (s == NULL)
+	{
+		return (NULL);
+	}
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (f != NULL)
+		{
+			s[i] = f(s[i]);
+		}
+		++i;
+	}
+	return (s);
 }

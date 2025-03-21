@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_swap_int.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 14:41:42 by tchobert         ###   ########.fr       */
+/*   Created: 2024/07/29 15:22:29 by tchobert          #+#    #+#             */
+/*   Updated: 2024/07/29 15:39:27 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_main.h"
 #include "libft.h"
 
-int	main(void)
+void	ft_swap_int(int *a, int *b)
 {
-	ft_printf("Test libft\n");
-	printf("Test\n");
-	printf("pushhhhhh\n");
-	return (EXIT_SUCCESS);
+	const int	temp = *a;
+
+	*a = *b;
+	*b = temp;
 }

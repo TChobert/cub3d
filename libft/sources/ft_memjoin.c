@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 14:41:42 by tchobert         ###   ########.fr       */
+/*   Created: 2024/08/02 18:41:46 by tchobert          #+#    #+#             */
+/*   Updated: 2024/08/02 18:42:22 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_main.h"
 #include "libft.h"
 
-int	main(void)
+void	*ft_memjoin(void const *m1, void const *m2, const size_t len_m1,
+			const size_t len_m2)
 {
-	ft_printf("Test libft\n");
-	printf("Test\n");
-	printf("pushhhhhh\n");
-	return (EXIT_SUCCESS);
+	void	*mem_joined;
+
+		mem_joined = malloc(sizeof(t_byte) * (len_m1 + len_m2));
+	if (mem_joined != NULL)
+	{
+		ft_memmove(mem_joined, m1, len_m1);
+		ft_memmove(mem_joined + len_m1, m2, len_m2);
+	}
+	return (mem_joined);
 }

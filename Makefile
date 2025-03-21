@@ -4,6 +4,10 @@ NAME := cub3d
 
 ##### LIBFT #####
 
+PATH_LIBFT := libft/
+
+LIBFT := $(PATH_LIBFT)libft.a
+
 ##### SOURCES #####
 
 PATH_SRCS += srcs/
@@ -21,6 +25,7 @@ OBJS := $(patsubst %.c, $(PATH_OBJS)%.o, $(SRCS))
 ##### HEADERS #####
 
 PATH_INCLUDES := includes/
+PATH_INCLUDES_LIBFT := $(PATH_LIBFT)includes/
 
 HEADERS += $(PATH_INCLUDES)test_main.h
 
@@ -81,14 +86,19 @@ all: $(NAME)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(LIBFT) $(OBJS)
 	@echo "$(BLUE)Compiling $(NAME)...$(WHITE)"
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_LIBFT)
 	@echo "$(GREEN)$(NAME) Compiled!$(WHITE)"
 
 $(OBJS): $(PATH_OBJS)%.o: %.c $(HEADERS)
 	@mkdir -p $(PATH_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INCLUDES)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_LIBFT)
+
+$(LIBFT):
+	@echo "$(BLUE)Compiling $(LIBFT) ...$(WHITE)"
+	@$(MAKE) -sC $(PATH_LIBFT)
+	@echo "$(GREEN)$(LIBFT) Compiled ! $(WHITE)"
 
 clang_analyzer:
 	$(CL) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) $(addprefix srcs/, $(SRCS))
@@ -103,11 +113,13 @@ clean:
 	@echo "$(BLUE)Cleaning object files...$(WHITE)"
 	@rm -rf $(PATH_OBJS)
 	@echo "$(GREEN)Objects cleaned!$(WHITE)"
+	@$(MAKE) -sC $(PATH_LIBFT) fclean
 
 fclean: clean
 	@echo "$(BLUE)Removing $(NAME)...$(WHITE)"
 	@rm -f $(NAME)
 	@echo "$(GREEN)$(NAME) removed!$(WHITE)"
+	@$(MAKE) -sC $(PATH_LIBFT) fclean
 
 re: fclean all
 

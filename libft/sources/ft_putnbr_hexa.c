@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_hexa.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 14:41:42 by tchobert         ###   ########.fr       */
+/*   Created: 2024/07/04 16:30:40 by tchobert          #+#    #+#             */
+/*   Updated: 2024/07/04 16:43:59 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_main.h"
 #include "libft.h"
 
-int	main(void)
+void	ft_putnbr_hexa(unsigned long nb)
 {
-	ft_printf("Test libft\n");
-	printf("Test\n");
-	printf("pushhhhhh\n");
-	return (EXIT_SUCCESS);
+	if (nb >= 16)
+	{
+		ft_putnbr_hexa(nb / 16);
+		ft_putnbr_hexa(nb % 16);
+	}
+	else
+	{
+		if (nb < 10)
+			ft_putchar(nb + '0');
+		else
+			ft_putchar(nb - 10 + 'a');
+	}
 }

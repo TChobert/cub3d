@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   address_converters.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 14:41:42 by tchobert         ###   ########.fr       */
+/*   Created: 2024/07/22 19:42:22 by tchobert          #+#    #+#             */
+/*   Updated: 2024/07/23 14:32:13 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_main.h"
-#include "libft.h"
+#include "ft_printf.h"
 
-int	main(void)
+char	*get_p_spec(va_list *args, __attribute__((unused)) const t_flag flags)
 {
-	ft_printf("Test libft\n");
-	printf("Test\n");
-	printf("pushhhhhh\n");
-	return (EXIT_SUCCESS);
+	const uintptr_t	address = (uintptr_t)va_arg(*args, void *);
+
+	if (address == 0)
+	{
+		return (ft_strdup(NULL_PTR_STRING));
+	}
+	return (build_unsigned_number_from_base((unsigned long)address,
+			HEXADECIMAL_BASE,
+			HEXADECIMAL_PREFIX));
 }

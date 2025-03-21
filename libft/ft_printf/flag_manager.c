@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   flag_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 14:41:42 by tchobert         ###   ########.fr       */
+/*   Created: 2024/07/22 19:43:10 by tchobert          #+#    #+#             */
+/*   Updated: 2024/07/23 14:39:49 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_main.h"
-#include "libft.h"
+#include "ft_printf.h"
 
-int	main(void)
+t_flag	add_flag(const t_flag flags, const t_flag flag)
 {
-	ft_printf("Test libft\n");
-	printf("Test\n");
-	printf("pushhhhhh\n");
-	return (EXIT_SUCCESS);
+	return (flags | flag);
+}
+
+t_flag	remove_flag(const t_flag flags, const t_flag flag)
+{
+	return (flags & ~flag);
+}
+
+bool	is_flag_set(const t_flag flags, const t_flag flag)
+{
+	return (flags & flag);
 }

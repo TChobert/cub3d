@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_list_find_previous_element.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 14:41:42 by tchobert         ###   ########.fr       */
+/*   Created: 2025/02/16 22:59:17 by tchobert          #+#    #+#             */
+/*   Updated: 2025/02/16 22:59:27 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_main.h"
 #include "libft.h"
 
-int	main(void)
+t_list	*ft_list_find_previous_element(t_list *lst, t_list *node)
 {
-	ft_printf("Test libft\n");
-	printf("Test\n");
-	printf("pushhhhhh\n");
-	return (EXIT_SUCCESS);
+	t_list	*previous_element;
+
+	if (lst != NULL)
+	{
+		previous_element = lst;
+		while (previous_element != NULL)
+		{
+			if (previous_element->next == node)
+			{
+				return (previous_element);
+			}
+			previous_element = previous_element->next;
+		}
+	}
+	return (NULL);
 }
