@@ -90,10 +90,7 @@ clang_analyzer:
 	$(CC) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) $(SRCS)
 
 cppcheck:
-	cppcheck $(CPPCHECK_OPTIONS) $(SRCS)
-
-norminette: $(SRCS) $(HEADERS)
-	norminette $^
+	cppcheck $(CPPCHECK_OPTIONS) $(PATH_SRCS)
 
 clean:
 	@echo "$(BLUE)Cleaning object files...$(WHITE)"
