@@ -62,17 +62,13 @@ CLANG_ANALYZE_OPTIONS = --analyze \
 						-Xanalyzer -analyzer-config \
 						-Xanalyzer aggressive-binary-operation-simplification=true \
 						-Xanalyzer -analyzer-config \
-						-Xanalyzer unroll-loops=true \
-						CLANG_ANALYZE_OPTIONS = --analyze \
-						-I includes/
-
+						-Xanalyzer unroll-loops=true
 
 CPPCHECK_OPTIONS =  --enable=all \
 					--inconclusive \
 					--error-exitcode=1 \
 					--suppress=missingIncludeSystem \
-					--suppress=variableScope \
-					-I includes/
+					--suppress=variableScope
 
 
 ##### RULES #####
@@ -90,11 +86,14 @@ $(OBJS): $(PATH_OBJS)%.o: %.c $(HEADERS)
 	@mkdir -p $(PATH_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INCLUDES)
 
-# clang_analyzer:
-# 	$(CC) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) $(SRCS)
+clang_analyzer:
+	$(CC) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) $(SRCS)
 
-# cppcheck:
-# 	cppcheck $(CPPCHECK_OPTIONS) $(PATH_SRCS)
+cppcheck:
+	cppcheck $(CPPCHECK_OPTIONS) $(PATH_SRCS)
+
+norminette: $(SRCS) $(HEADERS)
+	norminette $^
 
 clean:
 	@echo "$(BLUE)Cleaning object files...$(WHITE)"
