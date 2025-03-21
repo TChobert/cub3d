@@ -58,11 +58,11 @@ CLANG_ANALYZE_OPTIONS = --analyze \
 						-Wno-unknown-warning-option \
 						-Werror \
 						-ferror-limit=0 \
-						-fanalyzer -analyzer-output=text \
-						-fanalyzer -analyzer-config \
-						-fanalyzer aggressive-binary-operation-simplification=true \
-						-fanalyzer -analyzer-config \
-						-fanalyzer unroll-loops=true \
+						-Xanalyzer -analyzer-output=text \
+						-Xanalyzer -analyzer-config \
+						-Xanalyzer aggressive-binary-operation-simplification=true \
+						-Xanalyzer -analyzer-config \
+						-Xanalyzer unroll-loops=true \
 						-I includes/
 
 CPPCHECK_OPTIONS =  --enable=all \
