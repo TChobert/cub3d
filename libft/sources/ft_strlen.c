@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 17:06:09 by racoutte         ###   ########.fr       */
+/*   Created: 2024/05/24 11:54:34 by tchobert          #+#    #+#             */
+/*   Updated: 2024/05/24 12:00:43 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_main.h"
 #include "libft.h"
 
-int	main(void)
+size_t	ft_strlen(const char *s)
 {
-	ft_printf("Test libft\n");
-	printf("Test\n");
-	printf("pushhhhhh\n");
+	size_t	size;
+
+	size = 0;
+	while (s[size] != '\0')
+	{
+		++size;
+	}
+	return (size);
+}
+
+/*
+int	main(int ac, char **av)
+{
+	(void)ac;
+	printf("mine = %zu\n", ft_strlen(av[1]));
+	printf("true = %zu\n", strlen(av[1]));
 	return (EXIT_SUCCESS);
 }
+*/

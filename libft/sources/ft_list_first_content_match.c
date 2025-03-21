@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_list_first_content_match.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 17:06:09 by racoutte         ###   ########.fr       */
+/*   Created: 2025/01/08 15:49:32 by tchobert          #+#    #+#             */
+/*   Updated: 2025/01/08 15:49:48 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_main.h"
 #include "libft.h"
 
-int	main(void)
+void	*ft_list_find_first_content_match(t_list *list, void *element,
+			bool (*predicate)(void *, void *))
 {
-	ft_printf("Test libft\n");
-	printf("Test\n");
-	printf("pushhhhhh\n");
-	return (EXIT_SUCCESS);
+	const t_list	*matched_node = ft_list_find_first(list, element,
+			predicate);
+
+	if (matched_node == NULL)
+		return (NULL);
+	return (matched_node->content);
 }

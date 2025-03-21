@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 17:06:09 by racoutte         ###   ########.fr       */
+/*   Created: 2024/05/23 19:27:29 by tchobert          #+#    #+#             */
+/*   Updated: 2024/05/23 19:27:44 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_main.h"
 #include "libft.h"
 
-int	main(void)
+int	ft_isprint(int c)
 {
-	ft_printf("Test libft\n");
-	printf("Test\n");
-	printf("pushhhhhh\n");
+	return (c >= 32 && c <= 126);
+}
+
+/*
+int	main(int ac, char **av)
+{
+	(void)ac;
+	printf("mine = %d\n", ft_isprint(atoi(av[1])));
+	printf("true = %d\n", isprint(atoi(av[1])));
 	return (EXIT_SUCCESS);
 }
+*/

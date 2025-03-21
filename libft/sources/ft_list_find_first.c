@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_list_find_first.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 17:06:09 by racoutte         ###   ########.fr       */
+/*   Created: 2025/01/08 13:54:27 by tchobert          #+#    #+#             */
+/*   Updated: 2025/01/08 13:54:56 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_main.h"
 #include "libft.h"
 
-int	main(void)
+t_list	*ft_list_find_first(t_list *list, void *element,
+			bool (*predicate)(void *, void *))
 {
-	ft_printf("Test libft\n");
-	printf("Test\n");
-	printf("pushhhhhh\n");
-	return (EXIT_SUCCESS);
+	while (list != NULL)
+	{
+		if (predicate != NULL && predicate(list->content, element) == true)
+		{
+			return (list);
+		}
+		list = list->next;
+	}
+	return (NULL);
 }
