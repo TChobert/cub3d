@@ -15,5 +15,6 @@
 int	main(void)
 {
 	printf("Test\n");
+	printf("push\n");
 	return (EXIT_SUCCESS);
 }
