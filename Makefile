@@ -63,7 +63,7 @@ CLANG_ANALYZE_OPTIONS = --analyze \
 						-Xanalyzer aggressive-binary-operation-simplification=true \
 						-Xanalyzer -analyzer-config \
 						-Xanalyzer unroll-loops=true
-						-I includes/
+						-I includes/ \
 
 CPPCHECK_OPTIONS =  --enable=all \
 					--inconclusive \
