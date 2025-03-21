@@ -11,7 +11,7 @@ on:
 jobs:
   norminette-check:
     name: Norminette Style Check
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout repository
@@ -36,7 +36,7 @@ jobs:
 
   cppcheck:
     name: Static Analysis - Cppcheck
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout repository
@@ -52,7 +52,7 @@ jobs:
 
   clang-analyze:
     name: Static Analysis - Clang Static Analyzer
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout repository
