@@ -90,7 +90,7 @@ $(OBJS): $(PATH_OBJS)%.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INCLUDES)
 
 clang_analyzer:
-	$(CL) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) $(SRCS)
+	$(CL) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) $(addprefix srcs/, $(SRCS))
 
 cppcheck:
 	cppcheck $(CPPCHECK_OPTIONS) $(PATH_SRCS)
