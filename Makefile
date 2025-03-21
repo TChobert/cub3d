@@ -27,6 +27,7 @@ HEADERS += $(PATH_INCLUDES)test_main.h
 ##### COMPILATION #####
 
 CC := cc
+CL := clang
 
 CFLAGS += -Wall
 CFLAGS += -Wextra
@@ -89,7 +90,7 @@ $(OBJS): $(PATH_OBJS)%.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INCLUDES)
 
 clang_analyzer:
-	$(CC) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) $(SRCS)
+	$(CL) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) $(SRCS)
 
 cppcheck:
 	cppcheck $(CPPCHECK_OPTIONS) $(PATH_SRCS)
