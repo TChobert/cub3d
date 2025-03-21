@@ -14,9 +14,6 @@
 
 int	main(void)
 {
-	int	a;
-
-	a = 2;
 	printf("Test\n");
 	return (EXIT_SUCCESS);
 }
