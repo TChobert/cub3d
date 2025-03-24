@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:50:54 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/24 15:14:55 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:39:16 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ void	print_opening_errors(const char *map_file_path)
 		ft_dprintf(STDERR_FILENO, "Error\n%s: no such file found.\n",
 			map_file_path);
 	else if (errno == EISDIR)
-		ft_dprintf(STDERR_FILENO, "Error\n%s: is a directory.\n", map_file_path);
+		ft_dprintf(STDERR_FILENO, "Error\n%s: is a directory.\n",
+			map_file_path);
 	else
-		ft_dprintf(STDERR_FILENO, "Error\n%s: opening error.\n", map_file_path);
+		ft_dprintf(STDERR_FILENO, "Error\n%s: opening error.\n",
+			map_file_path);
 }
