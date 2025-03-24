@@ -26,22 +26,10 @@
 
 typedef enum e_parsing_status
 {
-	VALID_FILE,
-	INVALID_FILE,
+	VALID_MAP_FILE,
+	INVALID_MAP_FILE,
 	PARSING_ERROR
 }			t_parsing_status;
-
-typedef enum e_parsing_file_type
-{
-	VALID_FILE_TYPE,
-	INVALID_FILE_TYPE
-}			t_parsing_file_type;
-
-typedef enum e_parsing_opening_status
-{
-	OPENING_SUCCESS,
-	OPENING_FAILURE
-}			t_parsing_opening_status;
 
 // STRUCTURES //////////////////////////////////////////////////////////////////
 
@@ -55,9 +43,12 @@ typedef struct s_file_data
 // ERROR //
 void				print_error_message_args(void);
 void				print_opening_errors(const char *map_file_path);
+void				print_invalid_path(void);
 
 // PARSING //
 int					parsing(char *map_file_path);
+bool				is_valid_map_path(const char *map_file_path);
+bool				is_valid_map_file(const char *map_file_path);
 t_parsing_status	map_file_opener(const char *map_file_path, int *map_fd);
 
 // GAME //

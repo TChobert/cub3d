@@ -24,6 +24,8 @@ SRCS += error_message.c
 # srcs parsing #
 
 SRCS += check_valid_file.c
+SRCS += is_valid_map_path.c
+SRCS += is_valid_map_file.c
 SRCS += map_file_opener.c
 SRCS += parsing.c
 

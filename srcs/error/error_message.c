@@ -33,3 +33,9 @@ void	print_opening_errors(const char *map_file_path)
 		ft_dprintf(STDERR_FILENO, "Error\n%s: opening error.\n",
 			map_file_path);
 }
+
+void	print_invalid_path(void)
+{
+	ft_dprintf(STDERR_FILENO, "Error\nInvalid file type. Please enter a"
+		" '%s' file to start the game.\n", CUB_SUFFIX);
+}

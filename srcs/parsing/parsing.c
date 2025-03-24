@@ -16,8 +16,8 @@ int	parsing(char *map_file_path)
 {
 	t_file_data	file_data;
 
-	if (map_file_opener(map_file_path, &file_data.file_fd) == INVALID_FILE)
+	if (map_file_opener(map_file_path, &file_data.file_fd) == INVALID_MAP_FILE)
 		return (PARSING_ERROR);
-	printf("Hey\n");
+	printf("End of parsing reached\n");
 	return (EXIT_SUCCESS);
 }
