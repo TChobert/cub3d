@@ -6,17 +6,17 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:41:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/24 11:15:14 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/03/24 14:28:05 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
 
-int	launch_game_cub(char *av)
+int	launch_game_cub(char *map_file_path)
 {
-	if (parsing_map(av) == EXIT_FAILURE)
+	if (parsing(map_file_path) == PARSING_ERROR)
 		return (EXIT_FAILURE);
-	exec_game_cub(av);
+	exec_game_cub(map_file_path);
 	return (EXIT_SUCCESS);
 }
 

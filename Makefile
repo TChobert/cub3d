@@ -16,9 +16,19 @@ PATH_SRCS += srcs/parsing/
 PATH_SRCS += srcs/game/
 
 SRCS += main.c
+
+# error #
+
 SRCS += error_message.c
+
+# srcs parsing #
+
 SRCS += check_valid_file.c
+SRCS += map_file_opener.c
 SRCS += parsing.c
+
+# srcs game #
+
 SRCS += launch_game.c
 
 vpath %.c $(PATH_SRCS)

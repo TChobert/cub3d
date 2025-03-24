@@ -6,14 +6,14 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 11:08:12 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/24 11:12:33 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/03/24 14:00:28 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
 
-void	exec_game_cub(char *av)
+void	exec_game_cub(char *map_file)
 {
-	(void)av;
+	(void)map_file;
 	printf("Hello\n");
 }
