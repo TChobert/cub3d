@@ -11,8 +11,18 @@ LIBFT := $(PATH_LIBFT)libft.a
 ##### SOURCES #####
 
 PATH_SRCS += srcs/
+PATH_SRCS += srcs/parsing/
+PATH_SRCS += srcs/error/
+PATH_SRCS += srcs/game/
 
 SRCS += main.c
+
+SRCS += error_message.c
+
+SRCS += check_valid_file.c
+SRCS += parsing.c
+
+SRCS += launch_game.c
 
 vpath %.c $(PATH_SRCS)
 
@@ -27,7 +37,7 @@ OBJS := $(patsubst %.c, $(PATH_OBJS)%.o, $(SRCS))
 PATH_INCLUDES := includes/
 PATH_INCLUDES_LIBFT := $(PATH_LIBFT)includes/
 
-HEADERS += $(PATH_INCLUDES)test_main.h
+HEADERS += $(PATH_INCLUDES)cub_parsing.h
 
 ##### COMPILATION #####
 

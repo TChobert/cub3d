@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_main.h                                        :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 14:50:16 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/21 14:50:21 by tchobert         ###   ########.fr       */
+/*   Created: 2025/03/24 11:00:48 by racoutte          #+#    #+#             */
+/*   Updated: 2025/03/24 11:12:28 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_MAIN_H
-# define TEST_MAIN_H
+#include "cub_parsing.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-
-#endif
+int	parsing_map(char *av)
+{
+	(void)av;
+	printf("Hey\n");
+	return (EXIT_SUCCESS);
+}
