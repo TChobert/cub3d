@@ -11,17 +11,14 @@ LIBFT := $(PATH_LIBFT)libft.a
 ##### SOURCES #####
 
 PATH_SRCS += srcs/
-PATH_SRCS += srcs/parsing/
 PATH_SRCS += srcs/error/
+PATH_SRCS += srcs/parsing/
 PATH_SRCS += srcs/game/
 
 SRCS += main.c
-
 SRCS += error_message.c
-
 SRCS += check_valid_file.c
 SRCS += parsing.c
-
 SRCS += launch_game.c
 
 vpath %.c $(PATH_SRCS)
@@ -30,7 +27,7 @@ vpath %.c $(PATH_SRCS)
 
 PATH_OBJS := objs/
 
-OBJS := $(patsubst %.c, $(PATH_OBJS)%.o, $(SRCS))
+OBJS := $(SRCS:%.c=$(PATH_OBJS)%.o)
 
 ##### HEADERS #####
 
@@ -113,7 +110,7 @@ $(LIBFT):
 	@echo "$(GREEN)$(LIBFT) Compiled ! $(WHITE)"
 
 clang_analyzer:
-	$(CL) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) $(addprefix srcs/, $(SRCS))
+	$(CL) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) $(wildcard srcs/**/*.c)
 
 cppcheck:
 	cppcheck $(CPPCHECK_OPTIONS) $(PATH_SRCS)
