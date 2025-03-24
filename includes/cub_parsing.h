@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/24 14:24:24 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/03/24 14:31:27 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@ typedef enum e_parsing_status
 
 // STRUCTURES //////////////////////////////////////////////////////////////////
 
-typedef struct	s_file_data
+typedef struct s_file_data
 {
 	int	file_fd;
 }				t_file_data;
-
 
 // FUNCTIONS ///////////////////////////////////////////////////////////////////
 
@@ -46,6 +45,6 @@ int					parsing(char *map_file_path);
 t_parsing_status	map_file_opener(char *map_file_path, int *fd);
 
 // GAME //
-void				exec_game_cub(char *av);
+void				exec_game_cub(char *map_file_path);
 
 #endif
