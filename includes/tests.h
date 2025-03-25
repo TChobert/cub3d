@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 14:31:07 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/25 17:33:48 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:06:05 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 void	is_valid_map_path_unit_test(void);
 void	is_valid_map_file_unit_test(void);
 void	get_north_texture_tests(void);
+void	is_valid_north_prefix_tests(void);
+void	is_valid_xpm_path_tests(void);
 
 
 #endif

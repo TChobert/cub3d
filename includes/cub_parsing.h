@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/25 17:35:12 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:05:53 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "libft.h"
 
 # define CUB_SUFFIX ".cub"
+# define XPM_SUFFIX ".xpm"
 
 typedef	char * t_texture;
 
@@ -60,6 +61,8 @@ bool				is_valid_map_path(const char *map_file_path);
 bool				is_valid_map_file(const char *map_file_path);
 t_parsing_status	map_file_opener(const char *map_file_path, int *map_fd);
 t_texture_status	get_north_texture(const char *texture);
+bool				is_valid_north_prefix(const char *texture);
+bool				is_valid_xpm_path(const char *file_path);
 
 // GAME //
 void				exec_game_cub(char *map_file_path);

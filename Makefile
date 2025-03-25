@@ -29,6 +29,7 @@ SRCS += is_valid_map_path.c
 SRCS += is_valid_map_file.c
 SRCS += map_file_opener.c
 SRCS += get_north_texture.c
+SRCS += is_xpm_file.c
 SRCS += parsing.c
 
 # srcs game #
@@ -67,6 +68,8 @@ TESTS_SRCS += main_tests.c
 TESTS_SRCS += is_valid_map_path_unit_test.c
 TESTS_SRCS += is_valid_map_file_unit_test.c
 TESTS_SRCS += get_north_texture_tests.c
+TESTS_SRCS += is_valid_north_prefix_tests.c
+TESTS_SRCS += is_xpm_file_tests.c
 
 ## Unity ##
 
