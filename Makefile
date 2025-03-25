@@ -13,6 +13,8 @@ LIBFT := $(PATH_LIBFT)libft.a
 PATH_SRCS += srcs/
 PATH_SRCS += srcs/error/
 PATH_SRCS += srcs/parsing/
+PATH_SRCS += srcs/parsing/map_file_opener
+PATH_SRCS += srcs/parsing/textures_parser
 PATH_SRCS += srcs/game/
 
 SRCS += main.c
@@ -23,10 +25,10 @@ SRCS += error_message.c
 
 # srcs parsing #
 
-SRCS += check_valid_file.c
 SRCS += is_valid_map_path.c
 SRCS += is_valid_map_file.c
 SRCS += map_file_opener.c
+SRCS += get_north_texture.c
 SRCS += parsing.c
 
 # srcs game #
@@ -55,7 +57,8 @@ HEADERS += $(PATH_INCLUDES)cub_parsing.h
 TESTS_NAME := unit_tests
 
 TESTS_SRCS_DIR += ./tests
-TESTS_SRCS_DIR += ./tests/parsing_tests
+TESTS_SRCS_DIR += ./tests/parsing_tests/map_file_opener_tests
+TESTS_SRCS_DIR += ./tests/parsing_tests/textures_parser_tests
 
 TESTS_SRCS += main_tests.c
 
@@ -63,6 +66,7 @@ TESTS_SRCS += main_tests.c
 
 TESTS_SRCS += is_valid_map_path_unit_test.c
 TESTS_SRCS += is_valid_map_file_unit_test.c
+TESTS_SRCS += get_north_texture_tests.c
 
 ## Unity ##
 

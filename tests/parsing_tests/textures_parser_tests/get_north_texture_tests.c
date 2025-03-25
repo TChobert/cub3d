@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   get_north_texture_tests.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 11:00:48 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/25 17:21:05 by racoutte         ###   ########.fr       */
+/*   Created: 2025/03/25 17:27:44 by racoutte          #+#    #+#             */
+/*   Updated: 2025/03/25 17:39:55 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_parsing.h"
+#include "tests.h"
 
-int	parsing(char *map_file_path)
+void	get_north_texture_tests(void)
 {
-	t_game_data	game_data;
-
-	if (map_file_opener(map_file_path, &game_data.file_fd) == INVALID_MAP_FILE)
-		return (PARSING_ERROR);
-	printf("End of parsing reached\n");
-	return (EXIT_SUCCESS);
+	TEST_ASSERT_EQUAL(VALID_TEXTURE, get_north_texture("NO hello"));
+	TEST_ASSERT_EQUAL(INVALID_TEXTURE, get_north_texture("NP "));
+	TEST_ASSERT_EQUAL(INVALID_TEXTURE, get_north_texture("NOhello"));
 }

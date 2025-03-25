@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/24 15:15:07 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:35:12 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 # define CUB_SUFFIX ".cub"
 
+typedef	char * t_texture;
+
 // ENUM ////////////////////////////////////////////////////////////////////////
 
 typedef enum e_parsing_status
@@ -31,12 +33,19 @@ typedef enum e_parsing_status
 	PARSING_ERROR
 }			t_parsing_status;
 
+typedef enum e_texture_status
+{
+	VALID_TEXTURE,
+	INVALID_TEXTURE
+}			t_texture_status;
+
 // STRUCTURES //////////////////////////////////////////////////////////////////
 
-typedef struct s_file_data
+typedef struct s_game_data
 {
-	int	file_fd;
-}				t_file_data;
+	int			file_fd;
+	t_texture	north_texture;
+}				t_game_data;
 
 // FUNCTIONS ///////////////////////////////////////////////////////////////////
 
@@ -50,6 +59,7 @@ int					parsing(char *map_file_path);
 bool				is_valid_map_path(const char *map_file_path);
 bool				is_valid_map_file(const char *map_file_path);
 t_parsing_status	map_file_opener(const char *map_file_path, int *map_fd);
+t_texture_status	get_north_texture(const char *texture);
 
 // GAME //
 void				exec_game_cub(char *map_file_path);
