@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid_map_file.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:17:51 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/24 18:17:54 by tchobert         ###   ########.fr       */
+/*   Updated: 2025/03/25 12:08:13 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static bool	is_a_directory(int fd)
 	if (bytes_read == -1)
 	{
 		close(fd);
-		return (false);
+		return (true);
 	}
 	close(fd);
-	return (true);
+	return (false);
 }
 
 bool	is_valid_map_file(const char *map_file_path)
@@ -32,7 +32,7 @@ bool	is_valid_map_file(const char *map_file_path)
 	int		fd;
 
 	fd = open(map_file_path, O_RDONLY);
-	if (fd < 0 || is_a_directory(fd) == false)
+	if (fd < 0 || is_a_directory(fd) == true)
 	{
 		return (false);
 	}
