@@ -12,6 +12,8 @@
 
 #include "cub_parsing.h"
 
+#ifndef TEST_MODE
+
 int	launch_game_cub(char *map_file_path)
 {
 	if (parsing(map_file_path) == PARSING_ERROR)
@@ -34,3 +36,5 @@ int	main(int ac, char **av)
 	}
 	return (EXIT_SUCCESS);
 }
+
+#endif

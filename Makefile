@@ -45,8 +45,35 @@ OBJS := $(SRCS:%.c=$(PATH_OBJS)%.o)
 
 PATH_INCLUDES := includes/
 PATH_INCLUDES_LIBFT := $(PATH_LIBFT)includes/
+PATH_INCLUDES_TESTS := includes/
+PATH_INCLUDES_UNITY := ./Unity/src
 
 HEADERS += $(PATH_INCLUDES)cub_parsing.h
+
+##### TESTS #####
+
+TESTS_NAME := unit_tests
+
+TESTS_SRCS_DIR += ./tests
+TESTS_SRCS_DIR += ./tests/parsing_tests
+
+TESTS_SRCS += main_tests.c
+
+# parsing #
+
+TESTS_SRCS += is_valid_map_path_unit_test.c
+
+## Unity ##
+
+UNITY_SRCS := Unity/src/unity.c
+
+vpath %.c $(TESTS_SRCS_DIR)
+
+##### TESTS OBJETS #####
+
+PATH_TESTS_OBJS := objs/tests/
+
+TESTS_OBJS := $(patsubst %.c, $(PATH_TESTS_OBJS)%.o, $(TESTS_SRCS))
 
 ##### COMPILATION #####
 
@@ -116,6 +143,10 @@ $(OBJS): $(PATH_OBJS)%.o: %.c $(HEADERS)
 	@mkdir -p $(PATH_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_LIBFT)
 
+$(TESTS_OBJS): $(PATH_TESTS_OBJS)%.o: %.c $(HEADERS)
+	@mkdir -p $(PATH_TESTS_OBJS)
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INCLUDES_TESTS) -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_LIBFT) -I $(PATH_INCLUDES_UNITY)
+
 $(LIBFT):
 	@echo "$(BLUE)Compiling $(LIBFT) ...$(WHITE)"
 	@$(MAKE) -sC $(PATH_LIBFT)
@@ -130,6 +161,10 @@ cppcheck:
 norminette: $(SRCS) $(HEADERS)
 	norminette $^
 
+tests: $(LIBFT) $(TESTS_OBJS) $(filter-out $(PATH_OBJS)main.o, $(OBJS)) $(UNITY_SRCS)
+	@echo "$(BLUE)Tests...$(WHITE)"
+	$(CC) $(CFLAGS) -I $(PATH_INCLUDES_TESTS) -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_UNITY) -I $(PATH_INCLUDES_LIBFT) $^ -o $(TESTS_NAME) -L$(PATH_LIBFT) -lft -DTEST_MODE
+
 clean:
 	@echo "$(BLUE)Cleaning object files...$(WHITE)"
 	@rm -rf $(PATH_OBJS)
@@ -139,9 +174,10 @@ clean:
 fclean: clean
 	@echo "$(BLUE)Removing $(NAME)...$(WHITE)"
 	@rm -f $(NAME)
+	@$(RM) $(TESTS_NAME)
 	@echo "$(GREEN)$(NAME) removed!$(WHITE)"
 	@$(MAKE) -sC $(PATH_LIBFT) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re clang_analyzer cppcheck norminette
+.PHONY: all clean fclean re clang_analyzer cppcheck norminette tests
