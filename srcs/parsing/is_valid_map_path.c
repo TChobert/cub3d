@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid_map_path.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:53:05 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/24 17:53:17 by tchobert         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:19:58 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static bool	is_not_a_double_cub(const char *map_file_path)
 	return (true);
 }
 
-static bool	is_not_only_a_cub(const char *map_file_path)
+static bool	has_only_a_cub_suffix(const char *map_file_path)
 {
 	size_t	len;
 
@@ -50,7 +50,7 @@ static bool	is_not_only_a_cub(const char *map_file_path)
 
 bool	is_valid_map_path(const char *map_file_path)
 {
-	if (is_not_only_a_cub(map_file_path) == false
+	if (has_only_a_cub_suffix(map_file_path) == false
 		|| is_not_hide_cub_file(map_file_path) == false
 		|| is_not_a_double_cub(map_file_path) == false)
 	{

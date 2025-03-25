@@ -62,6 +62,7 @@ TESTS_SRCS += main_tests.c
 # parsing #
 
 TESTS_SRCS += is_valid_map_path_unit_test.c
+TESTS_SRCS += is_valid_map_file_unit_test.c
 
 ## Unity ##
 
@@ -163,6 +164,7 @@ norminette: $(SRCS) $(HEADERS)
 
 tests: $(LIBFT) $(TESTS_OBJS) $(filter-out $(PATH_OBJS)main.o, $(OBJS)) $(UNITY_SRCS)
 	@echo "$(BLUE)Tests...$(WHITE)"
+	bash setup_unit_tests.sh
 	$(CC) $(CFLAGS) -I $(PATH_INCLUDES_TESTS) -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_UNITY) -I $(PATH_INCLUDES_LIBFT) $^ -o $(TESTS_NAME) -L$(PATH_LIBFT) -lft -DTEST_MODE
 
 clean:
@@ -175,6 +177,7 @@ fclean: clean
 	@echo "$(BLUE)Removing $(NAME)...$(WHITE)"
 	@rm -f $(NAME)
 	@$(RM) $(TESTS_NAME)
+	bash clear_tests.sh
 	@echo "$(GREEN)$(NAME) removed!$(WHITE)"
 	@$(MAKE) -sC $(PATH_LIBFT) fclean
 

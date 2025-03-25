@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_tests.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 14:33:03 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/25 14:33:13 by tchobert         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:23:53 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void tearDown(void)
 int	main(void)
 {
 	UNITY_BEGIN();
-	is_valid_map_path_unit_test();
+	setUp();
+	RUN_TEST(is_valid_map_path_unit_test);
+	RUN_TEST(is_valid_map_file_unit_test);
+	tearDown();
 	return (UNITY_END());
 }

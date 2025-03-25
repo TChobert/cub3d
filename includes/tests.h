@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 14:31:07 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/25 14:31:34 by tchobert         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:23:14 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@
 // PROTOTYPES //
 
 void	is_valid_map_path_unit_test(void);
+void	is_valid_map_file_unit_test(void);
 
 #endif
