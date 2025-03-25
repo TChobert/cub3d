@@ -15,5 +15,5 @@
 void	exec_game_cub(char *map_file_path)
 {
 	(void)map_file_path;
-	printf("Hello\n");
+	printf("Game part reached\n");
 }

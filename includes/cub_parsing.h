@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/24 14:31:27 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:15:07 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,17 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <errno.h>
 # include "libft.h"
+
+# define CUB_SUFFIX ".cub"
 
 // ENUM ////////////////////////////////////////////////////////////////////////
 
 typedef enum e_parsing_status
 {
-	VALID_FILE,
-	INVALID_FILE,
+	VALID_MAP_FILE,
+	INVALID_MAP_FILE,
 	PARSING_ERROR
 }			t_parsing_status;
 
@@ -39,10 +42,14 @@ typedef struct s_file_data
 
 // ERROR //
 void				print_error_message_args(void);
+void				print_opening_errors(const char *map_file_path);
+void				print_invalid_path(void);
 
 // PARSING //
 int					parsing(char *map_file_path);
-t_parsing_status	map_file_opener(char *map_file_path, int *fd);
+bool				is_valid_map_path(const char *map_file_path);
+bool				is_valid_map_file(const char *map_file_path);
+t_parsing_status	map_file_opener(const char *map_file_path, int *map_fd);
 
 // GAME //
 void				exec_game_cub(char *map_file_path);
