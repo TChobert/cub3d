@@ -30,6 +30,7 @@
 # define EAST_TEXTURE_PREFIX "EA "
 
 typedef char *	t_texture;
+typedef char **	t_file_data;
 
 // ENUM ////////////////////////////////////////////////////////////////////////
 
@@ -63,6 +64,7 @@ typedef struct s_game_data
 {
 	int			file_fd;
 	t_texture	north_texture;
+	t_file_data	map_file_data;
 }				t_game_data;
 
 // FUNCTIONS ///////////////////////////////////////////////////////////////////

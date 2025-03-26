@@ -18,7 +18,7 @@ t_parsing_status	parsing(char *map_file_path)
 
 	if (map_file_opener(map_file_path, &game_data.file_fd) == INVALID_MAP_FILE)
 		return (PARSE_ERROR);
-	if (parse_map_file(game_data) == INVALID_CONTENT)
+	if (parse_map_file(&game_data) == INVALID_CONTENT)
 		return (PARSE_ERROR);
 	printf("End of parsing reached\n");
 	return (PARSE_SUCCESS);
