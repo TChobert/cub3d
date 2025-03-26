@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_north_texture.c                                :+:      :+:    :+:   */
+/*   get_south_texture.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 17:14:13 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/26 12:42:35 by racoutte         ###   ########.fr       */
+/*   Created: 2025/03/26 12:01:53 by racoutte          #+#    #+#             */
+/*   Updated: 2025/03/26 12:42:40 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
 
-bool	is_valid_north_prefix(const char *texture)
+bool	is_valid_south_prefix(const char *texture)
 {
-	if (ft_strncmp("NO ", texture, 3) != 0)
+	if (ft_strncmp("SO ", texture, 3) != 0)
 		return (false);
 	return (true);
 }
 
-t_texture_status	is_valid_north_texture(const char *texture)
+t_texture_status	is_valid_south_texture(const char *texture)
 {
-	if (is_valid_north_prefix(texture) == false)
+	if (is_valid_south_prefix(texture) == false)
 		return (INVALID_TEXTURE);
 	if (is_valid_xpm_path(texture + 3) == false)
 		return (INVALID_TEXTURE);
 	return (VALID_TEXTURE);
 }
 
-char	*get_north_texture(char *texture)
+char	*get_south_texture(char *texture)
 {
-	if (is_valid_north_texture(texture) == INVALID_TEXTURE)
+	if (is_valid_south_texture(texture) == INVALID_TEXTURE)
 	{
-		ft_putstr_fd("Error\nInvalid north texture\n", STDERR_FILENO);
+		ft_putstr_fd("Error\nInvalid south texture\n", STDERR_FILENO);
 		return (NULL);
 	}
 	return (texture);
