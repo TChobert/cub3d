@@ -22,7 +22,7 @@ void	open_map_file(const char *map_file_path, int *map_fd)
 	}
 }
 
-t_parsing_status	map_file_opener(const char *map_file_path, int *map_fd)
+t_map_file_status	map_file_opener(const char *map_file_path, int *map_fd)
 {
 	if (is_valid_map_path(map_file_path) == false)
 	{

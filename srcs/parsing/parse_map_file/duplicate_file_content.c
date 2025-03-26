@@ -12,6 +12,19 @@
 
 #include "cub_parsing.h"
 
+static void	display_strings_array(char **array)
+{
+	size_t	i;
+
+	i = 0;
+	while (array[i] != NULL)
+	{
+		ft_printf("%s", array[i]);
+		ft_printf("\n");
+		++i;
+	}
+}
+
 static char	*build_data_line(t_game_data *game_data)
 {
 	char	*data_line;
@@ -59,4 +72,6 @@ void	duplicate_file_content(t_game_data *game_data)
 	}
 	get_file_content(game_data, data_line);
 	free(data_line);
+	//Pour tester, a supprimer apres
+	display_strings_array(game_data->map_file_data);
 }
