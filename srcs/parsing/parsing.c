@@ -12,12 +12,14 @@
 
 #include "cub_parsing.h"
 
-int	parsing(char *map_file_path)
+t_parsing_status	parsing(char *map_file_path)
 {
 	t_game_data	game_data;
 
 	if (map_file_opener(map_file_path, &game_data.file_fd) == INVALID_MAP_FILE)
-		return (PARSING_ERROR);
+		return (PARSE_ERROR);
+	if (parse_map_file(game_data) == INVALID_CONTENT)
+		return (PARSE_ERROR);
 	printf("End of parsing reached\n");
-	return (EXIT_SUCCESS);
+	return (PARSE_SUCCESS);
 }

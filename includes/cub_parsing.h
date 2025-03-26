@@ -33,11 +33,22 @@ typedef char *	t_texture;
 
 // ENUM ////////////////////////////////////////////////////////////////////////
 
-typedef enum e_parsing_status
+typedef enum e_map_file_status
 {
 	VALID_MAP_FILE,
-	INVALID_MAP_FILE,
-	PARSING_ERROR
+	INVALID_MAP_FILE
+}			t_map_file_status;
+
+typedef enum e_content_status
+{
+	VALID_CONTENT,
+	INVALID_CONTENT
+}			t_content_status;
+
+typedef enum e_parisng_status
+{
+	PARSE_SUCCESS,
+	PARSE_ERROR
 }			t_parsing_status;
 
 typedef enum e_texture_status
