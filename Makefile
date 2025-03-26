@@ -35,6 +35,8 @@ SRCS += get_east_texture.c
 SRCS += is_xpm_file.c
 SRCS += parsing.c
 
+SRCS += is_valid_texture_prefix.c
+
 # srcs game #
 
 SRCS += launch_game.c
@@ -66,19 +68,24 @@ TESTS_SRCS_DIR += ./tests/parsing_tests/textures_parser_tests
 
 TESTS_SRCS += main_tests.c
 
-# parsing #
+# parsing file #
 
 TESTS_SRCS += is_valid_map_path_unit_test.c
 TESTS_SRCS += is_valid_map_file_unit_test.c
+
+# parsing textures #
+
 TESTS_SRCS += is_valid_east_texture_tests.c
 TESTS_SRCS += is_valid_south_texture_tests.c
 TESTS_SRCS += is_valid_north_texture_tests.c
 TESTS_SRCS += is_valid_west_texture_tests.c
-TESTS_SRCS += is_valid_north_prefix_tests.c
-TESTS_SRCS += is_valid_south_prefix_tests.c
-TESTS_SRCS += is_valid_west_prefix_tests.c
-TESTS_SRCS += is_valid_east_prefix_tests.c
+# TESTS_SRCS += is_valid_north_prefix_tests.c
+# TESTS_SRCS += is_valid_south_prefix_tests.c
+# TESTS_SRCS += is_valid_west_prefix_tests.c
+# TESTS_SRCS += is_valid_east_prefix_tests.c
 TESTS_SRCS += is_xpm_file_tests.c
+
+TESTS_SRCS += is_valid_texture_prefix_tests.c
 
 ## Unity ##
 

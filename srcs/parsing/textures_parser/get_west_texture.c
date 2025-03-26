@@ -12,16 +12,9 @@
 
 #include "cub_parsing.h"
 
-bool	is_valid_west_prefix(const char *texture)
-{
-	if (ft_strncmp("WE ", texture, 3) != 0)
-		return (false);
-	return (true);
-}
-
 t_texture_status	is_valid_west_texture(const char *texture)
 {
-	if (is_valid_west_prefix(texture) == false)
+	if (is_valid_texture_prefix(texture, WEST_TEXTURE_PREFIX) == false)
 		return (INVALID_TEXTURE);
 	if (is_valid_xpm_path(texture + 3) == false)
 		return (INVALID_TEXTURE);

@@ -22,6 +22,12 @@
 
 # define CUB_SUFFIX ".cub"
 # define XPM_SUFFIX ".xpm"
+# define SPACE " "
+
+# define NORTH_TEXTURE_PREFIX "NO "
+# define SOUTH_TEXTURE_PREFIX "SO "
+# define WEST_TEXTURE_PREFIX "WE "
+# define EAST_TEXTURE_PREFIX "EA "
 
 typedef char *	t_texture;
 
@@ -62,17 +68,20 @@ bool				is_valid_map_file(const char *map_file_path);
 t_parsing_status	map_file_opener(const char *map_file_path, int *map_fd);
 bool				is_valid_xpm_path(const char *file_path);
 t_texture_status	is_valid_north_texture(const char *texture);
-bool				is_valid_north_prefix(const char *texture);
+//bool				is_valid_north_prefix(const char *texture);
 char				*get_north_texture(char *texture);
 t_texture_status	is_valid_south_texture(const char *texture);
-bool				is_valid_south_prefix(const char *texture);
+//bool				is_valid_south_prefix(const char *texture);
 char				*get_south_texture(char *texture);
 t_texture_status	is_valid_east_texture(const char *texture);
-bool				is_valid_east_prefix(const char *texture);
+//bool				is_valid_east_prefix(const char *texture);
 char				*get_east_texture(char *texture);
 t_texture_status	is_valid_west_texture(const char *texture);
-bool				is_valid_west_prefix(const char *texture);
+//bool				is_valid_west_prefix(const char *texture);
 char				*get_west_texture(char *texture);
+
+bool				is_valid_texture_prefix(const char *texture,
+						const char *prefix);
 
 // GAME //
 void				exec_game_cub(char *map_file_path);

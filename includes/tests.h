@@ -36,4 +36,6 @@ void	is_valid_west_texture_tests(void);
 void	is_valid_west_prefix_tests(void);
 void	is_valid_xpm_path_tests(void);
 
+void	is_valid_texture_prefix_tests(void);
+
 #endif
