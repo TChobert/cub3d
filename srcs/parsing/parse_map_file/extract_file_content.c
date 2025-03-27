@@ -25,53 +25,63 @@ static void	display_strings_array(char **array)
 	}
 }
 
-static char	*build_content_line(t_game_data *game_data)
+static char	*read_entire_file(t_game_data *game_data)
 {
-	char	*data_line;
-	char	*line;
-	char	*temp_data_line;
+	char	*file_content;
+	char	*current_line;
+	char	*temp;
 
-	data_line = ft_strdup("");
-	if (data_line == NULL)
+	file_content = ft_strdup("");
+	if (file_content == NULL)
 		return (NULL);
-	line = get_next_line(game_data->file_fd);
-	while (line != NULL)
+	current_line = get_next_line(game_data->file_fd);
+	while (current_line != NULL)
 	{
-		temp_data_line = data_line;
-		if (ft_asprintf(&data_line, "%s%s", data_line, line) == -1)
+		temp = file_content;
+		if (ft_asprintf(&file_content, "%s%s", file_content,
+			current_line) == -1)
 		{
 			return (NULL);
 		}
-		free(line);
-		line = get_next_line(game_data->file_fd);
-		free(temp_data_line);
+		free(current_line);
+		current_line = get_next_line(game_data->file_fd);
+		free(temp);
 	}
-	free(line);
-	return (data_line);
+	free(current_line);
+	return (file_content);
 }
 
-static void	save_file_content(t_game_data *game_data, char *data_line)
+static char	**split_file_content(char *file_content)
 {
-	game_data->map_file_data = ft_split(data_line, '\n');
+	return (ft_split(file_content, '\n'));
+}
+
+static void	save_file_content(t_game_data *game_data, char *file_content)
+{
+	game_data->map_file_data = split_file_content(file_content);
 	if (game_data->map_file_data == NULL)
 	{
-		//print
+		ft_dprintf(STDERR_FILENO, "Error.\n"
+			"Failed to save file content. Exit.\n");
 		exit(FAILURE);
 	}
 }
 
 void	extract_file_content(t_game_data *game_data)
 {
-	char	*data_line;
+	char	*file_content;
 
-	data_line = build_content_line(game_data);
-	if (data_line == NULL)
+	file_content = read_entire_file(game_data);
+	if (file_content == NULL)
 	{
-		//error a print
+		ft_dprintf(STDERR_FILENO, "Error.\n"
+			"Failed to read file content. Exit.\n");
 		exit(FAILURE);
 	}
-	save_file_content(game_data, data_line);
-	free(data_line);
+	save_file_content(game_data, file_content);
+	close (game_data->file_fd);
 	//Pour tester, a supprimer apres
+	//ft_printf("%s\n", file_content);
 	display_strings_array(game_data->map_file_data);
+	free(file_content);
 }
