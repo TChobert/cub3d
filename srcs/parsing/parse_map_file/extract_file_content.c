@@ -46,19 +46,57 @@ static char	*read_entire_file(t_game_data *game_data)
 		free(current_line);
 		current_line = get_next_line(game_data->file_fd);
 		free(temp);
+		++game_data->map_file_lines_number;
 	}
 	free(current_line);
 	return (file_content);
 }
 
-static char	**split_file_content(char *file_content)
+size_t	add_line_to_splitted(char *file_content, char **splitted_file_content)
 {
-	return (ft_split(file_content, '\n'));
+	static	size_t	lines_count = 0;
+	size_t			line_size;
+
+	line_size = 0;
+	while (file_content[line_size] != '\n' && file_content[line_size] != '\0')
+	{
+		++line_size;
+	}
+	splitted_file_content[lines_count] = ft_strndup(file_content, line_size);
+	if (splitted_file_content[lines_count] == NULL)
+	{
+		//exit
+	}
+	lines_count += 1;
+	return (line_size + 1);
+}
+
+static void	split_file_content(t_game_data *game_data, char *file_content)
+{
+	char	**splitted_file_content;
+
+	splitted_file_content = malloc(sizeof(char *) * (game_data->map_file_lines_number + 1));
+	// if (splitted_file_content == NULL)
+	// {
+	// 	//exit
+	// }
+	splitted_file_content[game_data->map_file_lines_number] = NULL;
+	size_t	lines = 1;
+	while (lines < game_data->map_file_lines_number)
+	{
+		file_content += add_line_to_splitted(file_content, splitted_file_content);
+		++lines;
+	}
+	if (*file_content != '\0')
+	{
+		add_line_to_splitted(file_content, splitted_file_content);
+	}
+	game_data->map_file_data = splitted_file_content;
 }
 
 static void	save_file_content(t_game_data *game_data, char *file_content)
 {
-	game_data->map_file_data = split_file_content(file_content);
+	split_file_content(game_data, file_content);
 	if (game_data->map_file_data == NULL)
 	{
 		ft_dprintf(STDERR_FILENO, "Error.\n"
@@ -80,8 +118,6 @@ void	extract_file_content(t_game_data *game_data)
 	}
 	save_file_content(game_data, file_content);
 	close (game_data->file_fd);
-	//Pour tester, a supprimer apres
-	//ft_printf("%s\n", file_content);
 	display_strings_array(game_data->map_file_data);
 	free(file_content);
 }

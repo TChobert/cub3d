@@ -65,6 +65,7 @@ typedef struct s_game_data
 	int			file_fd;
 	t_texture	north_texture;
 	t_file_data	map_file_data;
+	size_t		map_file_lines_number;
 }				t_game_data;
 
 // FUNCTIONS ///////////////////////////////////////////////////////////////////

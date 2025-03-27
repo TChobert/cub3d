@@ -16,6 +16,7 @@ t_parsing_status	parsing(char *map_file_path)
 {
 	t_game_data	game_data;
 
+	ft_bzero(&game_data, sizeof(game_data));
 	if (map_file_opener(map_file_path, &game_data.file_fd) == INVALID_MAP_FILE)
 		return (PARSE_ERROR);
 	if (parse_map_file(&game_data) == INVALID_CONTENT)
