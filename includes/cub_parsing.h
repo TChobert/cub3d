@@ -79,7 +79,9 @@ void				print_invalid_path(void);
 t_parsing_status	parsing(char *map_file_path);
 
 t_content_status	parse_map_file(t_game_data *game_data);
-void				extract_file_content(t_game_data *game_data);
+void				get_file_content(t_game_data *game_data);
+void				save_file_content(t_game_data *game_data,
+						char *file_content);
 bool				is_valid_map_path(const char *map_file_path);
 bool				is_valid_map_file(const char *map_file_path);
 t_map_file_status	map_file_opener(const char *map_file_path, int *map_fd);

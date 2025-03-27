@@ -15,7 +15,8 @@ PATH_SRCS += srcs/error/
 PATH_SRCS += srcs/parsing/
 PATH_SRCS += srcs/parsing/map_file_opener
 PATH_SRCS += srcs/parsing/textures_parser
-PATH_SRCS += srcs/parsing/parse_map_file
+PATH_SRCS += srcs/parsing/map_file_parser
+PATH_SRCS += srcs/parsing/map_file_content_getter
 PATH_SRCS += srcs/game/
 
 SRCS += main.c
@@ -39,7 +40,8 @@ SRCS += get_south_texture.c
 SRCS += get_west_texture.c
 SRCS += get_east_texture.c
 SRCS += is_xpm_file.c
-SRCS += extract_file_content.c
+SRCS += get_file_content.c
+SRCS += save_file_content.c
 
 SRCS += parsing.c
 
