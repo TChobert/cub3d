@@ -39,7 +39,7 @@ SRCS += get_south_texture.c
 SRCS += get_west_texture.c
 SRCS += get_east_texture.c
 SRCS += is_xpm_file.c
-SRCS += duplicate_file_content.c
+SRCS += extract_file_content.c
 
 SRCS += parsing.c
 

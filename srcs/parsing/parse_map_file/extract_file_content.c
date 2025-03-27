@@ -25,7 +25,7 @@ static void	display_strings_array(char **array)
 	}
 }
 
-static char	*build_data_line(t_game_data *game_data)
+static char	*build_content_line(t_game_data *game_data)
 {
 	char	*data_line;
 	char	*line;
@@ -50,7 +50,7 @@ static char	*build_data_line(t_game_data *game_data)
 	return (data_line);
 }
 
-static void	get_file_content(t_game_data *game_data, char *data_line)
+static void	save_file_content(t_game_data *game_data, char *data_line)
 {
 	game_data->map_file_data = ft_split(data_line, '\n');
 	if (game_data->map_file_data == NULL)
@@ -60,17 +60,17 @@ static void	get_file_content(t_game_data *game_data, char *data_line)
 	}
 }
 
-void	duplicate_file_content(t_game_data *game_data)
+void	extract_file_content(t_game_data *game_data)
 {
 	char	*data_line;
 
-	data_line = build_data_line(game_data);
+	data_line = build_content_line(game_data);
 	if (data_line == NULL)
 	{
 		//error a print
 		exit(FAILURE);
 	}
-	get_file_content(game_data, data_line);
+	save_file_content(game_data, data_line);
 	free(data_line);
 	//Pour tester, a supprimer apres
 	display_strings_array(game_data->map_file_data);
