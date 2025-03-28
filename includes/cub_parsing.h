@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/26 12:46:06 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/03/28 15:25:15 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define SOUTH_TEXTURE_PREFIX "SO "
 # define WEST_TEXTURE_PREFIX "WE "
 # define EAST_TEXTURE_PREFIX "EA "
+
+# define TEXTURES_OK 0
 
 typedef char *	t_texture;
 typedef char **	t_file_data;
@@ -58,7 +60,21 @@ typedef enum e_texture_status
 	INVALID_TEXTURE
 }			t_texture_status;
 
+typedef enum e_state
+{
+	EMPTY_LINE,
+	FULL_LINE,
+	START,
+	END
+}			t_state;
+
+
 // STRUCTURES //////////////////////////////////////////////////////////////////
+
+typedef struct	s_parse_state
+{
+	t_state	state;
+}				t_parse_state;
 
 typedef struct s_game_data
 {
@@ -66,7 +82,11 @@ typedef struct s_game_data
 	t_texture	north_texture;
 	t_file_data	map_file_data;
 	size_t		map_file_lines_number;
+	bool		textures_and_colors;
+	size_t		current_line;
 }				t_game_data;
+
+typedef void (*state_function)(t_game_data *game_data, t_parse_state *state);
 
 // FUNCTIONS ///////////////////////////////////////////////////////////////////
 
