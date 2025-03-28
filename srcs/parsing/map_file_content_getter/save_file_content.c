@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_file_content.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 19:35:39 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/27 19:35:45 by tchobert         ###   ########.fr       */
+/*   Updated: 2025/03/28 18:18:25 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ static void	split_file_content(t_game_data *game_data, char *file_content)
 	}
 	if (*file_content != '\0')
 		add_line_to_splitted_content(file_content, splitted_file_content);
-	game_data->map_file_data = splitted_file_content;
+	game_data->map_file_content = splitted_file_content;
 }
 
 void	save_file_content(t_game_data *game_data, char *file_content)
 {
 	split_file_content(game_data, file_content);
-	if (game_data->map_file_data == NULL)
+	if (game_data->map_file_content == NULL)
 	{
 		ft_dprintf(STDERR_FILENO, "Error.\n"
 			"Failed to save file content. Exit.\n");

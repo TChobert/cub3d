@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 11:00:48 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/25 17:21:05 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/03/28 18:40:22 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_parsing_status	parsing(char *map_file_path)
 		return (PARSE_ERROR);
 	printf("End of parsing reached\n");
 	// test
-	ft_free_and_null(game_data.map_file_data);
+	printf("TEST = %s\n", game_data.textures.east_texture);
+	ft_free_and_null(game_data.map_file_content);
 	return (PARSE_SUCCESS);
 }

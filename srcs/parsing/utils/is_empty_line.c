@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map_file.c                                   :+:      :+:    :+:   */
+/*   is_empty_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/26 17:42:54 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/28 18:38:22 by racoutte         ###   ########.fr       */
+/*   Created: 2025/03/28 18:04:54 by racoutte          #+#    #+#             */
+/*   Updated: 2025/03/28 18:05:15 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
 
-t_content_status	parse_map_file(t_game_data *game_data)
+bool	is_empty_line(const char *line)
 {
-	get_file_content(game_data);
-	get_textures_and_colors(game_data);
-	// 		|| get_map(game_data) == INVALID_CONTENT)
-	// {
-	// 	return (INVALID_CONTENT);
-	// }
-	return (VALID_CONTENT);
+	size_t	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (ft_isspace(line[i]) == false)
+			return (false);
+		i++;
+	}
+	return (true);
 }

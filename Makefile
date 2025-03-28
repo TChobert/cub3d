@@ -13,10 +13,11 @@ LIBFT := $(PATH_LIBFT)libft.a
 PATH_SRCS += srcs/
 PATH_SRCS += srcs/error/
 PATH_SRCS += srcs/parsing/
-PATH_SRCS += srcs/parsing/map_file_opener
-PATH_SRCS += srcs/parsing/textures_parser
-PATH_SRCS += srcs/parsing/map_file_parser
 PATH_SRCS += srcs/parsing/map_file_content_getter
+PATH_SRCS += srcs/parsing/map_file_opener
+PATH_SRCS += srcs/parsing/map_file_parser
+PATH_SRCS += srcs/parsing/textures_and_colors_parser
+PATH_SRCS += srcs/parsing/utils
 PATH_SRCS += srcs/game/
 
 SRCS += main.c
@@ -27,25 +28,30 @@ SRCS += error_message.c
 
 # srcs parsing #
 
-# file opening
-SRCS += is_valid_map_path.c
-SRCS += is_valid_map_file.c
-SRCS += map_file_opener.c
-
-# file content
-
-SRCS += parse_map_file.c
-SRCS += get_north_texture.c
-SRCS += get_south_texture.c
-SRCS += get_west_texture.c
-SRCS += get_east_texture.c
-SRCS += is_xpm_file.c
+# map_file_content_getter
 SRCS += get_file_content.c
 SRCS += save_file_content.c
 
-SRCS += parsing.c
+# map_file_opener
+SRCS += is_valid_map_file.c
+SRCS += is_valid_map_path.c
+SRCS += map_file_opener.c
 
+# map_file_parser
+SRCS += parse_map_file.c
+
+# textures_and_colors_parser
+SRCS += get_texture_type.c
+SRCS += get_texture.c
 SRCS += is_valid_texture_prefix.c
+SRCS += is_xpm_file.c
+SRCS += run_state.c
+SRCS += textures_and_colors.c
+
+# utils
+SRCS += is_empty_line.c
+
+SRCS += parsing.c
 
 # srcs game #
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   duplicate_file_content.c                           :+:      :+:    :+:   */
+/*   get_file_content.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 18:08:12 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/26 18:08:23 by tchobert         ###   ########.fr       */
+/*   Updated: 2025/03/28 18:18:37 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ void	get_file_content(t_game_data *game_data)
 	}
 	save_file_content(game_data, file_content);
 	close (game_data->file_fd);
-	display_strings_array(game_data->map_file_data);
+	display_strings_array(game_data->map_file_content);
 	free(file_content);
 }

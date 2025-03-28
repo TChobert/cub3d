@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/28 15:25:15 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/03/28 18:39:15 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@
 # define SOUTH_TEXTURE_PREFIX "SO "
 # define WEST_TEXTURE_PREFIX "WE "
 # define EAST_TEXTURE_PREFIX "EA "
-
-# define TEXTURES_OK 0
 
 typedef char *	t_texture;
 typedef char **	t_file_data;
@@ -60,30 +58,49 @@ typedef enum e_texture_status
 	INVALID_TEXTURE
 }			t_texture_status;
 
-typedef enum e_state
+typedef enum e_line_state
 {
 	EMPTY_LINE,
 	FULL_LINE,
-	START,
-	END
-}			t_state;
+	COMPLETE
+}			t_line_state;
 
+typedef enum e_texture_type
+{
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST,
+}			t_texture_type;
 
 // STRUCTURES //////////////////////////////////////////////////////////////////
 
 typedef struct	s_parse_state
 {
-	t_state	state;
+	t_line_state	state;
 }				t_parse_state;
+
+typedef struct	s_texture_element
+{
+	char			*id;
+	t_texture_type	type;
+}				t_texture_element;
+
+typedef struct	s_textures
+{
+	t_texture	north_texture;
+	t_texture	south_texture;
+	t_texture	east_texture;
+	t_texture	west_texture;
+}				t_textures;
 
 typedef struct s_game_data
 {
 	int			file_fd;
-	t_texture	north_texture;
-	t_file_data	map_file_data;
+	t_file_data	map_file_content;
 	size_t		map_file_lines_number;
-	bool		textures_and_colors;
 	size_t		current_line;
+	t_textures	textures;
 }				t_game_data;
 
 typedef void (*state_function)(t_game_data *game_data, t_parse_state *state);
@@ -98,6 +115,8 @@ void				print_invalid_path(void);
 // PARSING //
 t_parsing_status	parsing(char *map_file_path);
 
+void				get_textures_and_colors(t_game_data *game_data);
+
 t_content_status	parse_map_file(t_game_data *game_data);
 void				get_file_content(t_game_data *game_data);
 void				save_file_content(t_game_data *game_data,
@@ -106,17 +125,13 @@ bool				is_valid_map_path(const char *map_file_path);
 bool				is_valid_map_file(const char *map_file_path);
 t_map_file_status	map_file_opener(const char *map_file_path, int *map_fd);
 bool				is_valid_xpm_path(const char *file_path);
-t_texture_status	is_valid_north_texture(const char *texture);
-char				*get_north_texture(char *texture);
-t_texture_status	is_valid_south_texture(const char *texture);
-char				*get_south_texture(char *texture);
-t_texture_status	is_valid_east_texture(const char *texture);
-char				*get_east_texture(char *texture);
-t_texture_status	is_valid_west_texture(const char *texture);
-char				*get_west_texture(char *texture);
-
+t_texture_status	get_texture(t_game_data *game_data,
+						const char *texture, t_texture_type texture_type);
 bool				is_valid_texture_prefix(const char *texture,
 						const char *prefix);
+void				run_state(t_game_data *game_data, t_parse_state *parse_state);
+t_texture_element	*get_texture_type(const char *texture);
+bool				is_empty_line(const char *line);
 
 // GAME //
 void				exec_game_cub(char *map_file_path);

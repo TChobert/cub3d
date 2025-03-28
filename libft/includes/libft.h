@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <tchobert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 12:07:13 by tchobert          #+#    #+#             */
-/*   Updated: 2024/12/10 10:50:24 by tchobert         ###   ########.fr       */
+/*   Updated: 2025/03/28 18:35:23 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	ft_swap_long(long *a, long *b);
 int		ft_atoi_base(const char *nb, unsigned int base);
 char	*ft_getenv(char *key, char **env);
 void	ft_display_strs_array(char **array, int fd);
+bool	ft_isspace(char c);
 
 // LIST FUNCTIONS :
 
