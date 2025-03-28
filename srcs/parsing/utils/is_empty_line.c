@@ -17,7 +17,7 @@ bool	is_empty_line(const char *line)
 	size_t	i;
 
 	i = 0;
-	while (line[i])
+	while (line[i] != '\0')
 	{
 		if (ft_isspace(line[i]) == false)
 			return (false);

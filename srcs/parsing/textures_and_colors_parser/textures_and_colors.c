@@ -19,7 +19,7 @@ void	get_textures_and_colors(t_game_data *game_data)
 
 	i = 0;
 	parse_state.state = EMPTY_LINE;
-	while (parse_state.state != COMPLETE)
+	while (parse_state.state != COMPLETE && game_data->current_line < game_data->map_file_lines_number)
 	{
 		run_state(game_data, &parse_state);
 	}

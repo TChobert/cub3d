@@ -12,11 +12,21 @@
 
 #include "cub_parsing.h"
 
-bool	is_valid_texture_prefix(const char *texture, const char *prefix)
+bool	is_valid_texture_prefix(const char *texture, const char *texture_id)
 {
+	char	*prefix;
+	
+	prefix = ft_strjoin(texture_id, " ");
+	if (prefix == NULL)
+	{
+		//comment
+		exit(FAILURE);
+	}
 	if (ft_strncmp(prefix, texture, 3) != 0)
 	{
+		free(prefix);
 		return (false);
 	}
+	free(prefix);
 	return (true);
 }

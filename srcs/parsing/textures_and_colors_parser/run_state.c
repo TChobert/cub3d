@@ -23,12 +23,13 @@ static void	state_full(t_game_data *game_data, t_parse_state *parse_state)
 		return ;
 	}
 	if (get_texture(game_data, game_data->map_file_content[game_data->current_line],
-			texture_type->type) == INVALID_TEXTURE)
+			texture_type) == INVALID_TEXTURE)
 	{
 		parse_state->state = COMPLETE;
 		return ;
 	}
 	parse_state->state = EMPTY_LINE;
+	++game_data->current_line;
 }
 
 static void	state_empty(t_game_data *game_data, t_parse_state *parse_state)
