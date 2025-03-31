@@ -77,7 +77,8 @@ typedef enum e_error_nature
 {
 	INVALID_ID,
 	INVALID_XPM,
-	IS_NOT_A_PATH
+	IS_NOT_A_PATH,
+	DOUBLE_ELEMENT
 }			t_error_nature;
 
 // STRUCTURES //////////////////////////////////////////////////////////////////

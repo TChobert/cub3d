@@ -51,6 +51,11 @@ static t_texture_status	save_texture(t_game_data *game_data, const char *texture
 		return (INVALID_TEXTURE);
 	}
 	texture_field = get_texture_field(&game_data->textures, texture_type);
+	if (*texture_field != NULL)
+	{
+		game_data->parse_error_type.error_nature = DOUBLE_ELEMENT;
+		return (INVALID_TEXTURE);
+	}
 	*texture_field = ft_strdup(texture_begining);
 	if (*texture_field == NULL)
 	{
