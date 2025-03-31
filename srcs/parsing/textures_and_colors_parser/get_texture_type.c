@@ -20,14 +20,14 @@ static bool	is_texture_match(const char *texture_id, const char *texture)
 t_texture_element	*get_texture_type(const char *texture)
 {
 	static t_texture_element	texture_elements[] = {
-		{.id = "NO", .type = NORTH},
-		{.id = "SO", .type = SOUTH},
-		{.id = "EA", .type = EAST},
-		{.id = "WE", .type = WEST},
+	{.id = "NO", .type = NORTH},
+	{.id = "SO", .type = SOUTH},
+	{.id = "EA", .type = EAST},
+	{.id = "WE", .type = WEST},
 	};
+	size_t						array_size;
+	size_t						i;
 
-	size_t	array_size;
-	size_t	i;
 	i = 0;
 	array_size = sizeof(texture_elements) / sizeof(*texture_elements);
 	while (i < array_size)

@@ -15,7 +15,7 @@
 static size_t	add_line_to_splitted_content(char *file_content,
 			char **splitted_file_content)
 {
-	static	size_t	lines_count = 0;
+	static size_t	lines_count = 0;
 	size_t			line_size;
 
 	line_size = 0;
@@ -27,7 +27,9 @@ static size_t	add_line_to_splitted_content(char *file_content,
 	splitted_file_content[lines_count] = ft_strndup(file_content, line_size);
 	if (splitted_file_content[lines_count] == NULL)
 	{
-		//exit
+		ft_dprintf(STDERR_FILENO, "Error\n"
+			"Malloc failure during split_file_content.\n");
+		exit(FAILURE);
 	}
 	lines_count += 1;
 	return (line_size + 1);
@@ -36,17 +38,23 @@ static size_t	add_line_to_splitted_content(char *file_content,
 static void	split_file_content(t_game_data *game_data, char *file_content)
 {
 	char	**splitted_file_content;
+	size_t	lines;
 
-	splitted_file_content = malloc(sizeof(char *) * (game_data->map_file_lines_number + 1));
-	// if (splitted_file_content == NULL)
-	// {
-	// 	//exit
-	// }
+	lines = 1;
+	splitted_file_content = malloc(sizeof(char *)
+			* (game_data->map_file_lines_number + 1));
+	if (splitted_file_content == NULL)
+	{
+		ft_dprintf(STDERR_FILENO, "Error\n"
+			"Malloc failure during split_file_content.\n");
+		parser_exit_routine(game_data);
+		exit(FAILURE);
+	}
 	splitted_file_content[game_data->map_file_lines_number] = NULL;
-	size_t	lines = 1;
 	while (lines < game_data->map_file_lines_number)
 	{
-		file_content += add_line_to_splitted_content(file_content, splitted_file_content);
+		file_content += add_line_to_splitted_content(file_content,
+				splitted_file_content);
 		++lines;
 	}
 	if (*file_content != '\0')

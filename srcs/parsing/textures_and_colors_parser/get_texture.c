@@ -31,12 +31,13 @@ static void	save_texture(t_game_data *game_data, const char *texture,
 	t_texture	*texture_field;
 
 	texture_field = get_texture_field(&game_data->textures, texture_type);
-	// verif si deja plein
 	*texture_field = ft_strdup(texture);
-	printf("TEXT = %s\n", *texture_field);
 	if (texture_field == NULL)
 	{
-		//exit;
+		ft_dprintf(STDERR_FILENO, "Error\n"
+			"Malloc failure during save_texture.\n");
+		parser_exit_routine(game_data);
+		exit(FAILURE);
 	}
 }
 
@@ -52,3 +53,5 @@ t_texture_status	get_texture(t_game_data *game_data,
 	save_texture(game_data, texture, texture_type->type);
 	return (VALID_TEXTURE);
 }
+
+// ligne 34 verif si deja plein

@@ -39,7 +39,7 @@ static char	*read_entire_file(t_game_data *game_data)
 	{
 		temp = file_content;
 		if (ft_asprintf(&file_content, "%s%s", file_content,
-			current_line) == -1)
+				current_line) == -1)
 		{
 			return (NULL);
 		}

@@ -17,9 +17,12 @@ void	get_textures_and_colors(t_game_data *game_data)
 	t_parse_state	parse_state;
 
 	parse_state.state = EMPTY_LINE;
-	while (parse_state.state != COMPLETE && game_data->current_line < game_data->map_file_lines_number)
+	while (parse_state.state != COMPLETE
+		&& game_data->current_line < game_data->map_file_lines_number)
 	{
 		run_state(game_data, &parse_state);
 	}
-	//return (fonction de fin de processus); fonction de fin fait son taff et retourne un t_content_status selon ce qu'elle a trouve
 }
+
+//return (fonction de fin de processus); fonction de fin fait son taff
+//et retourne un t_content_status selon ce qu'elle a trouve

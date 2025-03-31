@@ -53,6 +53,8 @@ SRCS += is_empty_line.c
 
 SRCS += parsing.c
 
+SRCS += parser_exit_routine.c
+
 # srcs game #
 
 SRCS += launch_game.c

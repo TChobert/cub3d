@@ -22,15 +22,6 @@ t_parsing_status	parsing(char *map_file_path)
 	if (parse_map_file(&game_data) == INVALID_CONTENT)
 		return (PARSE_ERROR);
 	printf("End of parsing reached\n");
-	// test
-	printf("NO = %s\n", game_data.textures.north_texture);
-	printf("SO = %s\n", game_data.textures.south_texture);
-	printf("WE = %s\n", game_data.textures.west_texture);
-	printf("EA = %s\n", game_data.textures.east_texture);
-	ft_free_and_null(game_data.map_file_content);
-	free(game_data.textures.east_texture);
-	free(game_data.textures.north_texture);
-	free(game_data.textures.south_texture);
-	free(game_data.textures.west_texture);
+	parser_exit_routine(&game_data);
 	return (PARSE_SUCCESS);
 }

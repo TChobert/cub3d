@@ -75,18 +75,18 @@ typedef enum e_texture_type
 
 // STRUCTURES //////////////////////////////////////////////////////////////////
 
-typedef struct	s_parse_state
+typedef struct s_parse_state
 {
 	t_line_state	state;
 }				t_parse_state;
 
-typedef struct	s_texture_element
+typedef struct s_texture_element
 {
 	char			*id;
 	t_texture_type	type;
 }				t_texture_element;
 
-typedef struct	s_textures
+typedef struct s_textures
 {
 	t_texture	north_texture;
 	t_texture	south_texture;
@@ -103,7 +103,7 @@ typedef struct s_game_data
 	t_textures	textures;
 }				t_game_data;
 
-typedef void (*state_function)(t_game_data *game_data, t_parse_state *state);
+typedef void	(*t_state_func)(t_game_data *game_data, t_parse_state *state);
 
 // FUNCTIONS ///////////////////////////////////////////////////////////////////
 
@@ -129,9 +129,12 @@ t_texture_status	get_texture(t_game_data *game_data,
 						const char *texture, t_texture_element *texture_type);
 bool				is_valid_texture_prefix(const char *texture,
 						const char *prefix);
-void				run_state(t_game_data *game_data, t_parse_state *parse_state);
+void				run_state(t_game_data *game_data,
+						t_parse_state *parse_state);
 t_texture_element	*get_texture_type(const char *texture);
 bool				is_empty_line(const char *line);
+
+void				parser_exit_routine(t_game_data *game_data);
 
 // GAME //
 void				exec_game_cub(char *map_file_path);

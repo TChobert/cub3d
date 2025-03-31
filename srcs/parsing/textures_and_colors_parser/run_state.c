@@ -16,13 +16,15 @@ static void	state_full(t_game_data *game_data, t_parse_state *parse_state)
 {
 	t_texture_element	*texture_type;
 
-	texture_type = get_texture_type(game_data->map_file_content[game_data->current_line]);
+	texture_type = get_texture_type(
+			game_data->map_file_content[game_data->current_line]);
 	if (texture_type == NULL)
 	{
 		parse_state->state = COMPLETE;
 		return ;
 	}
-	if (get_texture(game_data, game_data->map_file_content[game_data->current_line],
+	if (get_texture(game_data,
+			game_data->map_file_content[game_data->current_line],
 			texture_type) == INVALID_TEXTURE)
 	{
 		parse_state->state = COMPLETE;
@@ -34,7 +36,8 @@ static void	state_full(t_game_data *game_data, t_parse_state *parse_state)
 
 static void	state_empty(t_game_data *game_data, t_parse_state *parse_state)
 {
-	if (is_empty_line(game_data->map_file_content[game_data->current_line]) == true)
+	if (is_empty_line(game_data->map_file_content[game_data->current_line])
+		== true)
 	{
 		++game_data->current_line;
 		return ;
@@ -45,7 +48,7 @@ static void	state_empty(t_game_data *game_data, t_parse_state *parse_state)
 
 void	run_state(t_game_data *game_data, t_parse_state *parse_state)
 {
-	static state_function	state_functions[] = {
+	static t_state_func	state_functions[] = {
 		state_empty,
 		state_full,
 	};

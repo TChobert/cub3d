@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_valid_texture_prefix.c                          :+:      :+:    :+:   */
+/*   parser_exit_routine.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/26 13:25:26 by tchobert          #+#    #+#             */
-/*   Updated: 2025/03/26 13:26:37 by tchobert         ###   ########.fr       */
+/*   Created: 2025/03/31 14:42:42 by tchobert          #+#    #+#             */
+/*   Updated: 2025/03/31 14:42:55 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
 
-bool	is_valid_texture_prefix(const char *texture, const char *texture_id)
+static void	free_textures(t_textures *textures)
 {
-	char	*prefix;
+	free(textures->east_texture);
+	free(textures->north_texture);
+	free(textures->south_texture);
+	free(textures->west_texture);
+}
 
-	prefix = ft_strjoin(texture_id, " ");
-	if (prefix == NULL)
-	{
-		ft_dprintf(STDERR_FILENO,
-			"Error.\n Malloc failure during textures analyze.\n");
-		exit(FAILURE);
-	}
-	if (ft_strncmp(prefix, texture, 3) != 0)
-	{
-		free(prefix);
-		return (false);
-	}
-	free(prefix);
-	return (true);
+void	parser_exit_routine(t_game_data *game_data)
+{
+	ft_free_and_null(game_data->map_file_content);
+	free_textures(&game_data->textures);
 }
