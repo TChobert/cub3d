@@ -19,7 +19,9 @@ bool	is_valid_texture_prefix(const char *texture, const char *texture_id)
 	prefix = ft_strjoin(texture_id, " ");
 	if (prefix == NULL)
 	{
-		//comment
+		ft_dprintf(STDERR_FILENO,
+			"Error.\n Malloc failure during textures analyze.\n");
+		// free ??
 		exit(FAILURE);
 	}
 	if (ft_strncmp(prefix, texture, 3) != 0)
