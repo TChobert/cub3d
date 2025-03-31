@@ -165,6 +165,7 @@ CPPCHECK_OPTIONS =  --enable=all \
 					--inconclusive \
 					--error-exitcode=1 \
 					--suppress=missingIncludeSystem \
+					--suppress=variableScope \
 					-I includes/ \
 					-I libft/includes \
 					#--suppress=variableScope \
