@@ -73,7 +73,19 @@ typedef enum e_texture_type
 	WEST,
 }			t_texture_type;
 
+typedef enum e_error_nature
+{
+	INVALID_ID,
+	INVALID_XPM
+}			t_error_nature;
+
 // STRUCTURES //////////////////////////////////////////////////////////////////
+
+typedef struct s_parse_error_type
+{
+	t_error_nature	error_nature;
+	char			*invalid_field;
+}				t_parse_error_type;
 
 typedef struct s_parse_state
 {
@@ -96,11 +108,12 @@ typedef struct s_textures
 
 typedef struct s_game_data
 {
-	int			file_fd;
-	t_file_data	map_file_content;
-	size_t		map_file_lines_number;
-	size_t		current_line;
-	t_textures	textures;
+	int					file_fd;
+	t_file_data			map_file_content;
+	size_t				map_file_lines_number;
+	size_t				current_line;
+	t_textures			textures;
+	t_parse_error_type	parse_error_type;
 }				t_game_data;
 
 typedef void	(*t_state_func)(t_game_data *game_data, t_parse_state *state);

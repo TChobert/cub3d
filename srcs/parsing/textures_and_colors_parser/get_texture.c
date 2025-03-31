@@ -25,13 +25,23 @@ static t_texture	*get_texture_field(t_textures *textures,
 		return (&textures->west_texture);
 }
 
+static char	*get_texture_path_begining(char *texture)
+{
+	while (ft_isspace(*texture) && *texture != '\0')
+	{
+		++texture;
+	}
+	return (texture);
+}
+
 static void	save_texture(t_game_data *game_data, const char *texture,
 				t_texture_type texture_type)
 {
+	const char	*texture_begining = get_texture_path_begining((char *)texture + 3);
 	t_texture	*texture_field;
 
 	texture_field = get_texture_field(&game_data->textures, texture_type);
-	*texture_field = ft_strdup(texture);
+	*texture_field = ft_strdup(texture_begining);
 	if (*texture_field == NULL)
 	{
 		ft_dprintf(STDERR_FILENO, "Error\n"
