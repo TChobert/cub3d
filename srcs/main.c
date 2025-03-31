@@ -16,7 +16,7 @@
 
 int	launch_game_cub(char *map_file_path)
 {
-	if (parsing(map_file_path) == PARSING_ERROR)
+	if (parsing(map_file_path) == PARSE_ERROR)
 		return (EXIT_FAILURE);
 	exec_game_cub(map_file_path);
 	return (EXIT_SUCCESS);

@@ -13,6 +13,11 @@ LIBFT := $(PATH_LIBFT)libft.a
 PATH_SRCS += srcs/
 PATH_SRCS += srcs/error/
 PATH_SRCS += srcs/parsing/
+PATH_SRCS += srcs/parsing/map_file_content_getter
+PATH_SRCS += srcs/parsing/map_file_opener
+PATH_SRCS += srcs/parsing/map_file_parser
+PATH_SRCS += srcs/parsing/textures_and_colors_parser
+PATH_SRCS += srcs/parsing/utils
 PATH_SRCS += srcs/game/
 
 SRCS += main.c
@@ -23,11 +28,32 @@ SRCS += error_message.c
 
 # srcs parsing #
 
-SRCS += check_valid_file.c
-SRCS += is_valid_map_path.c
+# map_file_content_getter
+SRCS += get_file_content.c
+SRCS += save_file_content.c
+
+# map_file_opener
 SRCS += is_valid_map_file.c
+SRCS += is_valid_map_path.c
 SRCS += map_file_opener.c
+
+# map_file_parser
+SRCS += parse_map_file.c
+
+# textures_and_colors_parser
+SRCS += get_texture_type.c
+SRCS += get_texture.c
+SRCS += is_valid_texture_prefix.c
+SRCS += is_xpm_file.c
+SRCS += run_state.c
+SRCS += textures_and_colors.c
+
+# utils
+SRCS += is_empty_line.c
+
 SRCS += parsing.c
+
+SRCS += parser_exit_routine.c
 
 # srcs game #
 
@@ -55,14 +81,29 @@ HEADERS += $(PATH_INCLUDES)cub_parsing.h
 TESTS_NAME := unit_tests
 
 TESTS_SRCS_DIR += ./tests
-TESTS_SRCS_DIR += ./tests/parsing_tests
+TESTS_SRCS_DIR += ./tests/parsing_tests/map_file_opener_tests
+TESTS_SRCS_DIR += ./tests/parsing_tests/textures_parser_tests
 
 TESTS_SRCS += main_tests.c
 
-# parsing #
+# parsing file #
 
 TESTS_SRCS += is_valid_map_path_unit_test.c
 TESTS_SRCS += is_valid_map_file_unit_test.c
+
+# parsing textures #
+
+TESTS_SRCS += is_valid_east_texture_tests.c
+TESTS_SRCS += is_valid_south_texture_tests.c
+TESTS_SRCS += is_valid_north_texture_tests.c
+TESTS_SRCS += is_valid_west_texture_tests.c
+# TESTS_SRCS += is_valid_north_prefix_tests.c
+# TESTS_SRCS += is_valid_south_prefix_tests.c
+# TESTS_SRCS += is_valid_west_prefix_tests.c
+# TESTS_SRCS += is_valid_east_prefix_tests.c
+TESTS_SRCS += is_xpm_file_tests.c
+
+TESTS_SRCS += is_valid_texture_prefix_tests.c
 
 ## Unity ##
 
@@ -124,6 +165,7 @@ CPPCHECK_OPTIONS =  --enable=all \
 					--inconclusive \
 					--error-exitcode=1 \
 					--suppress=missingIncludeSystem \
+					--suppress=variableScope \
 					-I includes/ \
 					-I libft/includes \
 					#--suppress=variableScope \

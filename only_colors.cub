@@ -1,0 +1,5 @@
+RR ./textures/north.xpm
+SO ./textures/south.xpm
+E ./textures/east.xpm
+WE ./textures/west.xpm
+

@@ -1,13 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_file.c                                 :+:      :+:    :+:   */
+/*   is_valid_east_prefix_tests.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 11:02:32 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/24 11:20:08 by racoutte         ###   ########.fr       */
+/*   Created: 2025/03/26 12:06:50 by racoutte          #+#    #+#             */
+/*   Updated: 2025/03/26 12:07:29 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_parsing.h"
+#include "tests.h"
+
+void	is_valid_east_prefix_tests(void)
+{
+	TEST_ASSERT_EQUAL(true, is_valid_east_prefix("EA hello.xpm"));
+	TEST_ASSERT_EQUAL(false, is_valid_east_prefix("ES "));
+	TEST_ASSERT_EQUAL(false, is_valid_east_prefix("EAhello"));
+}

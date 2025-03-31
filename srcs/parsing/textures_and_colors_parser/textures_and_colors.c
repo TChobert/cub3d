@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   textures_and_colors.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 11:00:48 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/28 18:40:22 by racoutte         ###   ########.fr       */
+/*   Created: 2025/03/28 12:37:57 by racoutte          #+#    #+#             */
+/*   Updated: 2025/03/28 18:33:57 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
 
-t_parsing_status	parsing(char *map_file_path)
+void	get_textures_and_colors(t_game_data *game_data)
 {
-	t_game_data	game_data;
+	t_parse_state	parse_state;
 
-	ft_bzero(&game_data, sizeof(game_data));
-	if (map_file_opener(map_file_path, &game_data.file_fd) == INVALID_MAP_FILE)
-		return (PARSE_ERROR);
-	if (parse_map_file(&game_data) == INVALID_CONTENT)
-		return (PARSE_ERROR);
-	printf("End of parsing reached\n");
-	parser_exit_routine(&game_data);
-	return (PARSE_SUCCESS);
+	parse_state.state = EMPTY_LINE;
+	while (parse_state.state != COMPLETE
+		&& game_data->current_line < game_data->map_file_lines_number)
+	{
+		run_state(game_data, &parse_state);
+	}
 }
+
+//return (fonction de fin de processus); fonction de fin fait son taff
+//et retourne un t_content_status selon ce qu'elle a trouve

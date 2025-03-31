@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   get_west_texture_tests.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 11:00:48 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/28 18:40:22 by racoutte         ###   ########.fr       */
+/*   Created: 2025/03/26 12:10:17 by racoutte          #+#    #+#             */
+/*   Updated: 2025/03/26 12:10:52 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_parsing.h"
+#include "tests.h"
 
-t_parsing_status	parsing(char *map_file_path)
+void	is_valid_west_texture_tests(void)
 {
-	t_game_data	game_data;
-
-	ft_bzero(&game_data, sizeof(game_data));
-	if (map_file_opener(map_file_path, &game_data.file_fd) == INVALID_MAP_FILE)
-		return (PARSE_ERROR);
-	if (parse_map_file(&game_data) == INVALID_CONTENT)
-		return (PARSE_ERROR);
-	printf("End of parsing reached\n");
-	parser_exit_routine(&game_data);
-	return (PARSE_SUCCESS);
+	TEST_ASSERT_EQUAL(VALID_TEXTURE, is_valid_west_texture("WE hello.xpm"));
+	TEST_ASSERT_EQUAL(INVALID_TEXTURE, is_valid_west_texture("WP "));
+	TEST_ASSERT_EQUAL(INVALID_TEXTURE, is_valid_west_texture("WEhello"));
+	TEST_ASSERT_EQUAL(INVALID_TEXTURE, is_valid_west_texture("WE .xpm"));
+	TEST_ASSERT_EQUAL(INVALID_TEXTURE, is_valid_west_texture(""));
 }

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   is_empty_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 11:00:48 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/28 18:40:22 by racoutte         ###   ########.fr       */
+/*   Created: 2025/03/28 18:04:54 by racoutte          #+#    #+#             */
+/*   Updated: 2025/03/28 18:05:15 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
 
-t_parsing_status	parsing(char *map_file_path)
+bool	is_empty_line(const char *line)
 {
-	t_game_data	game_data;
+	size_t	i;
 
-	ft_bzero(&game_data, sizeof(game_data));
-	if (map_file_opener(map_file_path, &game_data.file_fd) == INVALID_MAP_FILE)
-		return (PARSE_ERROR);
-	if (parse_map_file(&game_data) == INVALID_CONTENT)
-		return (PARSE_ERROR);
-	printf("End of parsing reached\n");
-	parser_exit_routine(&game_data);
-	return (PARSE_SUCCESS);
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if (ft_isspace(line[i]) == false)
+			return (false);
+		i++;
+	}
+	return (true);
 }
