@@ -128,7 +128,7 @@ bool				is_valid_xpm_path(const char *file_path);
 t_texture_status	get_texture(t_game_data *game_data,
 						const char *texture, t_texture_element *texture_type);
 bool				is_valid_texture_prefix(const char *texture,
-						const char *prefix);
+						const char *texture_id);
 void				run_state(t_game_data *game_data,
 						t_parse_state *parse_state);
 t_texture_element	*get_texture_type(const char *texture);

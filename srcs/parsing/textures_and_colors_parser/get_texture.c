@@ -32,7 +32,7 @@ static void	save_texture(t_game_data *game_data, const char *texture,
 
 	texture_field = get_texture_field(&game_data->textures, texture_type);
 	*texture_field = ft_strdup(texture);
-	if (texture_field == NULL)
+	if (*texture_field == NULL)
 	{
 		ft_dprintf(STDERR_FILENO, "Error\n"
 			"Malloc failure during save_texture.\n");
