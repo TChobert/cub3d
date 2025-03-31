@@ -75,6 +75,7 @@ typedef enum e_texture_type
 
 typedef enum e_error_nature
 {
+	NO_ERROR,
 	INVALID_ID,
 	INVALID_XPM,
 	IS_NOT_A_PATH,
