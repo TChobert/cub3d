@@ -93,15 +93,9 @@ TESTS_SRCS += is_valid_map_file_unit_test.c
 
 # parsing textures #
 
-TESTS_SRCS += is_valid_east_texture_tests.c
-TESTS_SRCS += is_valid_south_texture_tests.c
-TESTS_SRCS += is_valid_north_texture_tests.c
-TESTS_SRCS += is_valid_west_texture_tests.c
-# TESTS_SRCS += is_valid_north_prefix_tests.c
-# TESTS_SRCS += is_valid_south_prefix_tests.c
-# TESTS_SRCS += is_valid_west_prefix_tests.c
-# TESTS_SRCS += is_valid_east_prefix_tests.c
+TESTS_SRCS += get_texture_tests.c
 TESTS_SRCS += is_xpm_file_tests.c
+TESTS_SRCS += get_texture_type_tests.c
 
 TESTS_SRCS += is_valid_texture_prefix_tests.c
 

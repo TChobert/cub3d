@@ -35,7 +35,7 @@ static void	save_texture(t_game_data *game_data, const char *texture,
 	if (*texture_field == NULL)
 	{
 		ft_dprintf(STDERR_FILENO, "Error\n"
-			"Malloc failure during save_texture.\n");
+			"Malloc failure during function save_texture.\n");
 		parser_exit_routine(game_data);
 		exit(FAILURE);
 	}

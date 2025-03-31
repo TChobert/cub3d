@@ -28,16 +28,10 @@ void	test_parsing_map_file(void)
 
 void	test_parsing_textures(void)
 {
+	RUN_TEST(is_valid_xpm_path_tests);
 	RUN_TEST(is_valid_texture_prefix_tests);
-//	RUN_TEST(is_valid_xpm_path_tests);
-//	RUN_TEST(is_valid_north_prefix_tests);
-	RUN_TEST(is_valid_north_texture_tests);
-//	RUN_TEST(is_valid_south_prefix_tests);
-	RUN_TEST(is_valid_south_texture_tests);
-//	RUN_TEST(is_valid_east_prefix_tests);
-	RUN_TEST(is_valid_east_texture_tests);
-//	RUN_TEST(is_valid_west_prefix_tests);
-	RUN_TEST(is_valid_west_texture_tests);
+	RUN_TEST(get_texture_type_tests);
+	RUN_TEST(get_texture_tests);
 }
 
 int	main(void)
