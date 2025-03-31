@@ -25,7 +25,9 @@ static void	check_textures_and_colors_are_valid(t_game_data *game_data)
 {
 	if (is_texture_missing(game_data->textures) == true)
 	{
-		ft_dprintf(STDERR_FILENO, "Error\n%s: invalid texture.\n", game_data->parse_error_type.invalid_field);
+		ft_dprintf(STDERR_FILENO, "Error\n%s: invalid texture.\n",
+			game_data->parse_error_type.invalid_field);
+		parser_exit_routine(game_data);
 		exit(FAILURE);
 	}
 }

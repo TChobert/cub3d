@@ -15,7 +15,8 @@
 static void	save_error_type(t_error_nature error_nature, t_game_data *game_data)
 {
 	game_data->parse_error_type.error_nature = error_nature;
-	game_data->parse_error_type.invalid_field = ft_strdup(game_data->map_file_content[game_data->current_line]);
+	game_data->parse_error_type.invalid_field
+		= ft_strdup(game_data->map_file_content[game_data->current_line]);
 }
 
 static void	state_full(t_game_data *game_data, t_parse_state *parse_state)
@@ -27,7 +28,6 @@ static void	state_full(t_game_data *game_data, t_parse_state *parse_state)
 	if (texture_type == NULL)
 	{
 		save_error_type(INVALID_ID, game_data);
-		printf("FIELD == %s\n", game_data->parse_error_type.invalid_field);
 		parse_state->state = COMPLETE;
 		return ;
 	}
@@ -35,7 +35,8 @@ static void	state_full(t_game_data *game_data, t_parse_state *parse_state)
 			game_data->map_file_content[game_data->current_line],
 			texture_type) == INVALID_TEXTURE)
 	{
-		printf("HERRE\n");
+		game_data->parse_error_type.invalid_field
+			= ft_strdup(game_data->map_file_content[game_data->current_line]);
 		parse_state->state = COMPLETE;
 		return ;
 	}

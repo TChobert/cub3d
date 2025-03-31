@@ -34,12 +34,22 @@ static char	*get_texture_path_begining(char *texture)
 	return (texture);
 }
 
-static void	save_texture(t_game_data *game_data, const char *texture,
+static bool	is_not_a_relative_path(const char *path)
+{
+	return (ft_count_words(path, ' ') > 1);
+}
+
+static t_texture_status	save_texture(t_game_data *game_data, const char *texture,
 				t_texture_type texture_type)
 {
 	const char	*texture_begining = get_texture_path_begining((char *)texture + 3);
 	t_texture	*texture_field;
 
+	if (is_not_a_relative_path(texture_begining) == true)
+	{
+		game_data->parse_error_type.error_nature = IS_NOT_A_PATH;
+		return (INVALID_TEXTURE);
+	}
 	texture_field = get_texture_field(&game_data->textures, texture_type);
 	*texture_field = ft_strdup(texture_begining);
 	if (*texture_field == NULL)
@@ -49,6 +59,7 @@ static void	save_texture(t_game_data *game_data, const char *texture,
 		parser_exit_routine(game_data);
 		exit(FAILURE);
 	}
+	return (VALID_TEXTURE);
 }
 
 t_texture_status	get_texture(t_game_data *game_data,
@@ -60,8 +71,7 @@ t_texture_status	get_texture(t_game_data *game_data,
 	}
 	if (is_valid_xpm_path(texture + 3) == false)
 		return (INVALID_TEXTURE);
-	save_texture(game_data, texture, texture_type->type);
-	return (VALID_TEXTURE);
+	return (save_texture(game_data, texture, texture_type->type));
 }
 
 // ligne 34 verif si deja plein

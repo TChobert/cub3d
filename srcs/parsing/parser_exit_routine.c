@@ -23,5 +23,6 @@ static void	free_textures(t_textures *textures)
 void	parser_exit_routine(t_game_data *game_data)
 {
 	ft_free_and_null(game_data->map_file_content);
+	free(game_data->parse_error_type.invalid_field);
 	free_textures(&game_data->textures);
 }
