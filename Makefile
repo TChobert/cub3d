@@ -1,6 +1,6 @@
 ##### VARIABLES #####
 
-NAME := cub3d
+NAME := cub3D
 
 ##### LIBFT #####
 
