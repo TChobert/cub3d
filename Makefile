@@ -47,6 +47,8 @@ SRCS += is_valid_texture_prefix.c
 SRCS += is_xpm_file.c
 SRCS += run_state.c
 SRCS += textures_and_colors.c
+SRCS += save_error_type.c
+SRCS += double_texture.c
 
 # utils
 SRCS += is_empty_line.c

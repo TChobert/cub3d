@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_exit_routine.c                              :+:      :+:    :+:   */
+/*   save_error_type.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/31 14:42:42 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/01 13:49:53 by racoutte         ###   ########.fr       */
+/*   Created: 2025/04/01 13:44:40 by racoutte          #+#    #+#             */
+/*   Updated: 2025/04/01 13:45:15 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
 
-static void	free_textures(t_textures *textures)
+void	save_error_type(t_error_type error_type, t_game_data *game_data)
 {
-	free(textures->east_texture);
-	free(textures->north_texture);
-	free(textures->south_texture);
-	free(textures->west_texture);
-}
-
-void	parser_exit_routine(t_game_data *game_data)
-{
-	ft_free_and_null(game_data->map_file_content);
-	free(game_data->parse_error_info.invalid_element);
-	free_textures(&game_data->textures);
+	game_data->parse_error_info.error_type = error_type;
+	game_data->parse_error_info.invalid_element
+		= ft_strdup(game_data->map_file_content[game_data->current_line]);
 }

@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:43:24 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/28 18:30:48 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/01 13:47:21 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*get_texture_path_begining(char *texture)
 	return (texture);
 }
 
-static bool	is_not_a_relative_path(const char *path)
+static bool	is_not_only_a_path(const char *path)
 {
 	return (ft_count_words(path, ' ') > 1);
 }
@@ -45,15 +45,15 @@ static t_texture_status	save_texture(t_game_data *game_data, const char *texture
 	const char	*texture_begining = get_texture_path_begining((char *)texture + 3);
 	t_texture	*texture_field;
 
-	if (is_not_a_relative_path(texture_begining) == true)
+	if (is_not_only_a_path(texture_begining) == true)
 	{
-		game_data->parse_error_type.error_nature = IS_NOT_A_PATH;
+		save_error_type(INVALID_ID, game_data);
 		return (INVALID_TEXTURE);
 	}
 	texture_field = get_texture_field(&game_data->textures, texture_type);
 	if (*texture_field != NULL)
 	{
-		game_data->parse_error_type.error_nature = DOUBLE_ELEMENT;
+		save_error_type(DOUBLE_ELEMENT, game_data);
 		return (INVALID_TEXTURE);
 	}
 	*texture_field = ft_strdup(texture_begining);
@@ -79,4 +79,3 @@ t_texture_status	get_texture(t_game_data *game_data,
 	return (save_texture(game_data, texture, texture_type->type));
 }
 
-// ligne 34 verif si deja plein

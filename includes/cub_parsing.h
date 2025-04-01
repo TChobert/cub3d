@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/28 18:39:15 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/01 14:36:08 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef enum e_line_state
 {
 	EMPTY_LINE,
 	FULL_LINE,
-	COMPLETE
+	END_OF_PROCESS
 }			t_line_state;
 
 typedef enum e_texture_type
@@ -73,22 +73,22 @@ typedef enum e_texture_type
 	WEST,
 }			t_texture_type;
 
-typedef enum e_error_nature
+typedef enum e_error_type
 {
 	NO_ERROR,
 	INVALID_ID,
 	INVALID_XPM,
 	IS_NOT_A_PATH,
 	DOUBLE_ELEMENT
-}			t_error_nature;
+}			t_error_type;
 
 // STRUCTURES //////////////////////////////////////////////////////////////////
 
-typedef struct s_parse_error_type
+typedef struct s_parse_error_info
 {
-	t_error_nature	error_nature;
-	char			*invalid_field;
-}				t_parse_error_type;
+	t_error_type	error_type;
+	char			*invalid_element;
+}				t_parse_error_info;
 
 typedef struct s_parse_state
 {
@@ -116,7 +116,7 @@ typedef struct s_game_data
 	size_t				map_file_lines_number;
 	size_t				current_line;
 	t_textures			textures;
-	t_parse_error_type	parse_error_type;
+	t_parse_error_info	parse_error_info;
 }				t_game_data;
 
 typedef void	(*t_state_func)(t_game_data *game_data, t_parse_state *state);
@@ -149,6 +149,9 @@ void				run_state(t_game_data *game_data,
 						t_parse_state *parse_state);
 t_texture_element	*get_texture_type(const char *texture);
 bool				is_empty_line(const char *line);
+void				save_error_type(t_error_type error_type,
+						t_game_data *game_data);
+bool				is_double_texture(t_game_data *game_data);
 
 void				parser_exit_routine(t_game_data *game_data);
 

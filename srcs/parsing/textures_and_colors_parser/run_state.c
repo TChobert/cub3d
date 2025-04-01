@@ -6,18 +6,11 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:59:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/28 18:41:30 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/01 13:47:36 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
-
-static void	save_error_type(t_error_nature error_nature, t_game_data *game_data)
-{
-	game_data->parse_error_type.error_nature = error_nature;
-	game_data->parse_error_type.invalid_field
-		= ft_strdup(game_data->map_file_content[game_data->current_line]);
-}
 
 static void	state_full(t_game_data *game_data, t_parse_state *parse_state)
 {
@@ -28,16 +21,14 @@ static void	state_full(t_game_data *game_data, t_parse_state *parse_state)
 	if (texture_type == NULL)
 	{
 		save_error_type(INVALID_ID, game_data);
-		parse_state->state = COMPLETE;
+		parse_state->state = END_OF_PROCESS;
 		return ;
 	}
 	if (get_texture(game_data,
 			game_data->map_file_content[game_data->current_line],
 			texture_type) == INVALID_TEXTURE)
 	{
-		game_data->parse_error_type.invalid_field
-			= ft_strdup(game_data->map_file_content[game_data->current_line]);
-		parse_state->state = COMPLETE;
+		parse_state->state = END_OF_PROCESS;
 		return ;
 	}
 	parse_state->state = EMPTY_LINE;
