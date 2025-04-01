@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:57 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/01 14:35:42 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/01 14:41:25 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	check_textures_and_colors_are_valid(t_game_data *game_data)
 	}
 	if (is_double_texture(game_data) == true)
 	{
-		ft_dprintf(STDERR_FILENO, "Double\n");
+		ft_dprintf(STDERR_FILENO, "Error\nDouble texture detected.\n");
 		parser_exit_routine(game_data);
 		exit(FAILURE);
 	}
