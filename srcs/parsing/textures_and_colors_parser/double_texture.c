@@ -20,16 +20,21 @@ static bool	is_same_texture(t_texture current_texture,
 	return (false);
 }
 
+static void	get_all_textures(t_texture* all_textures, t_game_data *game_data)
+{
+	all_textures[0] = game_data->textures.north_texture;
+	all_textures[1] = game_data->textures.south_texture;
+	all_textures[2] = game_data->textures.east_texture;
+	all_textures[3] = game_data->textures.west_texture;
+}
+
 bool	is_double_texture(t_game_data *game_data)
 {
 	t_texture	all_textures[4];
 	size_t		i;
 	size_t		j;
 
-	all_textures[0] = game_data->textures.north_texture;
-	all_textures[1] = game_data->textures.south_texture;
-	all_textures[2] = game_data->textures.east_texture;
-	all_textures[3] = game_data->textures.west_texture;
+	get_all_textures(all_textures, game_data);
 	i = 0;
 	while (i < 4)
 	{

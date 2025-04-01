@@ -52,6 +52,9 @@ SRCS += double_texture.c
 SRCS += check_textures.c
 SRCS += check_colors.c
 
+SRCS += get_color.c
+SRCS += get_color_type.c
+
 # utils
 SRCS += is_empty_line.c
 

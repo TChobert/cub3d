@@ -12,6 +12,12 @@
 
 #include "cub_parsing.h"
 
+static void	free_colors(t_colors *colors)
+{
+	free(colors->ceiling_color);
+	free(colors->floor_color);
+}
+
 static void	free_textures(t_textures *textures)
 {
 	free(textures->east_texture);
@@ -25,4 +31,5 @@ void	parser_exit_routine(t_game_data *game_data)
 	ft_free_and_null(game_data->map_file_content);
 	free(game_data->parse_error_info.invalid_element);
 	free_textures(&game_data->textures);
+	free_colors(&game_data->colors);
 }

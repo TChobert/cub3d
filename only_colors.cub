@@ -3,6 +3,9 @@ SO              ./textures/south.xpm
 EA       ./textures/north.xpm
 WE      ./textures/west.xpm
 
+C 225,30,0
+F 225,30,0
+
 100000000001
 
 10001

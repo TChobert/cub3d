@@ -30,6 +30,7 @@
 # define EAST_TEXTURE_PREFIX "EA "
 
 typedef char *	t_texture;
+typedef char *	t_color;
 typedef char **	t_file_data;
 
 // ENUM ////////////////////////////////////////////////////////////////////////
@@ -58,19 +59,32 @@ typedef enum e_texture_status
 	INVALID_TEXTURE
 }			t_texture_status;
 
+typedef enum e_color_status
+{
+	VALID_COLOR,
+	INVALID_COLOR
+}			t_color_status;
+
 typedef enum e_line_state
 {
 	EMPTY_LINE,
-	FULL_LINE,
+	TEXTURE,
+	COLOR,
 	END_OF_PROCESS
 }			t_line_state;
+
+typedef enum e_color_type
+{
+	FLOOR,
+	CEILING
+}			t_color_type;
 
 typedef enum e_texture_type
 {
 	NORTH,
 	SOUTH,
 	EAST,
-	WEST,
+	WEST
 }			t_texture_type;
 
 typedef enum e_error_type
@@ -95,6 +109,12 @@ typedef struct s_parse_state
 	t_line_state	state;
 }				t_parse_state;
 
+typedef struct s_color_element
+{
+	char			*id;
+	t_color_type	type;
+}				t_color_element;
+
 typedef struct s_texture_element
 {
 	char			*id;
@@ -109,6 +129,12 @@ typedef struct s_textures
 	t_texture	west_texture;
 }				t_textures;
 
+typedef struct s_colors
+{
+	t_color	floor_color;
+	t_color	ceiling_color;
+}				t_colors;
+
 typedef struct s_game_data
 {
 	int					file_fd;
@@ -116,6 +142,7 @@ typedef struct s_game_data
 	size_t				map_file_lines_number;
 	size_t				current_line;
 	t_textures			textures;
+	t_colors			colors;
 	t_parse_error_info	parse_error_info;
 }				t_game_data;
 
@@ -153,6 +180,10 @@ void				save_error_type(t_error_type error_type,
 						t_game_data *game_data);
 bool				is_double_texture(t_game_data *game_data);
 void				check_textures(t_game_data *game_data);
+
+t_color_element		*get_color_type(const char *color);
+t_color_status		get_color(t_game_data *game_data, const char *color,
+						t_color_element *color_type);
 
 void				parser_exit_routine(t_game_data *game_data);
 
