@@ -49,6 +49,8 @@ SRCS += run_state.c
 SRCS += textures_and_colors.c
 SRCS += save_error_type.c
 SRCS += double_texture.c
+SRCS += check_textures.c
+SRCS += check_colors.c
 
 # utils
 SRCS += is_empty_line.c

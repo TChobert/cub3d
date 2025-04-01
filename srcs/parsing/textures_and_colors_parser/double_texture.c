@@ -6,13 +6,14 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 14:35:29 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/01 14:36:38 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:43:51 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
 
-static bool	is_same_texture(t_texture current_texture, t_texture texture_to_compare)
+static bool	is_same_texture(t_texture current_texture,
+				t_texture texture_to_compare)
 {
 	if (ft_strcmp(current_texture, texture_to_compare) == 0)
 		return (true);

@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/01 14:36:08 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:42:19 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ bool				is_empty_line(const char *line);
 void				save_error_type(t_error_type error_type,
 						t_game_data *game_data);
 bool				is_double_texture(t_game_data *game_data);
+void				check_textures(t_game_data *game_data);
 
 void				parser_exit_routine(t_game_data *game_data);
 

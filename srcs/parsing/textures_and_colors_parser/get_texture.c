@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:43:24 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/01 13:47:21 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:48:22 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ static bool	is_not_only_a_path(const char *path)
 	return (ft_count_words(path, ' ') > 1);
 }
 
-static t_texture_status	save_texture(t_game_data *game_data, const char *texture,
-				t_texture_type texture_type)
+static t_texture_status	save_texture(t_game_data *game_data,
+							const char *texture, t_texture_type texture_type)
 {
-	const char	*texture_begining = get_texture_path_begining((char *)texture + 3);
+	const char	*texture_begining
+		= get_texture_path_begining((char *)texture + 3);
 	t_texture	*texture_field;
 
 	if (is_not_only_a_path(texture_begining) == true)
@@ -78,4 +79,3 @@ t_texture_status	get_texture(t_game_data *game_data,
 		return (INVALID_TEXTURE);
 	return (save_texture(game_data, texture, texture_type->type));
 }
-
