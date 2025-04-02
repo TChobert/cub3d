@@ -1,6 +1,6 @@
 NO textures/north.xpm
 SO              ./textures/south.xpm
-EA       ./textures/north.xpm
+EA A      ./textures/north.xpm
 WE      ./textures/west.xpm
 
 C 225,30,0
