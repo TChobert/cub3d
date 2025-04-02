@@ -32,4 +32,6 @@ void	is_valid_xpm_path_tests(void);
 
 void	is_valid_texture_prefix_tests(void);
 
+void	get_color_tests(void);
+
 #endif

@@ -26,12 +26,13 @@ void	test_parsing_map_file(void)
 	RUN_TEST(is_valid_map_file_unit_test);
 }
 
-void	test_parsing_textures(void)
+void	test_parsing_textures_and_colors(void)
 {
 	RUN_TEST(is_valid_xpm_path_tests);
 	RUN_TEST(is_valid_texture_prefix_tests);
 	RUN_TEST(get_texture_type_tests);
 	RUN_TEST(get_texture_tests);
+	RUN_TEST(get_color_tests);
 }
 
 int	main(void)
@@ -41,8 +42,8 @@ int	main(void)
 	printf("PARSING - CHECK PATH MAP FILE\n");
 	test_parsing_map_file();
 	printf("\n");
-	printf("PARSING - CHECK TEXTURES\n");
-	test_parsing_textures();
+	printf("PARSING - CHECK TEXTURES AND COLORS\n");
+	test_parsing_textures_and_colors();
 	tearDown();
 	return (UNITY_END());
 }

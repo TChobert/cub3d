@@ -92,7 +92,7 @@ TESTS_NAME := unit_tests
 
 TESTS_SRCS_DIR += ./tests
 TESTS_SRCS_DIR += ./tests/parsing_tests/map_file_opener_tests
-TESTS_SRCS_DIR += ./tests/parsing_tests/textures_parser_tests
+TESTS_SRCS_DIR += ./tests/parsing_tests/textures_and_colors_parser_tests
 
 TESTS_SRCS += main_tests.c
 
@@ -106,8 +106,11 @@ TESTS_SRCS += is_valid_map_file_unit_test.c
 TESTS_SRCS += get_texture_tests.c
 TESTS_SRCS += is_xpm_file_tests.c
 TESTS_SRCS += get_texture_type_tests.c
-
 TESTS_SRCS += is_valid_texture_prefix_tests.c
+
+# parsing colors #
+
+TESTS_SRCS += get_color_tests.c
 
 ## Unity ##
 

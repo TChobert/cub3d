@@ -16,7 +16,9 @@ static bool	is_not_hide_xpm_file(const char *file_path)
 {
 	const size_t	len = ft_strlen(file_path);
 
-	if (strncmp(file_path + len - 5, "/.xpm", len) == 0)
+	if (len < 5)
+		return (ft_strcmp(file_path, ".xpm") != 0);
+	else if (ft_strncmp(file_path + len - 5, "/.xpm", len) == 0)
 		return (false);
 	return (true);
 }
