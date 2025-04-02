@@ -56,6 +56,7 @@ SRCS += get_color.c
 SRCS += get_color_type.c
 SRCS += is_valid_color_string.c
 SRCS += replace_color_strings_without_spaces.c
+SRCS += get_color_values.c
 
 # utils
 SRCS += is_empty_line.c

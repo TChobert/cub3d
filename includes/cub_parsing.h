@@ -79,6 +79,13 @@ typedef enum e_color_type
 	CEILING
 }			t_color_type;
 
+typedef enum e_RGB
+{
+	RED,
+	GREEN,
+	BLUE
+}			t_RGB;
+
 typedef enum e_texture_type
 {
 	NORTH,
@@ -129,17 +136,17 @@ typedef struct s_textures
 	t_texture	west_texture;
 }				t_textures;
 
-typedef struct s_color
+typedef struct s_color_values
 {
-	int r
-	INT G
-};
-
+	int R;
+	int G;
+	int B;
+}				t_color_values;
 
 typedef struct s_colors
 {
-	t_color	ceiling;
-	t_color	floor;
+	t_color_values	ceiling;
+	t_color_values	floor;
 }				t_colors;
 
 typedef struct s_game_data
@@ -193,7 +200,9 @@ t_color_status		get_color(t_game_data *game_data, const char *color,
 						t_color_element *color_type);
 void				check_colors(t_game_data *game_data);
 void				is_valid_color_string(t_game_data *game_data);
-void				replace_color_strings_without_spaces(t_game_data *game_data);
+t_color_status		get_color_values(t_game_data *game_data,
+						const char *color_values, t_color_values *color_field);
+char				*remove_spaces(char *color_string);
 
 void				parser_exit_routine(t_game_data *game_data);
 

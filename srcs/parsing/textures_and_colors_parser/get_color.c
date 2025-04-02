@@ -12,13 +12,13 @@
 
 #include "cub_parsing.h"
 
-static t_color	*get_color_field(t_colors *colors,
+static t_color_values	*get_color_field(t_colors *colors,
 	t_color_type color_type)
 {
 	if (color_type == FLOOR)
-		return (&colors->floor_color);
+		return (&colors->floor);
 	else
-		return (&colors->ceiling_color);
+		return (&colors->ceiling);
 }
 
 static char	*get_color_values_begining(char *color)
@@ -31,27 +31,19 @@ static char	*get_color_values_begining(char *color)
 }
 
 static t_color_status	save_color(t_game_data *game_data, const char *color,
-					t_color_type color_type)
+							t_color_type color_type)
 {
-	const char	*color_values_begining
+	const char		*color_values_begining
 		= get_color_values_begining((char *)color + 2);
-	t_color		*color_field;
+	t_color_values	*color_field;
 
 	color_field = get_color_field(&game_data->colors, color_type);
-	if (*color_field != NULL)
+	if (color_field->R != 0)
 	{
 		save_error_type(DOUBLE_ELEMENT, game_data);
 		return (INVALID_COLOR);
 	}
-	*color_field = ft_strdup(color_values_begining);
-	if (*color_field == NULL)
-	{
-		ft_dprintf(STDERR_FILENO, "Error\n"
-			"Malloc failure during function save_color.\n");
-		parser_exit_routine(game_data);
-		exit(FAILURE);
-	}
-	return (VALID_COLOR);
+	return (get_color_values(game_data, color_values_begining, color_field));
 }
 
 t_color_status	get_color(t_game_data *game_data, const char *color,

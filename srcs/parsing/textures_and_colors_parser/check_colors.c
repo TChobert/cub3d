@@ -14,7 +14,7 @@
 
 static bool	is_color_missing(t_colors colors)
 {
-	if (colors.floor_color == NULL || colors.ceiling_color == NULL)
+	if (colors.floor.R == 0 || colors.ceiling.R == 0)
 		return (true);
 	return (false);
 }
@@ -33,7 +33,6 @@ void	check_colors(t_game_data *game_data)
 		parser_exit_routine(game_data);
 		exit(FAILURE);
 	}
-	is_valid_rgb_int(game_data);
 }
 
 //le color_missing: print la premiere ligne de la map en cas d'erreur
