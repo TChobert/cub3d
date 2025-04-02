@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/02 18:35:02 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/02 19:14:23 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,12 @@ typedef enum e_color_type
 	CEILING
 }			t_color_type;
 
-typedef enum e_RGB
+typedef enum e_rgb
 {
 	RED,
 	GREEN,
 	BLUE
-}			t_RGB;
+}			t_rgb;
 
 typedef enum e_texture_type
 {
@@ -140,9 +140,9 @@ typedef struct s_textures
 typedef struct s_color_values
 {
 	bool	is_full;
-	int		R;
-	int		G;
-	int		B;
+	int		r;
+	int		g;
+	int		b;
 }				t_color_values;
 
 typedef struct s_colors

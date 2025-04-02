@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 11:00:48 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/28 18:40:22 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/02 19:19:26 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ t_parsing_status	parsing(char *map_file_path)
 		return (PARSE_ERROR);
 	if (parse_map_file(&game_data) == INVALID_CONTENT)
 		return (PARSE_ERROR);
-	printf("C R ==== %d\n", game_data.colors.ceiling.R);
-	printf("F R  ==== %d\n", game_data.colors.floor.R);
-	printf("C G ==== %d\n", game_data.colors.ceiling.G);
-	printf("F G  ==== %d\n", game_data.colors.floor.G);
-	printf("C B ==== %d\n", game_data.colors.ceiling.B);
-	printf("F B  ==== %d\n", game_data.colors.floor.B);
+	printf("C R ==== %d\n", game_data.colors.ceiling.r);
+	printf("F R  ==== %d\n", game_data.colors.floor.r);
+	printf("C G ==== %d\n", game_data.colors.ceiling.g);
+	printf("F G  ==== %d\n", game_data.colors.floor.g);
+	printf("C B ==== %d\n", game_data.colors.ceiling.b);
+	printf("F B  ==== %d\n", game_data.colors.floor.b);
 	printf("End of parsing reached\n");
 	parser_exit_routine(&game_data);
 	return (PARSE_SUCCESS);

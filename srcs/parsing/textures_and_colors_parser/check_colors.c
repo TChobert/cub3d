@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:43:03 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/02 18:53:32 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/02 19:10:33 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,3 @@ void	check_colors(t_game_data *game_data)
 		exit(FAILURE);
 	}
 }
-
-

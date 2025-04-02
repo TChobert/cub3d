@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 21:18:34 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/02 18:50:14 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/02 19:11:03 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static t_color_status	save_color(t_game_data *game_data, const char *color,
 		= get_color_values_begining((char *)color + 2);
 	t_color_values	*color_field;
 
-	if(is_valid_color_string(color_values_begining) == INVALID_COLOR)
+	if (is_valid_color_string(color_values_begining) == INVALID_COLOR)
 	{
 		save_error_type(INVALID_COLOR_FORMAT, game_data);
 		return (INVALID_COLOR);
@@ -52,7 +52,7 @@ static t_color_status	save_color(t_game_data *game_data, const char *color,
 }
 
 t_color_status	get_color(t_game_data *game_data, const char *color,
-	t_color_element *color_type)
+					t_color_element *color_type)
 {
 	return (save_color(game_data, color, color_type->type));
 }
