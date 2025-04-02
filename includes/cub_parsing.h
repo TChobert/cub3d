@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/02 14:55:36 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/02 18:35:02 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ typedef enum e_error_type
 	INVALID_ID,
 	INVALID_XPM,
 	IS_NOT_A_PATH,
-	DOUBLE_ELEMENT
+	DOUBLE_ELEMENT,
+	INVALID_COLOR_FORMAT
 }			t_error_type;
 
 // STRUCTURES //////////////////////////////////////////////////////////////////
@@ -138,9 +139,10 @@ typedef struct s_textures
 
 typedef struct s_color_values
 {
-	int R;
-	int G;
-	int B;
+	bool	is_full;
+	int		R;
+	int		G;
+	int		B;
 }				t_color_values;
 
 typedef struct s_colors
@@ -199,7 +201,7 @@ t_color_element		*get_color_type(const char *color);
 t_color_status		get_color(t_game_data *game_data, const char *color,
 						t_color_element *color_type);
 void				check_colors(t_game_data *game_data);
-void				is_valid_color_string(t_game_data *game_data);
+t_color_status		is_valid_color_string(const char *color);
 t_color_status		get_color_values(t_game_data *game_data,
 						const char *color_values, t_color_values *color_field);
 char				*remove_spaces(char *color_string);

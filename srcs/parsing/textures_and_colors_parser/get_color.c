@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 21:18:34 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/01 21:18:47 by tchobert         ###   ########.fr       */
+/*   Updated: 2025/04/02 18:50:14 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,13 @@ static t_color_status	save_color(t_game_data *game_data, const char *color,
 		= get_color_values_begining((char *)color + 2);
 	t_color_values	*color_field;
 
+	if(is_valid_color_string(color_values_begining) == INVALID_COLOR)
+	{
+		save_error_type(INVALID_COLOR_FORMAT, game_data);
+		return (INVALID_COLOR);
+	}
 	color_field = get_color_field(&game_data->colors, color_type);
-	if (color_field->R != 0)
+	if (color_field->is_full == true)
 	{
 		save_error_type(DOUBLE_ELEMENT, game_data);
 		return (INVALID_COLOR);
@@ -49,7 +54,5 @@ static t_color_status	save_color(t_game_data *game_data, const char *color,
 t_color_status	get_color(t_game_data *game_data, const char *color,
 	t_color_element *color_type)
 {
-	// if (parse_La_str_de_merde == INVLAID_STR)
-	// 	return (MERDE)
 	return (save_color(game_data, color, color_type->type));
 }

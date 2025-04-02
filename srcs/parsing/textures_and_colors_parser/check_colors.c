@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:43:03 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/02 14:40:15 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/02 18:53:32 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 static bool	is_color_missing(t_colors colors)
 {
-	if (colors.floor.R == 0 || colors.ceiling.R == 0)
+	if (colors.floor.is_full == false || colors.ceiling.is_full == false)
+	{
 		return (true);
+	}
 	return (false);
 }
 
@@ -35,4 +37,4 @@ void	check_colors(t_game_data *game_data)
 	}
 }
 
-//le color_missing: print la premiere ligne de la map en cas d'erreur
+

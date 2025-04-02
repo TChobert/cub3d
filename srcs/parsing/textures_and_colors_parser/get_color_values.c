@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_color_values.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:29:43 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/02 15:29:58 by tchobert         ###   ########.fr       */
+/*   Updated: 2025/04/02 18:35:45 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static t_color_status	extract_color_RGB_values(t_game_data *game_data,
 	{
 		return (INVALID_COLOR);
 	}
+	color_field->is_full = true;
 	return (VALID_COLOR);
 }
 

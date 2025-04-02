@@ -6,28 +6,43 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:24:40 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/02 14:53:28 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/02 18:52:37 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
 
-static size_t	count_commas(t_color color_string)
+static bool	is_valid_color_char(const char *color)
+{
+	size_t	i;
+
+	i = 0;
+	while (color[i])
+	{
+		if (!ft_isdigit(color[i]) && color[i] != ',' && !ft_isspace(color[i]))
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
+static size_t	count_commas(const char *color)
 {
 	size_t	i;
 	size_t	nb_commas;
 
 	i = 0;
-	while (color_string[i])
+	nb_commas = 0;
+	while (color[i])
 	{
-		if (color_string[i] == ',')
+		if (color[i] == ',')
 			nb_commas++;
 		i++;
 	}
 	return (nb_commas);
 }
 
-static	bool	check_number_commas(t_color color)
+static	bool	check_number_commas(const char *color)
 {
 	size_t	nb_commas;
 
@@ -39,12 +54,15 @@ static	bool	check_number_commas(t_color color)
 	return (true);
 }
 
-void	is_valid_color_string(t_game_data *game_data)
+t_color_status	is_valid_color_string(const char *color)
 {
-	replace_color_strings_without_spaces(game_data);
-	if (check_number_commas(game_data->colors.floor_color) == false
-		|| check_number_commas(game_data->colors.ceiling_color) == false)
+	if (is_valid_color_char(color) == false)
 	{
-		
+		return (INVALID_COLOR);
 	}
+	if (check_number_commas(color) == false)
+	{
+		return (INVALID_COLOR);
+	}
+	return (VALID_COLOR);
 }
