@@ -19,7 +19,6 @@ static t_color	copy_color_without_spaces(t_color src, t_color dest)
 
 	i = 0;
 	j = 0;
-	ft_bzero(dest, sizeof(dest));
 	while (src[j])
 	{
 		if (!ft_isspace(src[j]))
@@ -29,6 +28,7 @@ static t_color	copy_color_without_spaces(t_color src, t_color dest)
 		}
 		++j;
 	}
+	dest[i] = '\0';
 	return (dest);
 }
 

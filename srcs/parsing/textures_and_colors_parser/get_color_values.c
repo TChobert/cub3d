@@ -63,7 +63,6 @@ t_color_status	get_color_values(t_game_data *game_data,
 					const char *color_values, t_color_values *color_field)
 {
 	char	*spaceless_color_values;
-
 	spaceless_color_values = remove_spaces((char *)color_values);
 	if (spaceless_color_values == NULL)
 	{
