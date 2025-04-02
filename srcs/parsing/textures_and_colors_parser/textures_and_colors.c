@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:37:57 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/01 16:49:14 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/02 12:16:20 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	check_textures_and_colors_are_valid(t_game_data *game_data)
 {
 	check_textures(game_data);
+	check_colors(game_data);
 }
 
 void	get_textures_and_colors(t_game_data *game_data)

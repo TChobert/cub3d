@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/01 16:42:19 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/02 14:55:36 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,10 +129,17 @@ typedef struct s_textures
 	t_texture	west_texture;
 }				t_textures;
 
+typedef struct s_color
+{
+	int r
+	INT G
+};
+
+
 typedef struct s_colors
 {
-	t_color	floor_color;
-	t_color	ceiling_color;
+	t_color	ceiling;
+	t_color	floor;
 }				t_colors;
 
 typedef struct s_game_data
@@ -184,6 +191,9 @@ void				check_textures(t_game_data *game_data);
 t_color_element		*get_color_type(const char *color);
 t_color_status		get_color(t_game_data *game_data, const char *color,
 						t_color_element *color_type);
+void				check_colors(t_game_data *game_data);
+void				is_valid_color_string(t_game_data *game_data);
+void				replace_color_strings_without_spaces(t_game_data *game_data);
 
 void				parser_exit_routine(t_game_data *game_data);
 
