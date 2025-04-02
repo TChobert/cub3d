@@ -57,6 +57,7 @@ static t_color_status	extract_color_rgb_values(t_game_data *game_data,
 		|| save_rgb_value(color_field, color_rgb_values, BLUE) == INVALID_COLOR)
 	{
 		ft_free_and_null(color_rgb_values);
+		save_error_type(INVALID_RGB_VALUE, game_data);
 		return (INVALID_COLOR);
 	}
 	color_field->is_full = true;

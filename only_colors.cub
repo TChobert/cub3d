@@ -1,9 +1,9 @@
 NO textures/north.xpm
-SO              ./textures/south.xpm
+SO       ./textures/south.xpm
 EA      ./textures/north.xpm
 WE      ./textures/west.xpm
 
-F 56, 59, 65
+F 56, 59, 12
 C       12,   12,   56
 
 

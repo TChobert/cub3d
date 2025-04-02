@@ -101,6 +101,7 @@ typedef enum e_error_type
 	INVALID_XPM,
 	IS_NOT_A_PATH,
 	DOUBLE_ELEMENT,
+	INVALID_RGB_VALUE,
 	INVALID_COLOR_FORMAT
 }			t_error_type;
 
