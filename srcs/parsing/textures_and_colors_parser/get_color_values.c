@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:29:43 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/02 18:35:45 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/02 19:00:59 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_color_status	save_RGB_value(t_color_values *color_field, char **RGB_val
 	if (ft_strlen(RGB_values[RGB_id]) > 3)
 		return (INVALID_COLOR);
 	RGB_value = ft_atoi(RGB_values[RGB_id]);
-	if (RGB_value < 0 || RGB_value >  255)
+	if (RGB_value < 0 || RGB_value > 255)
 		return (INVALID_COLOR);
 	fill_RGB_field(color_field, RGB_value, RGB_id);
 	return (VALID_COLOR);
@@ -43,6 +43,7 @@ static t_color_status	extract_color_RGB_values(t_game_data *game_data,
 	char	**color_RGB_values;
 
 	color_RGB_values = ft_split(spaceless_color_values, ',');
+	free(spaceless_color_values);
 	if(color_RGB_values == NULL)
 	{
 		ft_dprintf(STDERR_FILENO, "Error\nMalloc failure during function"
@@ -54,9 +55,11 @@ static t_color_status	extract_color_RGB_values(t_game_data *game_data,
 		|| save_RGB_value(color_field, color_RGB_values, GREEN) == INVALID_COLOR
 		|| save_RGB_value(color_field, color_RGB_values, BLUE) == INVALID_COLOR)
 	{
+		ft_free_and_null(color_RGB_values);
 		return (INVALID_COLOR);
 	}
 	color_field->is_full = true;
+	ft_free_and_null(color_RGB_values);
 	return (VALID_COLOR);
 }
 
