@@ -31,7 +31,7 @@ static t_color_status	save_RGB_value(t_color_values *color_field, char **RGB_val
 	if (ft_strlen(RGB_values[RGB_id]) > 3)
 		return (INVALID_COLOR);
 	RGB_value = ft_atoi(RGB_values[RGB_id]);
-	if (RGB_value < 0)
+	if (RGB_value < 0 || RGB_value >  255)
 		return (INVALID_COLOR);
 	fill_RGB_field(color_field, RGB_value, RGB_id);
 	return (VALID_COLOR);

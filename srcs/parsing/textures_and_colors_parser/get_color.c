@@ -49,5 +49,7 @@ static t_color_status	save_color(t_game_data *game_data, const char *color,
 t_color_status	get_color(t_game_data *game_data, const char *color,
 	t_color_element *color_type)
 {
+	// if (parse_La_str_de_merde == INVLAID_STR)
+	// 	return (MERDE)
 	return (save_color(game_data, color, color_type->type));
 }
