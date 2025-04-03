@@ -64,6 +64,7 @@ SRCS += get_color_values.c
 #map
 
 SRCS += get_map.c
+SRCS += check_if_no_map.c
 
 # utils
 SRCS += is_empty_line.c
