@@ -33,6 +33,7 @@ void	test_parsing_textures_and_colors(void)
 	RUN_TEST(get_texture_type_tests);
 	RUN_TEST(get_texture_tests);
 	RUN_TEST(get_color_tests);
+	RUN_TEST(get_color_values_tests);
 }
 
 int	main(void)

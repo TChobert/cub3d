@@ -21,12 +21,6 @@ t_parsing_status	parsing(char *map_file_path)
 		return (PARSE_ERROR);
 	if (parse_map_file(&game_data) == INVALID_CONTENT)
 		return (PARSE_ERROR);
-	printf("C R ==== %d\n", game_data.colors.ceiling.r);
-	printf("F R  ==== %d\n", game_data.colors.floor.r);
-	printf("C G ==== %d\n", game_data.colors.ceiling.g);
-	printf("F G  ==== %d\n", game_data.colors.floor.g);
-	printf("C B ==== %d\n", game_data.colors.ceiling.b);
-	printf("F B  ==== %d\n", game_data.colors.floor.b);
 	printf("End of parsing reached\n");
 	parser_exit_routine(&game_data);
 	return (PARSE_SUCCESS);

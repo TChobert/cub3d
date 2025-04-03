@@ -111,6 +111,7 @@ TESTS_SRCS += is_valid_texture_prefix_tests.c
 # parsing colors #
 
 TESTS_SRCS += get_color_tests.c
+TESTS_SRCS += get_color_values_tests.c
 
 ## Unity ##
 
