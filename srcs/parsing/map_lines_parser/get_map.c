@@ -12,13 +12,26 @@
 
 #include "cub_parsing.h"
 
-static void	fill_map_array(t_game_data *game_data, char **map_array)
+static void	display_map_absence(void)
+{
+	ft_dprintf(STDERR_FILENO, "Error\nNo map found.\n");
+}
+
+static void	check_if_no_map(t_game_data *game_data, size_t map_size)
+{
+	if (map_size == 0)
+	{
+		display_map_absence();
+		parser_exit_routine(game_data);
+		exit(FAILURE);
+	}
+}
+
+static void	fill_map_array(t_game_data *game_data, char **map_array, size_t	map_size)
 {
 	size_t	i;
-	size_t	map_size;
 
 	i = 0;
-	map_size = game_data->map_file_lines_number - game_data->current_line;
 	while (i < map_size)
 	{
 		map_array[i] = ft_strdup(game_data->map_file_content[game_data->current_line + i]);
@@ -35,8 +48,11 @@ static void	fill_map_array(t_game_data *game_data, char **map_array)
 t_map_status	get_map(t_game_data *game_data)
 {
 	char	**map_array;
+	size_t	map_size;
 
-	map_array = (char **)malloc(sizeof(char *) * (game_data->map_file_lines_number - game_data->current_line));
+	map_size = game_data->map_file_lines_number - game_data->current_line;
+	check_if_no_map(game_data, map_size);
+	map_array = (char **)malloc(sizeof(char *) * (map_size + 1));
 	if (map_array == NULL)
 	{
 		ft_dprintf(STDERR_FILENO, "Error\nMalloc failure during function get_map.\n");
@@ -44,9 +60,7 @@ t_map_status	get_map(t_game_data *game_data)
 		exit(FAILURE);
 	}
 	map_array[game_data->map_file_lines_number - game_data->current_line] = NULL;
-	fill_map_array(game_data, map_array);
+	fill_map_array(game_data, map_array, map_size);
 	game_data->game_map.map_array = map_array;
-	ft_printf("MAP ==\n");
-	ft_display_strs_array(map_array, STDOUT_FILENO);
 	return (VALID_MAP);
 }
