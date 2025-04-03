@@ -46,5 +46,7 @@ t_map_status	get_map(t_game_data *game_data)
 	map_array[game_data->map_file_lines_number - game_data->current_line] = NULL;
 	fill_map_array(game_data, map_array);
 	game_data->game_map.map_array = map_array;
+	ft_printf("MAP ==\n");
+	ft_display_strs_array(map_array, STDOUT_FILENO);
 	return (VALID_MAP);
 }

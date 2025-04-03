@@ -189,7 +189,6 @@ void				print_invalid_path(void);
 t_parsing_status	parsing(char *map_file_path);
 
 void				get_textures_and_colors(t_game_data *game_data);
-
 t_content_status	parse_map_file(t_game_data *game_data);
 void				get_file_content(t_game_data *game_data);
 void				save_file_content(t_game_data *game_data,
@@ -219,6 +218,7 @@ t_color_status		is_valid_color_string(const char *color);
 t_color_status		get_color_values(t_game_data *game_data,
 						const char *color_values, t_color_values *color_field);
 char				*remove_spaces(char *color_string);
+t_map_status		get_map(t_game_data *game_data);
 
 void				parser_exit_routine(t_game_data *game_data);
 
