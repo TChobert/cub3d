@@ -1,6 +1,6 @@
 ##### VARIABLES #####
 
-NAME := cub3d
+NAME := cub3D
 
 ##### LIBFT #####
 
@@ -47,6 +47,16 @@ SRCS += is_valid_texture_prefix.c
 SRCS += is_xpm_file.c
 SRCS += run_state.c
 SRCS += textures_and_colors.c
+SRCS += save_error_type.c
+SRCS += double_texture.c
+SRCS += check_textures.c
+SRCS += check_colors.c
+
+SRCS += get_color.c
+SRCS += get_color_type.c
+SRCS += is_valid_color_string.c
+SRCS += replace_color_strings_without_spaces.c
+SRCS += get_color_values.c
 
 # utils
 SRCS += is_empty_line.c
@@ -82,7 +92,7 @@ TESTS_NAME := unit_tests
 
 TESTS_SRCS_DIR += ./tests
 TESTS_SRCS_DIR += ./tests/parsing_tests/map_file_opener_tests
-TESTS_SRCS_DIR += ./tests/parsing_tests/textures_parser_tests
+TESTS_SRCS_DIR += ./tests/parsing_tests/textures_and_colors_parser_tests
 
 TESTS_SRCS += main_tests.c
 
@@ -93,17 +103,15 @@ TESTS_SRCS += is_valid_map_file_unit_test.c
 
 # parsing textures #
 
-TESTS_SRCS += is_valid_east_texture_tests.c
-TESTS_SRCS += is_valid_south_texture_tests.c
-TESTS_SRCS += is_valid_north_texture_tests.c
-TESTS_SRCS += is_valid_west_texture_tests.c
-# TESTS_SRCS += is_valid_north_prefix_tests.c
-# TESTS_SRCS += is_valid_south_prefix_tests.c
-# TESTS_SRCS += is_valid_west_prefix_tests.c
-# TESTS_SRCS += is_valid_east_prefix_tests.c
+TESTS_SRCS += get_texture_tests.c
 TESTS_SRCS += is_xpm_file_tests.c
-
+TESTS_SRCS += get_texture_type_tests.c
 TESTS_SRCS += is_valid_texture_prefix_tests.c
+
+# parsing colors #
+
+TESTS_SRCS += get_color_tests.c
+TESTS_SRCS += get_color_values_tests.c
 
 ## Unity ##
 

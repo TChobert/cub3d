@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_south_texture_tests.c                          :+:      :+:    :+:   */
+/*   save_error_type.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/26 12:09:38 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/26 12:10:13 by racoutte         ###   ########.fr       */
+/*   Created: 2025/04/01 13:44:40 by racoutte          #+#    #+#             */
+/*   Updated: 2025/04/01 13:45:15 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
+#include "cub_parsing.h"
 
-void	is_valid_south_texture_tests(void)
+void	save_error_type(t_error_type error_type, t_game_data *game_data)
 {
-	TEST_ASSERT_EQUAL(VALID_TEXTURE, is_valid_south_texture("SO hello.xpm"));
-	TEST_ASSERT_EQUAL(INVALID_TEXTURE, is_valid_south_texture("SP "));
-	TEST_ASSERT_EQUAL(INVALID_TEXTURE, is_valid_south_texture("SOhello"));
-	TEST_ASSERT_EQUAL(INVALID_TEXTURE, is_valid_south_texture("SO .xpm"));
-	TEST_ASSERT_EQUAL(INVALID_TEXTURE, is_valid_south_texture(""));
+	game_data->parse_error_info.error_type = error_type;
+	game_data->parse_error_info.invalid_element
+		= ft_strdup(game_data->map_file_content[game_data->current_line]);
 }

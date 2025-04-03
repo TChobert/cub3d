@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/28 18:39:15 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/02 19:14:23 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define EAST_TEXTURE_PREFIX "EA "
 
 typedef char *	t_texture;
+typedef char *	t_color;
 typedef char **	t_file_data;
 
 // ENUM ////////////////////////////////////////////////////////////////////////
@@ -58,27 +59,70 @@ typedef enum e_texture_status
 	INVALID_TEXTURE
 }			t_texture_status;
 
+typedef enum e_color_status
+{
+	VALID_COLOR,
+	INVALID_COLOR
+}			t_color_status;
+
 typedef enum e_line_state
 {
 	EMPTY_LINE,
-	FULL_LINE,
-	COMPLETE
+	TEXTURE,
+	COLOR,
+	END_OF_PROCESS
 }			t_line_state;
+
+typedef enum e_color_type
+{
+	FLOOR,
+	CEILING
+}			t_color_type;
+
+typedef enum e_rgb
+{
+	RED,
+	GREEN,
+	BLUE
+}			t_rgb;
 
 typedef enum e_texture_type
 {
 	NORTH,
 	SOUTH,
 	EAST,
-	WEST,
+	WEST
 }			t_texture_type;
 
+typedef enum e_error_type
+{
+	NO_ERROR,
+	INVALID_ID,
+	INVALID_XPM,
+	IS_NOT_A_PATH,
+	DOUBLE_ELEMENT,
+	INVALID_RGB_VALUE,
+	INVALID_COLOR_FORMAT
+}			t_error_type;
+
 // STRUCTURES //////////////////////////////////////////////////////////////////
+
+typedef struct s_parse_error_info
+{
+	t_error_type	error_type;
+	char			*invalid_element;
+}				t_parse_error_info;
 
 typedef struct s_parse_state
 {
 	t_line_state	state;
 }				t_parse_state;
+
+typedef struct s_color_element
+{
+	char			*id;
+	t_color_type	type;
+}				t_color_element;
 
 typedef struct s_texture_element
 {
@@ -94,13 +138,29 @@ typedef struct s_textures
 	t_texture	west_texture;
 }				t_textures;
 
+typedef struct s_color_values
+{
+	bool	is_full;
+	int		r;
+	int		g;
+	int		b;
+}				t_color_values;
+
+typedef struct s_colors
+{
+	t_color_values	ceiling;
+	t_color_values	floor;
+}				t_colors;
+
 typedef struct s_game_data
 {
-	int			file_fd;
-	t_file_data	map_file_content;
-	size_t		map_file_lines_number;
-	size_t		current_line;
-	t_textures	textures;
+	int					file_fd;
+	t_file_data			map_file_content;
+	size_t				map_file_lines_number;
+	size_t				current_line;
+	t_textures			textures;
+	t_colors			colors;
+	t_parse_error_info	parse_error_info;
 }				t_game_data;
 
 typedef void	(*t_state_func)(t_game_data *game_data, t_parse_state *state);
@@ -133,6 +193,19 @@ void				run_state(t_game_data *game_data,
 						t_parse_state *parse_state);
 t_texture_element	*get_texture_type(const char *texture);
 bool				is_empty_line(const char *line);
+void				save_error_type(t_error_type error_type,
+						t_game_data *game_data);
+bool				is_double_texture(t_game_data *game_data);
+void				check_textures(t_game_data *game_data);
+
+t_color_element		*get_color_type(const char *color);
+t_color_status		get_color(t_game_data *game_data, const char *color,
+						t_color_element *color_type);
+void				check_colors(t_game_data *game_data);
+t_color_status		is_valid_color_string(const char *color);
+t_color_status		get_color_values(t_game_data *game_data,
+						const char *color_values, t_color_values *color_field);
+char				*remove_spaces(char *color_string);
 
 void				parser_exit_routine(t_game_data *game_data);
 

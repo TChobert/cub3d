@@ -1,5 +1,11 @@
-RR ./textures/north.xpm
-SO ./textures/south.xpm
-E ./textures/east.xpm
-WE ./textures/west.xpm
+NO textures/north.xpm
+SO       ./textures/south.xpm
+F       12,   12,   56
+EA      ./textures/east.xpm
+C 56, 59, 12
+WE      ./textures/west.xpm
 
+
+100000000001
+
+10001
