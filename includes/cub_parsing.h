@@ -65,6 +65,12 @@ typedef enum e_color_status
 	INVALID_COLOR
 }			t_color_status;
 
+typedef enum e_map_status
+{
+	VALID_MAP,
+	INVALID_MAP
+}			t_map_status;
+
 typedef enum e_line_state
 {
 	EMPTY_LINE,
@@ -152,6 +158,12 @@ typedef struct s_colors
 	t_color_values	floor;
 }				t_colors;
 
+typedef struct s_map_data
+{
+	char	**map_array;
+	bool	is_player;
+}				t_map_data;
+
 typedef struct s_game_data
 {
 	int					file_fd;
@@ -161,6 +173,7 @@ typedef struct s_game_data
 	t_textures			textures;
 	t_colors			colors;
 	t_parse_error_info	parse_error_info;
+	t_map_data			game_map;
 }				t_game_data;
 
 typedef void	(*t_state_func)(t_game_data *game_data, t_parse_state *state);
