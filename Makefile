@@ -62,9 +62,11 @@ SRCS += replace_color_strings_without_spaces.c
 SRCS += get_color_values.c
 
 #map
-
 SRCS += get_map.c
 SRCS += check_if_no_map.c
+SRCS += check_if_invalid_content_below_map.c
+SRCS += get_map_part.c
+SRCS += get_map_last_line_index.c
 
 # utils
 SRCS += is_empty_line.c

@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/02 19:14:23 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/04 17:03:38 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,11 @@ t_color_status		get_color_values(t_game_data *game_data,
 char				*remove_spaces(char *color_string);
 t_map_status		get_map(t_game_data *game_data);
 void				check_if_no_map(t_game_data *game_data, size_t map_size);
+void				check_if_invalid_content_below_map(t_game_data *game_data);
+char				**get_map_part(t_game_data *game_data);
+size_t				get_map_last_line_index(t_game_data *game_data,
+						char **map_file_last_part);
+bool				is_map_last_line(const char *line);
 
 void				parser_exit_routine(t_game_data *game_data);
 
