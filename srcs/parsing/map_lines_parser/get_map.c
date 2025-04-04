@@ -30,6 +30,49 @@ static void	fill_last_part_array(t_game_data *game_data, char **map_array, size_
 	}
 }
 
+static bool	is_map_last_line(const char *line)
+{
+	size_t	i;
+
+	if (ft_strchr(line, '1') == NULL)
+		return (false);
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if (line[i] != '1' && ft_isspace(line[i]) == false)
+			return (false);
+		++i;
+	}
+	return (true);
+}
+
+static size_t    find_last_full_line_in_file(t_game_data *game_data)
+{
+	size_t	i;
+
+	i = game_data->map_file_lines_number - 1;
+	while (i > game_data->current_line)
+	{
+		if (game_data->map_file_content[i] != NULL && !is_empty_line(game_data->map_file_content[i]))
+			return (i);
+		i--;
+	}
+	return (game_data->current_line);
+}
+
+static void	check_if_invalid_content_below_map(t_game_data *game_data)
+{
+	size_t	last_full_line_index;
+
+	last_full_line_index = find_last_full_line_in_file(game_data);
+	if (is_map_last_line(game_data->map_file_content[last_full_line_index]) == false)
+	{
+		ft_dprintf(STDERR_FILENO, "Error\nInvalid content below map detected.\n");
+		parser_exit_routine(game_data);
+		exit(FAILURE);
+	}
+}
+
 static char	**get_map_file_last_part(t_game_data *game_data)
 {
 	char	**last_part_array;
@@ -37,6 +80,7 @@ static char	**get_map_file_last_part(t_game_data *game_data)
 
 	last_part_size = game_data->map_file_lines_number - game_data->current_line;
 	check_if_no_map(game_data, last_part_size);
+	check_if_invalid_content_below_map(game_data);
 	last_part_array = (char **)malloc(sizeof(char *) * (last_part_size + 1));
 	if (last_part_array == NULL)
 	{
@@ -49,54 +93,11 @@ static char	**get_map_file_last_part(t_game_data *game_data)
 	return (last_part_array);
 }
 
-// static bool	is_map_last_line(const char *line)
-// {
-// 	size_t	i;
-
-// 	if (ft_strchr(line, '1') == NULL)
-// 		return (false);
-// 	i = 0;
-// 	while (line[i] != '\0')
-// 	{
-// 		if (line[i] != '1' && ft_isspace(line[i]) == false)
-// 			return (false);
-// 		++i;
-// 	}
-// 	return (true);
-// }
-
-static bool	is_map_last_line(const char *line)
-{
-    size_t	i;
-    bool	found_one;
-
-    if (!line)
-        return (false);
-    
-    found_one = false;
-    i = 0;
-    while (line[i] != '\0')
-    {
-        if (line[i] == '1')
-            found_one = true;
-        else if (!ft_isspace(line[i]))
-        {
-            printf("❌ Ligne invalide : |%s| (caractère interdit: %c)\n", line, line[i]);
-            return (false);
-        }
-        ++i;
-    }
-
-    if (found_one)
-        printf("✅ Ligne valide trouvée : |%s|\n", line);
-    return (found_one);
-}
-
 static size_t	get_map_last_line_index(t_game_data *game_data, char **map_file_last_part)
 {
 	size_t	i;
 
-	i = (game_data->map_file_lines_number - game_data->current_line);
+	i = ((game_data->map_file_lines_number - game_data->current_line) - 1);
 	while (i > 0)
 	{
 		if (is_map_last_line(map_file_last_part[i]))
@@ -111,6 +112,7 @@ static char	**copy_map(char **src, size_t map_size)
 	char	**map;
 	size_t	i;
 
+	printf("MP == %zu\n", map_size);
 	i = 0;
 	map = (char **)malloc(sizeof(char *) * (map_size + 1));
 	if (map == NULL)
@@ -119,7 +121,7 @@ static char	**copy_map(char **src, size_t map_size)
 		exit(FAILURE);
 	}
 	map[map_size] = NULL;
-	while (i <= map_size)
+	while (i < map_size)
 	{
 		map[i] = ft_strdup(src[i]);
 		if (map[i] == NULL)
@@ -127,8 +129,10 @@ static char	**copy_map(char **src, size_t map_size)
 			printf("Merde 2\n");
 			exit(FAILURE);
 		}
+		printf("map[%zu] = %s\n", i, map[i]);
 		++i;
 	}
+	printf("===%s\n", map[map_size]);
 	return (map);
 }
 
@@ -137,8 +141,8 @@ static char	**get_map_from_file_last_part(t_game_data *game_data, char **map_fil
 	char	**map;
 	size_t	last_line_index;
 
-	last_line_index = get_map_last_line_index(game_data, map_file_last_part);
-	if (last_line_index == 0)
+	last_line_index = (get_map_last_line_index(game_data, map_file_last_part) + 1);
+	if (last_line_index == 1)
 	{
 		ft_dprintf(STDERR_FILENO, "Invalid map\n");
 		exit(FAILURE);
