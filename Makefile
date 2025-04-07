@@ -54,6 +54,7 @@ SRCS += save_error_type.c
 SRCS += double_texture.c
 SRCS += check_textures.c
 SRCS += check_colors.c
+SRCS += textures_errors_messages.c
 
 SRCS += get_color.c
 SRCS += get_color_type.c

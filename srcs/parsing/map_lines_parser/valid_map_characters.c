@@ -20,7 +20,7 @@ static bool	is_valid_player_character(char c)
 static bool	is_valid_map_character(char c)
 {
 	return (c == '0' || c == '1'
-		|| is_valid_player_character(c) || ft_isspace(c));
+		|| is_valid_player_character(c) || c == ' ');
 }
 
 t_map_status	check_if_valid_map_characters(t_map_data *map_data)

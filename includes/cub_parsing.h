@@ -139,6 +139,7 @@ typedef struct s_texture_element
 
 typedef struct s_textures
 {
+	bool		is_invalid_texture;
 	t_texture	north_texture;
 	t_texture	south_texture;
 	t_texture	east_texture;
@@ -179,6 +180,7 @@ typedef struct s_game_data
 }				t_game_data;
 
 typedef void	(*t_state_func)(t_game_data *game_data, t_parse_state *state);
+typedef void	(*t_texture_error_msg)(const char *invalid_element);
 
 // FUNCTIONS ///////////////////////////////////////////////////////////////////
 
@@ -233,6 +235,14 @@ t_map_status		check_if_valid_first_and_last_wall_line(
 t_map_status		check_if_valid_map_characters(t_map_data *map_data);
 
 void				parser_exit_routine(t_game_data *game_data);
+
+// ERRORS DISPLAYING
+
+void				no_error(const char *invalid_element);
+void				invalid_id(const char *invalid_element);
+void				invalid_xpm(const char *invalid_element);
+void				is_not_a_path(const char *invalid_element);
+void				double_element(const char *invalid_element);
 
 // GAME //
 void				exec_game_cub(char *map_file_path);

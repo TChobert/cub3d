@@ -21,21 +21,36 @@ static bool	is_texture_missing(t_textures textures)
 	return (false);
 }
 
+static void	display_textures_error(t_parse_error_info parse_error_info)
+{
+	t_texture_error_msg	textures_errors_messages[] = {
+		no_error,
+		invalid_id,
+		invalid_xpm,
+		is_not_a_path,
+		double_element
+	};
+
+	textures_errors_messages[parse_error_info.error_type](parse_error_info.invalid_element);
+}
+
 void	check_textures(t_game_data *game_data)
 {
-	if (is_texture_missing(game_data->textures) == true)
+	if (game_data->parse_error_info.error_type != NO_ERROR && game_data->textures.is_invalid_texture == true)
 	{
 		if (game_data->parse_error_info.error_type != NO_ERROR)
-		{
-			ft_dprintf(STDERR_FILENO, "Error\n%s: invalid texture.\n",
-				game_data->parse_error_info.invalid_element);
-		}
-		else
-			ft_dprintf(STDERR_FILENO, "Error\nA texture path is missing.\n");
+			display_textures_error(game_data->parse_error_info);
 		parser_exit_routine(game_data);
 		exit(FAILURE);
 	}
-	if (is_double_texture(game_data) == true)
+	else if (is_texture_missing(game_data->textures))
+	{
+		ft_dprintf(STDERR_FILENO, "Error\n4 textures paths and two colors in RGB format are requiered before any other"
+			" information to start the game.\n");
+		parser_exit_routine(game_data);
+		exit(FAILURE);
+	}
+	else if (is_double_texture(game_data) == true)
 	{
 		ft_dprintf(STDERR_FILENO,
 			"Error\nDouble texture file path detected.\n");
