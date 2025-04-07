@@ -55,5 +55,4 @@ t_color_status	get_color(t_game_data *game_data, const char *color,
 					t_color_element *color_type)
 {
 	return (save_color(game_data, color, color_type->type));
-	hey
 }
