@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 16:35:47 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/04 17:02:39 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/07 14:59:52 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static char	**extract_map(t_game_data *game_data, char **map_file_last_part)
 		exit(FAILURE);
 	}
 	map = copy_map(map_file_last_part, last_line_index);
+	game_data->game_map.map_lines_number = last_line_index;
 	if (map == NULL)
 	{
 		parser_exit_routine(game_data);

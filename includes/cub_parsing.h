@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/04 17:03:38 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/07 14:47:48 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define SOUTH_TEXTURE_PREFIX "SO "
 # define WEST_TEXTURE_PREFIX "WE "
 # define EAST_TEXTURE_PREFIX "EA "
+# define VALID_PLAYER_CHAR "NSEW"
 
 typedef char *	t_texture;
 typedef char *	t_color;
@@ -161,6 +162,7 @@ typedef struct s_colors
 typedef struct s_map_data
 {
 	char	**map_array;
+	size_t	map_lines_number;
 	bool	is_player;
 }				t_map_data;
 
@@ -225,6 +227,9 @@ char				**get_map_part(t_game_data *game_data);
 size_t				get_map_last_line_index(t_game_data *game_data,
 						char **map_file_last_part);
 bool				is_map_last_line(const char *line);
+
+t_map_status		check_if_valid_first_and_last_wall_line(t_map_data *map_data);
+t_map_status		check_if_valid_map_characters(t_map_data *map_data);
 
 void				parser_exit_routine(t_game_data *game_data);
 

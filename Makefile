@@ -67,6 +67,8 @@ SRCS += check_if_no_map.c
 SRCS += check_if_invalid_content_below_map.c
 SRCS += get_map_part.c
 SRCS += get_map_last_line_index.c
+SRCS += valid_map_characters.c
+SRCS += valid_walls_characters.c
 
 # utils
 SRCS += is_empty_line.c
