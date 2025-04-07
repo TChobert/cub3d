@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/07 14:47:48 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:58:43 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,7 +228,8 @@ size_t				get_map_last_line_index(t_game_data *game_data,
 						char **map_file_last_part);
 bool				is_map_last_line(const char *line);
 
-t_map_status		check_if_valid_first_and_last_wall_line(t_map_data *map_data);
+t_map_status		check_if_valid_first_and_last_wall_line(
+						t_map_data *map_data);
 t_map_status		check_if_valid_map_characters(t_map_data *map_data);
 
 void				parser_exit_routine(t_game_data *game_data);

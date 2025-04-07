@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:30:46 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/07 15:02:20 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:58:02 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_map_status	check_if_valid_first_and_last_wall_line(t_map_data *map_data)
 {
 	if (is_valid_wall_line(map_data->map_array[0]) == false
 		|| is_valid_wall_line(
-		map_data->map_array[map_data->map_lines_number - 1]) == false)
+			map_data->map_array[map_data->map_lines_number - 1]) == false)
 		return (INVALID_MAP);
 	return (VALID_MAP);
 }
