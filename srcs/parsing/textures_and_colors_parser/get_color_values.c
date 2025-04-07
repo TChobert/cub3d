@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:29:43 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/02 19:18:50 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:50:12 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static t_color_status	save_rgb_value(t_color_values *color_field,
 {
 	int	rgb_value;
 
+	if (rgb_values[rgb_id] == NULL)
+		return (INVALID_COLOR);
 	if (ft_strlen(rgb_values[rgb_id]) > 3)
 		return (INVALID_COLOR);
 	rgb_value = ft_atoi(rgb_values[rgb_id]);
