@@ -31,22 +31,24 @@ static void	display_textures_error(t_parse_error_info parse_error_info)
 		double_element
 	};
 
-	textures_errors_messages[parse_error_info.error_type](parse_error_info.invalid_element);
+	textures_errors_messages[parse_error_info.error_type]
+		(parse_error_info.invalid_element);
 }
 
 void	check_textures(t_game_data *game_data)
 {
-	if (game_data->parse_error_info.error_type != NO_ERROR && game_data->textures.is_invalid_texture == true)
+	if (game_data->parse_error_info.error_type != NO_ERROR
+			&& game_data->textures.is_invalid_texture == true)
 	{
-		if (game_data->parse_error_info.error_type != NO_ERROR)
-			display_textures_error(game_data->parse_error_info);
+		display_textures_error(game_data->parse_error_info);
 		parser_exit_routine(game_data);
 		exit(FAILURE);
 	}
 	else if (is_texture_missing(game_data->textures))
 	{
-		ft_dprintf(STDERR_FILENO, "Error\n4 textures paths and two colors in RGB format are requiered before any other"
-			" information to start the game.\n");
+		ft_dprintf(STDERR_FILENO, "Error\n4 textures paths and two colors"
+			" in RGB format are requiered before any other information to "
+			"start the game.\n");
 		parser_exit_routine(game_data);
 		exit(FAILURE);
 	}
