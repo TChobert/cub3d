@@ -12,21 +12,6 @@
 
 #include "cub_parsing.h"
 
-// static void	display_collors_error_message(t_game_data *game_data)
-// {
-// 	if (game_data->parse_error_info.error_type == DOUBLE_ELEMENT)
-// 	{
-// 		ft_dprintf(STDERR_FILENO, "Error\n%s: is present twice.\n",
-// 			game_data->parse_error_info.invalid_element);
-// 	}
-// 	else if (game_data->parse_error_info.error_type == INVALID_COLOR_FORMAT
-// 		|| game_data->parse_error_info.error_type == INVALID_ID)
-// 	{
-// 		ft_dprintf(STDERR_FILENO, "Error\n%s: invalid color format.\n",
-// 			game_data->parse_error_info.invalid_element);
-// 	}
-// }
-
 static bool	is_color_missing(t_colors colors)
 {
 	if (colors.floor.is_full == false || colors.ceiling.is_full == false)
@@ -50,7 +35,7 @@ static bool	is_map_line(const char *line)
 	return (true);
 }
 
-void	check_colors(t_game_data *game_data)
+static void	display_colors_error_message(t_game_data *game_data)
 {
 	if (game_data->parse_error_info.error_type == DOUBLE_ELEMENT)
 	{
@@ -77,6 +62,11 @@ void	check_colors(t_game_data *game_data)
 		parser_exit_routine(game_data);
 		exit(FAILURE);
 	}
+}
+
+void	check_colors(t_game_data *game_data)
+{
+	display_colors_error_message(game_data);
 	if (is_color_missing(game_data->colors) == true)
 	{
 		ft_dprintf(STDERR_FILENO, "Error\n4 textures paths and two colors"
