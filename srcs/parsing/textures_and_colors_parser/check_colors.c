@@ -15,10 +15,10 @@
 static bool	is_color_missing(t_colors colors)
 {
 	if (colors.floor.is_full == false || colors.ceiling.is_full == false)
-	{ 
-		return (true); 
+	{
+		return (true);
 	}
-	return (false); 
+	return (false);
 }
 
 static bool	is_map_line(const char *line)

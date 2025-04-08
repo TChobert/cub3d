@@ -23,7 +23,7 @@ static bool	is_texture_missing(t_textures textures)
 
 static void	display_textures_error(t_parse_error_info parse_error_info)
 {
-	t_texture_error_msg	textures_errors_messages[] = {
+	static t_texture_error_msg	textures_errors_messages[] = {
 		no_error,
 		invalid_id,
 		invalid_xpm,
@@ -38,7 +38,7 @@ static void	display_textures_error(t_parse_error_info parse_error_info)
 void	check_textures(t_game_data *game_data)
 {
 	if (game_data->parse_error_info.error_type != NO_ERROR
-			&& game_data->textures.is_invalid_texture == true)
+		&& game_data->textures.is_invalid_texture == true)
 	{
 		display_textures_error(game_data->parse_error_info);
 		parser_exit_routine(game_data);
