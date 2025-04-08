@@ -17,6 +17,7 @@ PATH_SRCS += srcs/parsing/map_file_content_getter
 PATH_SRCS += srcs/parsing/map_file_opener
 PATH_SRCS += srcs/parsing/map_file_parser
 PATH_SRCS += srcs/parsing/textures_and_colors_parser
+PATH_SRCS += srcs/parsing/map_lines_parser
 PATH_SRCS += srcs/parsing/utils
 PATH_SRCS += srcs/game/
 
@@ -27,6 +28,8 @@ SRCS += main.c
 SRCS += error_message.c
 
 # srcs parsing #
+
+SRCS += parsing.c
 
 # map_file_content_getter
 SRCS += get_file_content.c
@@ -51,6 +54,7 @@ SRCS += save_error_type.c
 SRCS += double_texture.c
 SRCS += check_textures.c
 SRCS += check_colors.c
+SRCS += textures_errors_messages.c
 
 SRCS += get_color.c
 SRCS += get_color_type.c
@@ -58,11 +62,17 @@ SRCS += is_valid_color_string.c
 SRCS += replace_color_strings_without_spaces.c
 SRCS += get_color_values.c
 
+#map
+SRCS += get_map.c
+SRCS += check_if_no_map.c
+SRCS += check_if_invalid_content_below_map.c
+SRCS += get_map_part.c
+SRCS += get_map_last_line_index.c
+SRCS += valid_map_characters.c
+SRCS += valid_walls_characters.c
+
 # utils
 SRCS += is_empty_line.c
-
-SRCS += parsing.c
-
 SRCS += parser_exit_routine.c
 
 # srcs game #

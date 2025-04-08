@@ -31,6 +31,8 @@ void	parser_exit_routine(t_game_data *game_data)
 	ft_free_and_null(game_data->map_file_content);
 	free(game_data->parse_error_info.invalid_element);
 	free_textures(&game_data->textures);
+	if (game_data->game_map.map_array)
+		ft_free_and_null(game_data->game_map.map_array);
 }
 
 //free_colors(&game_data->colors) a utiliser ?
