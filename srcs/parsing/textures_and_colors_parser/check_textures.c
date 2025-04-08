@@ -44,7 +44,7 @@ void	check_textures(t_game_data *game_data)
 		parser_exit_routine(game_data);
 		exit(FAILURE);
 	}
-	else if (is_texture_missing(game_data->textures)) //&& game_data->textures.is_invalid_texture == true)
+	else if (is_texture_missing(game_data->textures))
 	{
 		ft_dprintf(STDERR_FILENO, "Error\n4 textures paths and two colors"
 			" in RGB format are required before any other information to "

@@ -79,7 +79,9 @@ void	check_colors(t_game_data *game_data)
 	}
 	if (is_color_missing(game_data->colors) == true)
 	{
-		ft_dprintf(STDERR_FILENO, "Error\nA color is missing.\n");
+		ft_dprintf(STDERR_FILENO, "Error\n4 textures paths and two colors"
+			" in RGB format are required before any other information to "
+			"start the game.\n");
 		parser_exit_routine(game_data);
 		exit(FAILURE);
 	}
