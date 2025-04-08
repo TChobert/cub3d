@@ -20,11 +20,11 @@ t_content_status	check_if_valid_map(t_map_data *map_data)
 		ft_dprintf(STDERR_FILENO, "Error\nInvalid map.\n");
 		return (INVALID_CONTENT);
 	}
-	if (core_map_parser(map_data) == INVALID_MAP)
-	{
-		ft_dprintf(STDERR_FILENO, "Error\nInvalid map.\n");
-		return (INVALID_CONTENT);
-	}
+	// if (core_map_parser(map_data) == INVALID_MAP)
+	// {
+	// 	ft_dprintf(STDERR_FILENO, "Error\nInvalid map.\n");
+	// 	return (INVALID_CONTENT);
+	// }
 	return (VALID_CONTENT);
 }
 
