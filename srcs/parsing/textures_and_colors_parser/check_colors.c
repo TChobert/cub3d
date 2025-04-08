@@ -52,20 +52,7 @@ static bool	is_map_line(const char *line)
 
 void	check_colors(t_game_data *game_data)
 {
-	if (is_color_missing(game_data->colors) == true)
-	{
-		ft_dprintf(STDERR_FILENO, "Error\nA color is missing.\n");
-		parser_exit_routine(game_data);
-		exit(FAILURE);
-	}
-	else if (game_data->parse_error_info.error_type != NO_ERROR
-		&& is_color_missing(game_data->colors) == true)
-	{
-		ft_dprintf(STDERR_FILENO, "Error\n%s: invalid color.\n",
-			game_data->parse_error_info.invalid_element);
-		parser_exit_routine(game_data);
-		exit(FAILURE);
-	}
+	
 	if (game_data->parse_error_info.error_type == DOUBLE_ELEMENT)
 	{
 		ft_dprintf(STDERR_FILENO, "Error\n%s: is present twice.\n",
@@ -82,5 +69,19 @@ void	check_colors(t_game_data *game_data)
 			parser_exit_routine(game_data);
 			exit(FAILURE);
 		}
+	}
+	else if (game_data->parse_error_info.error_type != NO_ERROR
+		&& is_color_missing(game_data->colors) == true)
+	{
+		ft_dprintf(STDERR_FILENO, "Error\n%s: invalid color.\n",
+			game_data->parse_error_info.invalid_element);
+		parser_exit_routine(game_data);
+		exit(FAILURE);
+	}
+	else if (is_color_missing(game_data->colors) == true)
+	{
+		ft_dprintf(STDERR_FILENO, "Error\nA color is missing.\n");
+		parser_exit_routine(game_data);
+		exit(FAILURE);
 	}
 }

@@ -1,18 +1,16 @@
 F 14,14,14
 
-C 12,12,12
 
 
 
 SO       ./textures/south.xpm
 EA      ./textures/east.xpm
 
+C 12,12,14
 
 WE      ./textures/west.xpm
 
 NO textures/north.xpm
-
-
 
 
 

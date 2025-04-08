@@ -19,7 +19,7 @@ void	no_error(const char *invalid_element)
 
 void	invalid_id(const char *invalid_element)
 {
-	ft_dprintf(STDERR_FILENO, "Error\n%s: invalid texture ID.\n",
+	ft_dprintf(STDERR_FILENO, "Error\n%s: invalid element.\n",
 		invalid_element);
 }
 

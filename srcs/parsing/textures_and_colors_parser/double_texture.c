@@ -15,8 +15,11 @@
 static bool	is_same_texture(t_texture current_texture,
 				t_texture texture_to_compare)
 {
-	if (ft_strcmp(current_texture, texture_to_compare) == 0)
-		return (true);
+	if (current_texture != NULL && texture_to_compare != NULL)
+	{
+		if (ft_strcmp(current_texture, texture_to_compare) == 0)
+			return (true);
+	}
 	return (false);
 }
 
