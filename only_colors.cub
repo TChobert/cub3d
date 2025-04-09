@@ -1,18 +1,15 @@
-
-
 NO textures/nor.xpm
 WE      textures/north.xpm
 SO       ./textures/south.xpm
 EA      ./textures/east.xpm
 
 
-C 125,12,
+C 125,12,14
 F 14,14,14
 
 
-11111111
-100000W1
-10000001
-11111111
-
+       11111111
+0  1 00000W00 1  
+   10000000101                         
+          11111111
 

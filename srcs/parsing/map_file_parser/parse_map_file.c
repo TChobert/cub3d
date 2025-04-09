@@ -20,6 +20,11 @@ t_content_status	check_if_valid_map(t_map_data *map_data)
 		ft_dprintf(STDERR_FILENO, "Error\nInvalid map.\n");
 		return (INVALID_CONTENT);
 	}
+	if (core_map_parser(map_data) == INVALID_MAP)
+	{
+		ft_dprintf(STDERR_FILENO, "Error\nInvalid map.\n");
+		return (INVALID_CONTENT);
+	}
 	return (VALID_CONTENT);
 }
 
@@ -35,9 +40,3 @@ t_content_status	parse_map_file(t_game_data *game_data)
 	}
 	return (VALID_CONTENT);
 }
-
-		// if (core_map_parser(map_data) == INVALID_MAP)
-	// {
-	// 	ft_dprintf(STDERR_FILENO, "Error\nInvalid map.\n");
-	// 	return (INVALID_CONTENT);
-	// }

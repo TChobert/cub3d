@@ -12,18 +12,22 @@
 
 #include "cub_parsing.h"
 
-// t_map_status	core_map_parser(t_map_data *map)
-// {
-// 	size_t	i;
+t_map_status	core_map_parser(t_map_data *map)
+{
+	size_t	i;
 
-// 	i = 0;
-// 	while (i < map->map_lines_number)
-// 	{
-// 		if (is_empty_line(map->map_array[i]) == true)
-// 			return (INVALID_MAP);
-// 		else if (is_open_line(map->map_array[i]) == true)
-// 			return (INVALID_MAP);
-// 		++i;
-// 	}
-// 	return (VALID_MAP);
-// }
+	i = 0;
+	printf("LA\n");
+	while (i < map->map_lines_number)
+	{
+		if (is_empty_line(map->map_array[i]) == true)
+			return (INVALID_MAP);
+		else if (is_open_map_line(map->map_array[i]) == true)
+		{
+			printf("OPEN LINE == %s\n", map->map_array[i]);
+			return (INVALID_MAP);
+		}
+		++i;
+	}
+	return (VALID_MAP);
+}

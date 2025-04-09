@@ -233,6 +233,8 @@ bool				is_map_last_line(const char *line);
 t_map_status		check_if_valid_first_and_last_wall_line(
 						t_map_data *map_data);
 t_map_status		check_if_valid_map_characters(t_map_data *map_data);
+t_map_status		core_map_parser(t_map_data *map);
+t_map_status		is_open_map_line(const char *map_line);
 
 void				parser_exit_routine(t_game_data *game_data);
 
