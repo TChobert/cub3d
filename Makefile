@@ -71,7 +71,9 @@ SRCS += get_map_last_line_index.c
 SRCS += valid_map_characters.c
 SRCS += valid_walls_characters.c
 SRCS += core_map_parser.c
-SRCS += is_open_map_line.c
+SRCS += check_if_open_map.c
+SRCS += check_if_invalid_core_map.c
+SRCS += check_if_valid_map.c
 
 # utils
 SRCS += is_empty_line.c

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_open_map_line.c                                 :+:      :+:    :+:   */
+/*   check_if_open_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:32:48 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/09 12:32:51 by tchobert         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:05:48 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	is_line_end_open(const char *map_line)
 {
-	int	line_end;
+	size_t	line_end;
 
 	line_end = ft_strlen(map_line) - 1;
 	while (line_end >= 0 && map_line[line_end] == ' ')
@@ -26,7 +26,9 @@ static bool	is_line_end_open(const char *map_line)
 
 static bool	is_line_start_open(const char *map_line)
 {
-	int	i = 0;
+	size_t	i;
+
+	i = 0;
 	while (map_line[i] && map_line[i] == ' ')
 		i++;
 	if (map_line[i] == '\0')
@@ -34,10 +36,30 @@ static bool	is_line_start_open(const char *map_line)
 	return (map_line[i] != '1');
 }
 
-t_map_status	is_open_map_line(const char *map_line)
+static t_map_status	is_open_map_line(const char *map_line)
 {
 	if (is_line_end_open(map_line) == true
 		|| is_line_start_open(map_line) == true)
 		return (INVALID_MAP);
+	return (VALID_MAP);
+}
+
+t_map_status	check_if_open_map(t_map_data *map)
+{
+	size_t	i;
+
+	i = 0;
+	printf("LA\n");
+	while (i < map->map_lines_number)
+	{
+		if (is_empty_line(map->map_array[i]) == true)
+			return (INVALID_MAP);
+		else if (is_open_map_line(map->map_array[i]) == true)
+		{
+			printf("OPEN LINE == %s\n", map->map_array[i]);
+			return (INVALID_MAP);
+		}
+		++i;
+	}
 	return (VALID_MAP);
 }

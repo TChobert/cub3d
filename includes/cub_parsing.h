@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/07 16:58:43 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:55:19 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@
 # define WEST_TEXTURE_PREFIX "WE "
 # define EAST_TEXTURE_PREFIX "EA "
 # define VALID_PLAYER_CHAR "NSEW"
+# define ZERO_VALID_CHARS "01"
+# define WALL_VALID_CHARS " 01"
+# define SPACE_VALID_CHARS " 1"
 
 typedef char *	t_texture;
 typedef char *	t_color;
@@ -164,7 +167,7 @@ typedef struct s_map_data
 {
 	char	**map_array;
 	size_t	map_lines_number;
-	bool	is_player;
+	size_t	players_number;
 }				t_map_data;
 
 typedef struct s_game_data
@@ -233,8 +236,11 @@ bool				is_map_last_line(const char *line);
 t_map_status		check_if_valid_first_and_last_wall_line(
 						t_map_data *map_data);
 t_map_status		check_if_valid_map_characters(t_map_data *map_data);
+t_content_status	check_if_valid_map(t_map_data *map_data);
 t_map_status		core_map_parser(t_map_data *map);
-t_map_status		is_open_map_line(const char *map_line);
+t_map_status		check_if_open_map(t_map_data *map);
+t_map_status		check_if_invalid_core_map(t_map_data *map);
+bool				is_valid_player_character(char c);
 
 void				parser_exit_routine(t_game_data *game_data);
 

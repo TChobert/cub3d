@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:24:30 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/08 12:27:36 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:40:43 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,14 @@
 
 t_map_status	core_map_parser(t_map_data *map)
 {
-	size_t	i;
-
-	i = 0;
-	printf("LA\n");
-	while (i < map->map_lines_number)
+	if (check_if_open_map(map) == INVALID_MAP)
 	{
-		if (is_empty_line(map->map_array[i]) == true)
-			return (INVALID_MAP);
-		else if (is_open_map_line(map->map_array[i]) == true)
-		{
-			printf("OPEN LINE == %s\n", map->map_array[i]);
-			return (INVALID_MAP);
-		}
-		++i;
+		return (INVALID_MAP); //exit? free? msg erreur perso?
+	}
+	if (check_if_invalid_core_map(map) == INVALID_MAP)
+	{
+		printf("Salut\n");
+		return (INVALID_MAP); //exit? free? msg erreur perso?
 	}
 	return (VALID_MAP);
 }
