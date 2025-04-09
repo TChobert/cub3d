@@ -12,12 +12,6 @@
 
 #include "cub_parsing.h"
 
-// static void	free_colors(t_colors *colors)
-// {
-// 	free(colors->ceiling_color);
-// 	free(colors->floor_color);
-// }
-
 static void	free_textures(t_textures *textures)
 {
 	free(textures->east_texture);
@@ -34,5 +28,3 @@ void	parser_exit_routine(t_game_data *game_data)
 	if (game_data->game_map.map_array)
 		ft_free_and_null(game_data->game_map.map_array);
 }
-
-//free_colors(&game_data->colors) a utiliser ?
