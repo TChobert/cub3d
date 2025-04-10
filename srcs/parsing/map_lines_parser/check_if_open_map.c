@@ -29,7 +29,7 @@ static bool	is_line_start_open(const char *map_line)
 	size_t	i;
 
 	i = 0;
-	while (map_line[i] && map_line[i] == ' ')
+	while (map_line[i] != '\0' && map_line[i] == ' ')
 		i++;
 	if (map_line[i] == '\0')
 		return (true);
