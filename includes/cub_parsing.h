@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/09 17:55:19 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/10 15:05:15 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 # define WEST_TEXTURE_PREFIX "WE "
 # define EAST_TEXTURE_PREFIX "EA "
 # define VALID_PLAYER_CHAR "NSEW"
-# define ZERO_VALID_CHARS "01"
-# define WALL_VALID_CHARS " 01"
+# define ZERO_VALID_CHARS "01NSEW"
+# define WALL_VALID_CHARS " 01NSEW"
 # define SPACE_VALID_CHARS " 1"
 
 typedef char *	t_texture;
@@ -241,6 +241,7 @@ t_map_status		core_map_parser(t_map_data *map);
 t_map_status		check_if_open_map(t_map_data *map);
 t_map_status		check_if_invalid_core_map(t_map_data *map);
 bool				is_valid_player_character(char c);
+bool				is_valid_number_of_players(size_t players_number);
 
 void				parser_exit_routine(t_game_data *game_data);
 

@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 16:55:15 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/04 17:04:48 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/10 15:10:19 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_if_invalid_content_below_map(t_game_data *game_data)
 			game_data->map_file_content[last_full_line_index]) == false)
 	{
 		ft_dprintf(STDERR_FILENO,
-			"Error\nInvalid content below map detected.\n");
+			"Error\nInvalid content detected.\n");
 		parser_exit_routine(game_data);
 		exit(FAILURE);
 	}

@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_if_valid_map.c                               :+:      :+:    :+:   */
+/*   is_valid_number_of_players.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 16:09:34 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/10 15:13:10 by racoutte         ###   ########.fr       */
+/*   Created: 2025/04/10 15:04:43 by racoutte          #+#    #+#             */
+/*   Updated: 2025/04/10 15:05:02 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
 
-t_content_status	check_if_valid_map(t_map_data *map_data)
+bool	is_valid_number_of_players(size_t players_number)
 {
-	if (check_if_valid_map_characters(map_data) == INVALID_MAP)
+	if (players_number != 1)
 	{
-		ft_dprintf(STDERR_FILENO, "Error\nInvalid character detected.\n");
-		return (INVALID_CONTENT);
+		return (false);
 	}
-	if (check_if_valid_first_and_last_wall_line(map_data) == INVALID_MAP)
-	{
-		return (INVALID_CONTENT);
-	}
-	if (core_map_parser(map_data) == INVALID_MAP)
-	{
-		return (INVALID_CONTENT);
-	}
-	return (VALID_CONTENT);
+	return (true);
 }
