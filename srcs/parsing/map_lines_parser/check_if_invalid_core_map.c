@@ -38,8 +38,8 @@ static bool	is_invalid_core_character(t_map_data *map, const char c,
 	if (is_valid_player_character(c) == true)
 	{
 		if (check_relative_chars(PLAYER_VALID_CHARS,
-			map->map_array, i, j) == false)
-		return (true);
+				map->map_array, i, j) == false)
+			return (true);
 	}
 	else if (c == '0')
 	{
@@ -72,7 +72,7 @@ t_map_status	check_if_invalid_core_map(t_map_data *map)
 				map->players_number += 1;
 			}
 			if (is_invalid_core_character(map,
-				map->map_array[i][j], i, j) == true)
+					map->map_array[i][j], i, j) == true)
 			{
 				return (INVALID_MAP);
 			}

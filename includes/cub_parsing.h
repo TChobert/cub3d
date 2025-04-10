@@ -205,7 +205,8 @@ void				save_file_content(t_game_data *game_data,
 bool				is_valid_map_path(const char *map_file_path);
 bool				is_valid_map_file(const char *map_file_path);
 t_map_file_status	map_file_opener(const char *map_file_path, int *map_fd);
-bool				is_valid_xpm_path(const char *file_path);
+bool				is_valid_xpm_path(t_game_data *game_data,
+						const char *file_path);
 t_texture_status	get_texture(t_game_data *game_data,
 						const char *texture, t_texture_element *texture_type);
 bool				is_valid_texture_prefix(const char *texture,

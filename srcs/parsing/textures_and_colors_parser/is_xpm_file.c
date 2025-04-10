@@ -36,14 +36,16 @@ static bool	has_xpm_suffix(const char *file_path)
 	return (true);
 }
 
-bool	is_valid_xpm_path(const char *file_path)
+bool	is_valid_xpm_path(t_game_data *game_data, const char *file_path)
 {
 	char	*trimmed_path;
 
 	trimmed_path = ft_strtrim(file_path, WHITESPACES);
 	if (trimmed_path == NULL)
 	{
-		//a voir
+		ft_dprintf(STDERR_FILENO, "Erro\nMalloc fail in is_valid_xpm_path.\n");
+		parser_exit_routine(game_data);
+		exit(FAILURE);
 	}
 	if (is_not_hide_xpm_file(trimmed_path) == false
 		|| has_xpm_suffix(trimmed_path) == false)

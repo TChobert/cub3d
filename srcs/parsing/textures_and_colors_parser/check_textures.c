@@ -52,11 +52,4 @@ void	check_textures(t_game_data *game_data)
 		parser_exit_routine(game_data);
 		exit(FAILURE);
 	}
-	else if (is_double_texture(game_data) == true)
-	{
-		ft_dprintf(STDERR_FILENO,
-			"Error\nDouble texture file path detected.\n");
-		parser_exit_routine(game_data);
-		exit(FAILURE);
-	}
 }

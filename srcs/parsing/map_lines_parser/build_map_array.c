@@ -28,12 +28,13 @@ static size_t	get_map_width(char **map)
 	return (width);
 }
 
-static void	fill_map_array_line(char *map_array_line, const char *map_line, size_t map_width)
+static void	fill_map_array_line(char *map_array_line, const char *map_line,
+				size_t map_width)
 {
 	size_t	i;
 
 	i = 0;
-	while(i < map_width)
+	while (i < map_width)
 	{
 		map_array_line[i] = ' ';
 		++i;
@@ -47,7 +48,8 @@ static void	fill_map_array_line(char *map_array_line, const char *map_line, size
 	}
 }
 
-static int	fill_map_array(char **map_array, char **map, size_t map_length, size_t map_width)
+static int	fill_map_array(char **map_array, char **map, size_t map_length,
+				size_t map_width)
 {
 	size_t	i;
 
@@ -83,7 +85,6 @@ char	**build_map_array(t_game_data *game_data, char **map)
 	map_array[map_length] = NULL;
 	if (fill_map_array(map_array, map, map_length, map_width) == FAILURE)
 	{
-		// free map_array ??
 		parser_exit_routine(game_data);
 		exit(FAILURE);
 	}
