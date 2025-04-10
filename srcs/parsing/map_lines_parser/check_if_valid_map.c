@@ -21,6 +21,7 @@ t_content_status	check_if_valid_map(t_map_data *map_data)
 	}
 	if (check_if_valid_first_and_last_wall_line(map_data) == INVALID_MAP)
 	{
+		ft_dprintf(STDERR_FILENO, "Error\nUnclosed map.\n");
 		return (INVALID_CONTENT);
 	}
 	if (core_map_parser(map_data) == INVALID_MAP)

@@ -49,14 +49,18 @@ t_map_status	check_if_open_map(t_map_data *map)
 	size_t	i;
 
 	i = 0;
-	printf("LA\n");
 	while (i < map->map_lines_number)
 	{
 		if (is_empty_line(map->map_array[i]) == true)
+		{
+			ft_dprintf(STDERR_FILENO, "Error\nMap line %d is empty.\n",
+				i + 1);
 			return (INVALID_MAP);
+		}
 		else if (is_open_map_line(map->map_array[i]) == true)
 		{
-			printf("OPEN LINE == %s\n", map->map_array[i]);
+			ft_dprintf(STDERR_FILENO, "Error\nInvalid map at line %d.\n",
+				i + 1);
 			return (INVALID_MAP);
 		}
 		++i;

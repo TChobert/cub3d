@@ -225,7 +225,9 @@ t_color_status		is_valid_color_string(const char *color);
 t_color_status		get_color_values(t_game_data *game_data,
 						const char *color_values, t_color_values *color_field);
 char				*remove_spaces(char *color_string);
+
 t_map_status		get_map(t_game_data *game_data);
+char				**build_map_array(t_game_data *game_data, char **map);
 void				check_if_no_map(t_game_data *game_data, size_t map_size);
 void				check_if_invalid_content_below_map(t_game_data *game_data);
 char				**get_map_part(t_game_data *game_data);

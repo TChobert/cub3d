@@ -20,7 +20,7 @@ t_content_status	parse_map_file(t_game_data *game_data)
 	if (check_if_valid_map(&game_data->game_map) == INVALID_CONTENT)
 	{
 		parser_exit_routine(game_data);
-		return (INVALID_CONTENT);
+		exit(FAILURE);
 	}
 	return (VALID_CONTENT);
 }

@@ -64,6 +64,7 @@ SRCS += get_color_values.c
 
 #map
 SRCS += get_map.c
+SRCS += build_map_array.c
 SRCS += check_if_no_map.c
 SRCS += check_if_invalid_content_below_map.c
 SRCS += get_map_part.c
