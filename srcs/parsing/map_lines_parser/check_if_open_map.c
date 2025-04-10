@@ -17,9 +17,9 @@ static bool	is_line_end_open(const char *map_line)
 	size_t	line_end;
 
 	line_end = ft_strlen(map_line) - 1;
-	while (line_end >= 0 && map_line[line_end] == ' ')
+	while (map_line[line_end] == ' ')
 		line_end--;
-	if (line_end < 0)
+	if (line_end == 0)
 		return (true);
 	return (map_line[line_end] != '1');
 }
@@ -29,7 +29,7 @@ static bool	is_line_start_open(const char *map_line)
 	size_t	i;
 
 	i = 0;
-	while (map_line[i] != '\0' && map_line[i] == ' ')
+	while (map_line[i] == ' ')
 		i++;
 	if (map_line[i] == '\0')
 		return (true);
