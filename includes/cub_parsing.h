@@ -31,6 +31,7 @@
 # define VALID_PLAYER_CHAR "NSEW"
 # define ZERO_VALID_CHARS "01NSEW"
 # define WALL_VALID_CHARS " 01NSEW"
+# define PLAYER_VALID_CHARS "01"
 # define SPACE_VALID_CHARS " 1"
 
 typedef char *	t_texture;

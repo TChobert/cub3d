@@ -35,6 +35,12 @@ static bool	is_invalid_core_character(t_map_data *map, const char c,
 				map->map_array, i, j) == false)
 			return (true);
 	}
+	if (is_valid_player_character(c) == true)
+	{
+		if (check_relative_chars(PLAYER_VALID_CHARS,
+			map->map_array, i, j) == false)
+		return (true);
+	}
 	else if (c == '0')
 	{
 		if (check_relative_chars(ZERO_VALID_CHARS,
