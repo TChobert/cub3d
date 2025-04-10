@@ -25,15 +25,6 @@ static t_texture	*get_texture_field(t_textures *textures,
 		return (&textures->west_texture);
 }
 
-static char	*get_texture_path_begining(char *texture)
-{
-	while (ft_isspace(*texture) && *texture != '\0')
-	{
-		++texture;
-	}
-	return (texture);
-}
-
 static bool	is_not_only_a_path(const char *path)
 {
 	return (ft_count_words(path, ' ') > 1);
@@ -42,8 +33,8 @@ static bool	is_not_only_a_path(const char *path)
 static t_texture_status	save_texture(t_game_data *game_data,
 							const char *texture, t_texture_type texture_type)
 {
-	const char	*texture_begining
-		= get_texture_path_begining((char *)texture + 3);
+	char	*texture_begining
+		= ft_strtrim(texture + 3, WHITESPACES);
 	t_texture	*texture_field;
 
 	if (is_not_only_a_path(texture_begining) == true)
@@ -59,7 +50,7 @@ static t_texture_status	save_texture(t_game_data *game_data,
 		game_data->textures.is_invalid_texture = true;
 		return (INVALID_TEXTURE);
 	}
-	*texture_field = ft_strdup(texture_begining);
+	*texture_field = texture_begining;
 	if (*texture_field == NULL)
 	{
 		ft_dprintf(STDERR_FILENO, "Error\nMalloc fail in save_texture.\n");
@@ -68,6 +59,8 @@ static t_texture_status	save_texture(t_game_data *game_data,
 	}
 	return (VALID_TEXTURE);
 }
+
+// A REFACTO
 
 t_texture_status	get_texture(t_game_data *game_data,
 						const char *texture, t_texture_element *texture_type)

@@ -23,6 +23,7 @@
 # define CUB_SUFFIX ".cub"
 # define XPM_SUFFIX ".xpm"
 # define SPACE " "
+# define WHITESPACES " 	"
 
 # define NORTH_TEXTURE_PREFIX "NO "
 # define SOUTH_TEXTURE_PREFIX "SO "
