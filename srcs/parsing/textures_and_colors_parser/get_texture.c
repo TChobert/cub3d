@@ -53,6 +53,7 @@ static t_texture_status	save_texture(t_game_data *game_data,
 	texture_path_to_save = format_texture_path(game_data, texture);
 	if (is_not_only_a_path(texture_path_to_save) == true)
 	{
+		free(texture_path_to_save);
 		save_error_type(INVALID_ID, game_data);
 		game_data->textures.is_invalid_texture = true;
 		return (INVALID_TEXTURE);
@@ -60,6 +61,7 @@ static t_texture_status	save_texture(t_game_data *game_data,
 	texture_field = get_texture_field(&game_data->textures, texture_type);
 	if (*texture_field != NULL)
 	{
+		free(texture_path_to_save);
 		save_error_type(DOUBLE_ELEMENT, game_data);
 		game_data->textures.is_invalid_texture = true;
 		return (INVALID_TEXTURE);
