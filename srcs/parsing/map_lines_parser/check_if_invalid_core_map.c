@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:52:41 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/10 15:04:57 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/11 15:00:11 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_map_status	check_if_invalid_core_map(t_map_data *map)
 			{
 				save_character_coordinates(&map->character_data, i, j);
 				map->character_data.character_orientation
-						= map->map_array[i][j];
+					= map->map_array[i][j];
 				map->characters_number += 1;
 			}
 			if (is_invalid_core_character(map,
