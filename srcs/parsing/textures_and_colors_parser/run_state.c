@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:59:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/02 19:10:23 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/11 19:37:30 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static void	state_texture(t_parse_data *parse_data, t_parse_state *parse_state)
 	++parse_data->current_line;
 }
 
-static void	state_empty_line(t_parse_data *parse_data, t_parse_state *parse_state)
+static void	state_empty_line(t_parse_data *parse_data,
+				t_parse_state *parse_state)
 {
 	if (is_empty_line(parse_data->map_file_content[parse_data->current_line])
 		== true)

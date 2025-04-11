@@ -3,63 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:48:06 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/11 16:48:10 by tchobert         ###   ########.fr       */
+/*   Updated: 2025/04/11 19:51:56 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_game.h"
 
-static void	replace_spaces_in_map_line(char *map_line)
+void	print_game_data(t_game_data *game_data)
 {
-	size_t	i;
-
-	i = 0;
-	while (map_line[i] != '\0')
-	{
-		if (map_line[i] == ' ')
-			map_line[i] = '1';
-		++i;
-	}
-}
-
-static void	replace_spaces_in_map(char **map, size_t map_length)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < map_length)
-	{
-		replace_spaces_in_map_line(map[i]);
-		++i;
-	}
-}
-
-static int	transfer_map(t_game_data *game_data, t_parse_data *parse_data)
-{
-	char	**map;
-
-	map = copy_map(parse_data->game_map.map_array, parse_data->game_map.map_lines_number);
-	if (map == NULL)
-	{
-		return (FAILURE);
-	}
-	replace_spaces_in_map(map, parse_data->game_map.map_lines_number);
-	game_data->map.map = map;
-	game_data->map.map_width = parse_data->game_map.map_lines_number;
-	game_data->map.map_length = ft_strlen(game_data->map.map[0]);
-	return (SUCCESS);
+	ft_display_strs_array(game_data->map.map, STDOUT_FILENO);
+	printf("LENGTH = %zu\n", game_data->map.map_length);
+	printf("WIDTH = %zu\n\n", game_data->map.map_width);
+	printf("TEXTURES\nNORTH_TEXTURE = %s\n",
+		game_data->images.north_texture_img.img_path);
+	printf("EAST_TEXTURE = %s\n",
+		game_data->images.east_texture_img.img_path);
+	printf("WEST_TEXTURE = %s\n",
+		game_data->images.west_texture_img.img_path);
+	printf("SOUTH_TEXTURE = %s\n\n",
+		game_data->images.south_texture_img.img_path);
+	printf("COLORS\nFLOOR COLOR / R = %d / G = %d / B = %d\n",
+		game_data->floor_and_ceiling.floor.r,
+		game_data->floor_and_ceiling.floor.g,
+		game_data->floor_and_ceiling.floor.b);
+	printf("CEILING COLOR / R = %d / G = %d / B = %d\n\n",
+		game_data->floor_and_ceiling.ceiling.r,
+		game_data->floor_and_ceiling.ceiling.g,
+		game_data->floor_and_ceiling.ceiling.b);
+	printf("CHARACTER DATA\nPOSITION / X = %f / Y = %f\n",
+		game_data->character.position.x,
+		game_data->character.position.y);
+	printf("ORIENTATION = %c\n\n", game_data->character.orientation);
 }
 
 void	init_game_data(t_game_data *game_data, t_parse_data *parse_data)
 {
 	if (transfer_map(game_data, parse_data) == FAILURE)
 	{
-		// message + exit a faire
+		ft_dprintf(STDERR_FILENO, "Error\nTransfer map failed.\n");
+		parser_exit_routine(parse_data);
+		game_exit_routine(game_data);
+		exit(FAILURE);
 	}
-	// ft_display_strs_array(game_data->map.map, STDOUT_FILENO);
-	// printf("LENGTH = %zu\n", game_data->map.map_length);
-	// printf("WIDTH = %zu\n", game_data->map.map_width);
+	transfer_textures(game_data, parse_data);
+	transfer_colors(game_data, parse_data);
+	transfer_character_data(game_data, parse_data);
+	print_game_data(game_data);
 }

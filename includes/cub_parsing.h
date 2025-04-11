@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/10 15:05:15 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/11 19:42:47 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,7 +241,8 @@ char				*remove_spaces(char *color_string);
 t_map_status		get_map(t_parse_data *parse_data);
 char				**build_map_array(t_parse_data *parse_data, char **map);
 void				check_if_no_map(t_parse_data *parse_data, size_t map_size);
-void				check_if_invalid_content_below_map(t_parse_data *parse_data);
+void				check_if_invalid_content_below_map(
+						t_parse_data *parse_data);
 char				**get_map_part(t_parse_data *parse_data);
 size_t				get_map_last_line_index(t_parse_data *parse_data,
 						char **map_file_last_part);
@@ -269,6 +270,5 @@ void				invalid_id(const char *invalid_element);
 void				invalid_xpm(const char *invalid_element);
 void				is_not_a_path(const char *invalid_element);
 void				double_element(const char *invalid_element);
-
 
 #endif

@@ -80,8 +80,11 @@ SRCS += is_valid_number_of_players.c
 SRCS += save_character_coordinates.c
 
 #init game data
-
 SRCS += init_game_data.c
+SRCS += transfer_map.c
+SRCS += transfer_textures.c
+SRCS += transfer_colors.c
+SRCS += transfer_character_data.c
 
 # utils
 SRCS += is_empty_line.c
@@ -91,6 +94,9 @@ SRCS += copy_map.c
 # srcs game #
 
 SRCS += launch_game.c
+
+# utils #
+SRCS += game_exit_routine.c
 
 vpath %.c $(PATH_SRCS)
 
