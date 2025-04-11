@@ -55,7 +55,10 @@ static int	transfer_map(t_game_data *game_data, t_parse_data *parse_data)
 
 void	init_game_data(t_game_data *game_data, t_parse_data *parse_data)
 {
-	transfer_map(game_data, parse_data);
+	if (transfer_map(game_data, parse_data) == FAILURE)
+	{
+		// message + exit a faire
+	}
 	// ft_display_strs_array(game_data->map.map, STDOUT_FILENO);
 	// printf("LENGTH = %zu\n", game_data->map.map_length);
 	// printf("WIDTH = %zu\n", game_data->map.map_width);
