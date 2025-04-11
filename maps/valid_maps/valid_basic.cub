@@ -2,27 +2,11 @@ NO ./textures/eagle.xpm
 SO ./textures/greystone.xpm
 WE ./textures/purplestone.xpm
 EA ./textures/red.xpm
-F 220,100,0
+F 225,30,0
+C 0, 20, 220
 
-
-
-C 225,30,0
-111111111111
-100000000001
-asacsascascascasc
-
-10110011000111
-1001000000N1
-111111111111
 111111111
-
-
-11
-
-
-1
-
-
-
-
-
+1000N0011
+101100101
+100100001
+111111111

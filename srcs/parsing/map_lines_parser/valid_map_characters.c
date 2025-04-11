@@ -6,13 +6,13 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:14:30 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/07 14:59:58 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:55:31 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
 
-static bool	is_valid_player_character(char c)
+bool	is_valid_player_character(char c)
 {
 	return (ft_strchr(VALID_PLAYER_CHAR, c) != NULL);
 }

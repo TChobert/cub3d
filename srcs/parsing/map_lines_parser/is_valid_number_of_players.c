@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map_file.c                                   :+:      :+:    :+:   */
+/*   is_valid_number_of_players.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/26 17:42:54 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/11 14:55:39 by racoutte         ###   ########.fr       */
+/*   Created: 2025/04/10 15:04:43 by racoutte          #+#    #+#             */
+/*   Updated: 2025/04/10 15:05:02 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
 
-t_content_status	parse_map_file(t_game_data *game_data)
+bool	is_valid_number_of_characters(size_t characters_number)
 {
-	get_file_content(game_data);
-	get_textures_and_colors(game_data);
-	get_map(game_data);
-	if (check_if_valid_map(&game_data->game_map) == INVALID_CONTENT)
+	if (characters_number != 1)
 	{
-		parser_exit_routine(game_data);
-		exit(FAILURE);
+		return (false);
 	}
-	return (VALID_CONTENT);
+	return (true);
 }

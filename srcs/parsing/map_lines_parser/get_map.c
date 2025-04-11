@@ -65,12 +65,14 @@ static char	**extract_map(t_game_data *game_data, char **map_file_last_part)
 t_map_status	get_map(t_game_data *game_data)
 {
 	char	**map;
+	char	**map_array;
 	char	**map_part;
 
 	map_part = get_map_part(game_data);
 	map = extract_map(game_data, map_part);
-	game_data->game_map.map_array = map;
+	map_array = build_map_array(game_data, map);
+	game_data->game_map.map_array = map_array;
 	ft_free_and_null(map_part);
-	ft_display_strs_array(game_data->game_map.map_array, STDOUT_FILENO);
+	ft_free_and_null(map);
 	return (VALID_MAP);
 }

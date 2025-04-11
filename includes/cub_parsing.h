@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:48:00 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/07 16:58:43 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/10 15:05:15 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,20 @@
 # define CUB_SUFFIX ".cub"
 # define XPM_SUFFIX ".xpm"
 # define SPACE " "
+# define WHITESPACES " 	"
+
+# define COORD_Y 0
+# define COORD_X 1
 
 # define NORTH_TEXTURE_PREFIX "NO "
 # define SOUTH_TEXTURE_PREFIX "SO "
 # define WEST_TEXTURE_PREFIX "WE "
 # define EAST_TEXTURE_PREFIX "EA "
 # define VALID_PLAYER_CHAR "NSEW"
+# define ZERO_VALID_CHARS "01NSEW"
+# define WALL_VALID_CHARS " 01NSEW"
+# define PLAYER_VALID_CHARS "01"
+# define SPACE_VALID_CHARS " 1"
 
 typedef char *	t_texture;
 typedef char *	t_color;
@@ -160,11 +168,18 @@ typedef struct s_colors
 	t_color_values	floor;
 }				t_colors;
 
+typedef struct s_player_data
+{
+	double	character_coords[2];
+	char	character_orientation;
+}				t_character_data;
+
 typedef struct s_map_data
 {
-	char	**map_array;
-	size_t	map_lines_number;
-	bool	is_player;
+	char				**map_array;
+	size_t				map_lines_number;
+	size_t				characters_number;
+	t_character_data	character_data;
 }				t_map_data;
 
 typedef struct s_game_data
@@ -200,7 +215,8 @@ void				save_file_content(t_game_data *game_data,
 bool				is_valid_map_path(const char *map_file_path);
 bool				is_valid_map_file(const char *map_file_path);
 t_map_file_status	map_file_opener(const char *map_file_path, int *map_fd);
-bool				is_valid_xpm_path(const char *file_path);
+bool				is_valid_xpm_path(t_game_data *game_data,
+						const char *file_path);
 t_texture_status	get_texture(t_game_data *game_data,
 						const char *texture, t_texture_element *texture_type);
 bool				is_valid_texture_prefix(const char *texture,
@@ -222,7 +238,9 @@ t_color_status		is_valid_color_string(const char *color);
 t_color_status		get_color_values(t_game_data *game_data,
 						const char *color_values, t_color_values *color_field);
 char				*remove_spaces(char *color_string);
+
 t_map_status		get_map(t_game_data *game_data);
+char				**build_map_array(t_game_data *game_data, char **map);
 void				check_if_no_map(t_game_data *game_data, size_t map_size);
 void				check_if_invalid_content_below_map(t_game_data *game_data);
 char				**get_map_part(t_game_data *game_data);
@@ -233,6 +251,14 @@ bool				is_map_last_line(const char *line);
 t_map_status		check_if_valid_first_and_last_wall_line(
 						t_map_data *map_data);
 t_map_status		check_if_valid_map_characters(t_map_data *map_data);
+t_content_status	check_if_valid_map(t_map_data *map_data);
+t_map_status		core_map_parser(t_map_data *map);
+t_map_status		check_if_open_map(t_map_data *map);
+t_map_status		check_if_invalid_core_map(t_map_data *map);
+bool				is_valid_player_character(char c);
+bool				is_valid_number_of_characters(size_t characters_number);
+void				save_character_coordinates(t_character_data *character_data,
+						size_t i, size_t j);
 
 void				parser_exit_routine(t_game_data *game_data);
 
