@@ -17,6 +17,36 @@
 
 // STRUCTURES //////////////////////////////////////////////////////////////////
 
+typedef struct s_vector
+{
+	double	x;
+	double	y;
+}				t_vector;
+
+typedef struct s_character
+{
+	t_vector	position;
+	t_vector	direction;
+	t_vector	plane;
+	char		orientation;
+}				t_character;
+
+typedef struct s_image_data
+{
+	char	*img_path;
+	void	*img_ptr;
+	int		width;
+	int		height;
+}			t_image_data;
+
+typedef struct s_images_data
+{
+	t_image_data	north_texture_img;
+	t_image_data	south_texture_img;
+	t_image_data	east_texture_img;
+	t_image_data	west_texture_img;
+}				t_images_data;
+
 typedef struct s_map_data
 {
 	char	**map;
@@ -26,10 +56,16 @@ typedef struct s_map_data
 
 typedef struct s_game_data
 {
-	t_map_data			map;
-	t_character_data	character_data;
-	t_textures			textures;
-	t_colors			floor_and_ceiling;
+	t_images_data	images;
+	t_map_data		map;
+	t_character		character;
+	t_colors		floor_and_ceiling;
 }				t_game_data;
+
+t_parsing_status	parse_game_input(t_game_data *game_data,
+	char *map_file_path);
+void				init_game_data(t_game_data *game_data,
+						t_parse_data *parse_data);
+void				exec_game_cub(t_game_data *game_data);
 
 #endif

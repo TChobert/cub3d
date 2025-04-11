@@ -205,7 +205,6 @@ void				print_opening_errors(const char *map_file_path);
 void				print_invalid_path(void);
 
 // PARSING //
-t_parsing_status	parsing(char *map_file_path);
 
 void				get_textures_and_colors(t_parse_data *parse_data);
 t_content_status	parse_map_file(t_parse_data *parse_data);
@@ -260,6 +259,7 @@ bool				is_valid_number_of_characters(size_t characters_number);
 void				save_character_coordinates(t_character_data *character_data,
 						size_t i, size_t j);
 
+char				**copy_map(char **src, size_t map_size);
 void				parser_exit_routine(t_parse_data *parse_data);
 
 // ERRORS DISPLAYING
@@ -270,7 +270,5 @@ void				invalid_xpm(const char *invalid_element);
 void				is_not_a_path(const char *invalid_element);
 void				double_element(const char *invalid_element);
 
-// GAME //
-void				exec_game_cub(char *map_file_path);
 
 #endif

@@ -12,34 +12,6 @@
 
 #include "cub_parsing.h"
 
-static char	**copy_map(char **src, size_t map_size)
-{
-	char	**map;
-	size_t	i;
-
-	i = 0;
-	map = (char **)malloc(sizeof(char *) * (map_size + 1));
-	if (map == NULL)
-	{
-		ft_dprintf(STDERR_FILENO,
-			"Error.\n Malloc failure during copy_map.\n");
-		return (NULL);
-	}
-	map[map_size] = NULL;
-	while (i < map_size)
-	{
-		map[i] = ft_strdup(src[i]);
-		if (map[i] == NULL)
-		{
-			ft_dprintf(STDERR_FILENO,
-				"Error\n Malloc failure during copy_map.\n");
-			return (NULL);
-		}
-		++i;
-	}
-	return (map);
-}
-
 static char	**extract_map(t_parse_data *parse_data, char **map_file_last_part)
 {
 	char	**map;
