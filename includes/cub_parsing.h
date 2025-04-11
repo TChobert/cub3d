@@ -168,21 +168,21 @@ typedef struct s_colors
 	t_color_values	floor;
 }				t_colors;
 
-typedef struct s_player_data
+typedef struct s_character_data
 {
 	double	character_coords[2];
 	char	character_orientation;
 }				t_character_data;
 
-typedef struct s_map_data
+typedef struct s_parse_map_data
 {
 	char				**map_array;
 	size_t				map_lines_number;
 	size_t				characters_number;
 	t_character_data	character_data;
-}				t_map_data;
+}				t_parse_map_data;
 
-typedef struct s_game_data
+typedef struct s_parse_data
 {
 	int					file_fd;
 	t_file_data			map_file_content;
@@ -191,10 +191,10 @@ typedef struct s_game_data
 	t_textures			textures;
 	t_colors			colors;
 	t_parse_error_info	parse_error_info;
-	t_map_data			game_map;
-}				t_game_data;
+	t_parse_map_data	game_map;
+}				t_parse_data;
 
-typedef void	(*t_state_func)(t_game_data *game_data, t_parse_state *state);
+typedef void	(*t_state_func)(t_parse_data *parse_data, t_parse_state *state);
 typedef void	(*t_texture_error_msg)(const char *invalid_element);
 
 // FUNCTIONS ///////////////////////////////////////////////////////////////////
@@ -207,60 +207,60 @@ void				print_invalid_path(void);
 // PARSING //
 t_parsing_status	parsing(char *map_file_path);
 
-void				get_textures_and_colors(t_game_data *game_data);
-t_content_status	parse_map_file(t_game_data *game_data);
-void				get_file_content(t_game_data *game_data);
-void				save_file_content(t_game_data *game_data,
+void				get_textures_and_colors(t_parse_data *parse_data);
+t_content_status	parse_map_file(t_parse_data *parse_data);
+void				get_file_content(t_parse_data *parse_data);
+void				save_file_content(t_parse_data *parse_data,
 						char *file_content);
 bool				is_valid_map_path(const char *map_file_path);
 bool				is_valid_map_file(const char *map_file_path);
 t_map_file_status	map_file_opener(const char *map_file_path, int *map_fd);
-bool				is_valid_xpm_path(t_game_data *game_data,
+bool				is_valid_xpm_path(t_parse_data *parse_data,
 						const char *file_path);
-t_texture_status	get_texture(t_game_data *game_data,
+t_texture_status	get_texture(t_parse_data *parse_data,
 						const char *texture, t_texture_element *texture_type);
 bool				is_valid_texture_prefix(const char *texture,
 						const char *texture_id);
-void				run_state(t_game_data *game_data,
+void				run_state(t_parse_data *parse_data,
 						t_parse_state *parse_state);
 t_texture_element	*get_texture_type(const char *texture);
 bool				is_empty_line(const char *line);
 void				save_error_type(t_error_type error_type,
-						t_game_data *game_data);
-bool				is_double_texture(t_game_data *game_data);
-void				check_textures(t_game_data *game_data);
+						t_parse_data *parse_data);
+bool				is_double_texture(t_parse_data *parse_data);
+void				check_textures(t_parse_data *parse_data);
 
 t_color_element		*get_color_type(const char *color);
-t_color_status		get_color(t_game_data *game_data, const char *color,
+t_color_status		get_color(t_parse_data *parse_data, const char *color,
 						t_color_element *color_type);
-void				check_colors(t_game_data *game_data);
+void				check_colors(t_parse_data *parse_data);
 t_color_status		is_valid_color_string(const char *color);
-t_color_status		get_color_values(t_game_data *game_data,
+t_color_status		get_color_values(t_parse_data *parse_data,
 						const char *color_values, t_color_values *color_field);
 char				*remove_spaces(char *color_string);
 
-t_map_status		get_map(t_game_data *game_data);
-char				**build_map_array(t_game_data *game_data, char **map);
-void				check_if_no_map(t_game_data *game_data, size_t map_size);
-void				check_if_invalid_content_below_map(t_game_data *game_data);
-char				**get_map_part(t_game_data *game_data);
-size_t				get_map_last_line_index(t_game_data *game_data,
+t_map_status		get_map(t_parse_data *parse_data);
+char				**build_map_array(t_parse_data *parse_data, char **map);
+void				check_if_no_map(t_parse_data *parse_data, size_t map_size);
+void				check_if_invalid_content_below_map(t_parse_data *parse_data);
+char				**get_map_part(t_parse_data *parse_data);
+size_t				get_map_last_line_index(t_parse_data *parse_data,
 						char **map_file_last_part);
 bool				is_map_last_line(const char *line);
 
 t_map_status		check_if_valid_first_and_last_wall_line(
-						t_map_data *map_data);
-t_map_status		check_if_valid_map_characters(t_map_data *map_data);
-t_content_status	check_if_valid_map(t_map_data *map_data);
-t_map_status		core_map_parser(t_map_data *map);
-t_map_status		check_if_open_map(t_map_data *map);
-t_map_status		check_if_invalid_core_map(t_map_data *map);
+						t_parse_map_data *map_data);
+t_map_status		check_if_valid_map_characters(t_parse_map_data *map_data);
+t_content_status	check_if_valid_map(t_parse_map_data *map_data);
+t_map_status		core_map_parser(t_parse_map_data *map);
+t_map_status		check_if_open_map(t_parse_map_data *map);
+t_map_status		check_if_invalid_core_map(t_parse_map_data *map);
 bool				is_valid_player_character(char c);
 bool				is_valid_number_of_characters(size_t characters_number);
 void				save_character_coordinates(t_character_data *character_data,
 						size_t i, size_t j);
 
-void				parser_exit_routine(t_game_data *game_data);
+void				parser_exit_routine(t_parse_data *parse_data);
 
 // ERRORS DISPLAYING
 

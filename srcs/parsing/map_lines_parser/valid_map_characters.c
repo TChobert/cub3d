@@ -23,7 +23,7 @@ static bool	is_valid_map_character(char c)
 		|| is_valid_player_character(c) || c == ' ');
 }
 
-t_map_status	check_if_valid_map_characters(t_map_data *map_data)
+t_map_status	check_if_valid_map_characters(t_parse_map_data *map_data)
 {
 	size_t	i;
 	size_t	j;

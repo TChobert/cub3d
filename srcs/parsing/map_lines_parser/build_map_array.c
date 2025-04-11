@@ -69,9 +69,9 @@ static int	fill_map_array(char **map_array, char **map, size_t map_length,
 	return (SUCCESS);
 }
 
-char	**build_map_array(t_game_data *game_data, char **map)
+char	**build_map_array(t_parse_data *parse_data, char **map)
 {
-	const size_t	map_length = game_data->game_map.map_lines_number;
+	const size_t	map_length = parse_data->game_map.map_lines_number;
 	char			**map_array;
 	size_t			map_width;
 
@@ -79,13 +79,13 @@ char	**build_map_array(t_game_data *game_data, char **map)
 	map_array = (char **)malloc(sizeof(char *) * (map_length + 1));
 	if (map_array == NULL)
 	{
-		parser_exit_routine(game_data);
+		parser_exit_routine(parse_data);
 		exit(FAILURE);
 	}
 	map_array[map_length] = NULL;
 	if (fill_map_array(map_array, map, map_length, map_width) == FAILURE)
 	{
-		parser_exit_routine(game_data);
+		parser_exit_routine(parse_data);
 		exit(FAILURE);
 	}
 	return (map_array);

@@ -12,14 +12,14 @@
 
 #include "cub_parsing.h"
 
-t_content_status	parse_map_file(t_game_data *game_data)
+t_content_status	parse_map_file(t_parse_data *parse_data)
 {
-	get_file_content(game_data);
-	get_textures_and_colors(game_data);
-	get_map(game_data);
-	if (check_if_valid_map(&game_data->game_map) == INVALID_CONTENT)
+	get_file_content(parse_data);
+	get_textures_and_colors(parse_data);
+	get_map(parse_data);
+	if (check_if_valid_map(&parse_data->game_map) == INVALID_CONTENT)
 	{
-		parser_exit_routine(game_data);
+		parser_exit_routine(parse_data);
 		exit(FAILURE);
 	}
 	return (VALID_CONTENT);

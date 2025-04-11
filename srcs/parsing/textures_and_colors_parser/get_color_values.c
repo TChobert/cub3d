@@ -39,7 +39,7 @@ static t_color_status	save_rgb_value(t_color_values *color_field,
 	return (VALID_COLOR);
 }
 
-static t_color_status	extract_color_rgb_values(t_game_data *game_data,
+static t_color_status	extract_color_rgb_values(t_parse_data *parse_data,
 							t_color_values *color_field,
 								char *spaceless_color_values)
 {
@@ -51,7 +51,7 @@ static t_color_status	extract_color_rgb_values(t_game_data *game_data,
 	{
 		ft_dprintf(STDERR_FILENO, "Error\nMalloc failure during function"
 			" extract_color_values.\n");
-		parser_exit_routine(game_data);
+		parser_exit_routine(parse_data);
 		exit(FAILURE);
 	}
 	if (save_rgb_value(color_field, color_rgb_values, RED) == INVALID_COLOR
@@ -59,7 +59,7 @@ static t_color_status	extract_color_rgb_values(t_game_data *game_data,
 		|| save_rgb_value(color_field, color_rgb_values, BLUE) == INVALID_COLOR)
 	{
 		ft_free_and_null(color_rgb_values);
-		save_error_type(INVALID_RGB_VALUE, game_data);
+		save_error_type(INVALID_RGB_VALUE, parse_data);
 		return (INVALID_COLOR);
 	}
 	color_field->is_full = true;
@@ -67,7 +67,7 @@ static t_color_status	extract_color_rgb_values(t_game_data *game_data,
 	return (VALID_COLOR);
 }
 
-t_color_status	get_color_values(t_game_data *game_data,
+t_color_status	get_color_values(t_parse_data *parse_data,
 					const char *color_values, t_color_values *color_field)
 {
 	char	*spaceless_color_values;
@@ -77,9 +77,9 @@ t_color_status	get_color_values(t_game_data *game_data,
 	{
 		ft_dprintf(STDERR_FILENO, "Error\nMalloc failure during function"
 			" get_color_values.\n");
-		parser_exit_routine(game_data);
+		parser_exit_routine(parse_data);
 		exit(FAILURE);
 	}
-	return (extract_color_rgb_values(game_data, color_field,
+	return (extract_color_rgb_values(parse_data, color_field,
 			spaceless_color_values));
 }

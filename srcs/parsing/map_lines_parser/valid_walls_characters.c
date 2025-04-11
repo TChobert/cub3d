@@ -31,7 +31,8 @@ static bool	is_valid_wall_line(char *line)
 	return (true);
 }
 
-t_map_status	check_if_valid_first_and_last_wall_line(t_map_data *map_data)
+t_map_status	check_if_valid_first_and_last_wall_line(
+					t_parse_map_data *map_data)
 {
 	if (is_valid_wall_line(map_data->map_array[0]) == false
 		|| is_valid_wall_line(

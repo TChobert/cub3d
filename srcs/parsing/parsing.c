@@ -14,14 +14,14 @@
 
 t_parsing_status	parsing(char *map_file_path)
 {
-	t_game_data	game_data;
+	t_parse_data	parse_data;
 
-	ft_bzero(&game_data, sizeof(game_data));
-	if (map_file_opener(map_file_path, &game_data.file_fd) == INVALID_MAP_FILE)
+	ft_bzero(&parse_data, sizeof(parse_data));
+	if (map_file_opener(map_file_path, &parse_data.file_fd) == INVALID_MAP_FILE)
 		return (PARSE_ERROR);
-	if (parse_map_file(&game_data) == INVALID_CONTENT)
+	if (parse_map_file(&parse_data) == INVALID_CONTENT)
 		return (PARSE_ERROR);
 	printf("End of parsing reached\n");
-	parser_exit_routine(&game_data);
+	parser_exit_routine(&parse_data);
 	return (PARSE_SUCCESS);
 }

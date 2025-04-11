@@ -35,44 +35,44 @@ static bool	is_map_line(const char *line)
 	return (true);
 }
 
-static void	display_colors_error_message(t_game_data *game_data)
+static void	display_colors_error_message(t_parse_data *parse_data)
 {
-	if (game_data->parse_error_info.error_type == DOUBLE_ELEMENT)
+	if (parse_data->parse_error_info.error_type == DOUBLE_ELEMENT)
 	{
 		ft_dprintf(STDERR_FILENO, "Error\n%s: is present twice.\n",
-			game_data->parse_error_info.invalid_element);
-		parser_exit_routine(game_data);
+			parse_data->parse_error_info.invalid_element);
+		parser_exit_routine(parse_data);
 		exit(FAILURE);
 	}
-	else if (game_data->parse_error_info.error_type == INVALID_ID)
+	else if (parse_data->parse_error_info.error_type == INVALID_ID)
 	{
-		if (is_map_line(game_data->parse_error_info.invalid_element) == false)
+		if (is_map_line(parse_data->parse_error_info.invalid_element) == false)
 		{
 			ft_dprintf(STDERR_FILENO, "Error\n%s: invalid element.\n",
-				game_data->parse_error_info.invalid_element);
-			parser_exit_routine(game_data);
+				parse_data->parse_error_info.invalid_element);
+			parser_exit_routine(parse_data);
 			exit(FAILURE);
 		}
 	}
-	else if (game_data->parse_error_info.error_type != NO_ERROR
-		&& is_color_missing(game_data->colors) == true)
+	else if (parse_data->parse_error_info.error_type != NO_ERROR
+		&& is_color_missing(parse_data->colors) == true)
 	{
 		ft_dprintf(STDERR_FILENO, "Error\n%s: invalid color.\n",
-			game_data->parse_error_info.invalid_element);
-		parser_exit_routine(game_data);
+			parse_data->parse_error_info.invalid_element);
+		parser_exit_routine(parse_data);
 		exit(FAILURE);
 	}
 }
 
-void	check_colors(t_game_data *game_data)
+void	check_colors(t_parse_data *parse_data)
 {
-	display_colors_error_message(game_data);
-	if (is_color_missing(game_data->colors) == true)
+	display_colors_error_message(parse_data);
+	if (is_color_missing(parse_data->colors) == true)
 	{
 		ft_dprintf(STDERR_FILENO, "Error\n4 textures paths and two colors"
 			" in RGB format are required before any other information to "
 			"start the game.\n");
-		parser_exit_routine(game_data);
+		parser_exit_routine(parse_data);
 		exit(FAILURE);
 	}
 }

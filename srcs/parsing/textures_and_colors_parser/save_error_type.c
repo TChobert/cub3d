@@ -12,9 +12,9 @@
 
 #include "cub_parsing.h"
 
-void	save_error_type(t_error_type error_type, t_game_data *game_data)
+void	save_error_type(t_error_type error_type, t_parse_data *parse_data)
 {
-	game_data->parse_error_info.error_type = error_type;
-	game_data->parse_error_info.invalid_element
-		= ft_strdup(game_data->map_file_content[game_data->current_line]);
+	parse_data->parse_error_info.error_type = error_type;
+	parse_data->parse_error_info.invalid_element
+		= ft_strdup(parse_data->map_file_content[parse_data->current_line]);
 }
