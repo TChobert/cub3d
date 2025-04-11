@@ -21,7 +21,6 @@ t_parsing_status	parsing(char *map_file_path)
 		return (PARSE_ERROR);
 	if (parse_map_file(&game_data) == INVALID_CONTENT)
 		return (PARSE_ERROR);
-	printf("NORTH_TEXTURE==%s\n", game_data.textures.north_texture);
 	printf("End of parsing reached\n");
 	parser_exit_routine(&game_data);
 	return (PARSE_SUCCESS);

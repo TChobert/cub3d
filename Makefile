@@ -76,6 +76,7 @@ SRCS += check_if_open_map.c
 SRCS += check_if_invalid_core_map.c
 SRCS += check_if_valid_map.c
 SRCS += is_valid_number_of_players.c
+SRCS += save_character_coordinates.c
 
 # utils
 SRCS += is_empty_line.c

@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_valid_number_of_players.c                       :+:      :+:    :+:   */
+/*   save_character_position.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 15:04:43 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/10 15:05:02 by racoutte         ###   ########.fr       */
+/*   Created: 2025/04/11 13:03:56 by tchobert          #+#    #+#             */
+/*   Updated: 2025/04/11 13:04:07 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_parsing.h"
 
-bool	is_valid_number_of_characters(size_t characters_number)
+void	save_character_coordinates(t_character_data *character_data,
+				size_t i, size_t j)
 {
-	if (characters_number != 1)
-	{
-		return (false);
-	}
-	return (true);
+	character_data->character_coords[COORD_Y] = i + 0.5;
+	character_data->character_coords[COORD_X] = j + 0.5;
 }

@@ -69,13 +69,14 @@ t_map_status	check_if_invalid_core_map(t_map_data *map)
 		{
 			if (is_valid_player_character(map->map_array[i][j]) == true)
 			{
-				map->players_number += 1;
+				save_character_coordinates(&map->character_data, i, j);
+				map->character_data.character_orientation
+						= map->map_array[i][j];
+				map->characters_number += 1;
 			}
 			if (is_invalid_core_character(map,
 					map->map_array[i][j], i, j) == true)
-			{
 				return (INVALID_MAP);
-			}
 			++j;
 		}
 		++i;

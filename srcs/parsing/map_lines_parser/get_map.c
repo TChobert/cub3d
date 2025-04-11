@@ -74,6 +74,5 @@ t_map_status	get_map(t_game_data *game_data)
 	game_data->game_map.map_array = map_array;
 	ft_free_and_null(map_part);
 	ft_free_and_null(map);
-	ft_display_strs_array(game_data->game_map.map_array, STDOUT_FILENO);
 	return (VALID_MAP);
 }

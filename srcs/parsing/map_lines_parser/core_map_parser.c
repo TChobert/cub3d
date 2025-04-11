@@ -23,9 +23,10 @@ t_map_status	core_map_parser(t_map_data *map)
 		ft_dprintf(STDERR_FILENO, "Error\nInvalid map, please try again.\n");
 		return (INVALID_MAP);
 	}
-	if (is_valid_number_of_players(map->players_number) == false)
+	if (is_valid_number_of_characters(map->characters_number) == false)
 	{
-		ft_dprintf(STDERR_FILENO, "Error\nInvalid number of players.\n");
+		ft_dprintf(STDERR_FILENO, "Error\nInvalid number of characters"
+			" in map.\n");
 		return (INVALID_MAP);
 	}
 	return (VALID_MAP);

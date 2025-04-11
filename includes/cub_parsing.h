@@ -25,6 +25,9 @@
 # define SPACE " "
 # define WHITESPACES " 	"
 
+# define COORD_Y 0
+# define COORD_X 1
+
 # define NORTH_TEXTURE_PREFIX "NO "
 # define SOUTH_TEXTURE_PREFIX "SO "
 # define WEST_TEXTURE_PREFIX "WE "
@@ -165,11 +168,18 @@ typedef struct s_colors
 	t_color_values	floor;
 }				t_colors;
 
+typedef struct s_player_data
+{
+	double	character_coords[2];
+	char	character_orientation;
+}				t_character_data;
+
 typedef struct s_map_data
 {
-	char	**map_array;
-	size_t	map_lines_number;
-	size_t	players_number;
+	char				**map_array;
+	size_t				map_lines_number;
+	size_t				characters_number;
+	t_character_data	character_data;
 }				t_map_data;
 
 typedef struct s_game_data
@@ -246,7 +256,9 @@ t_map_status		core_map_parser(t_map_data *map);
 t_map_status		check_if_open_map(t_map_data *map);
 t_map_status		check_if_invalid_core_map(t_map_data *map);
 bool				is_valid_player_character(char c);
-bool				is_valid_number_of_players(size_t players_number);
+bool				is_valid_number_of_characters(size_t characters_number);
+void				save_character_coordinates(t_character_data *character_data,
+						size_t i, size_t j);
 
 void				parser_exit_routine(t_game_data *game_data);
 
