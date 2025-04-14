@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map_file.c                                   :+:      :+:    :+:   */
+/*   transfer_character_data.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/26 17:42:54 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/11 14:55:39 by racoutte         ###   ########.fr       */
+/*   Created: 2025/04/11 18:29:00 by racoutte          #+#    #+#             */
+/*   Updated: 2025/04/11 19:47:00 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_parsing.h"
+#include "cub_game.h"
 
-t_content_status	parse_map_file(t_parse_data *parse_data)
+void	transfer_character_data(t_game_data *game_data,
+			t_parse_data *parse_data)
 {
-	get_file_content(parse_data);
-	get_textures_and_colors(parse_data);
-	get_map(parse_data);
-	if (check_if_valid_map(&parse_data->game_map) == INVALID_CONTENT)
-	{
-		parser_exit_routine(parse_data);
-		exit(FAILURE);
-	}
-	return (VALID_CONTENT);
+	game_data->character.position.x
+		= parse_data->game_map.character_data.character_coords[1];
+	game_data->character.position.y
+		= parse_data->game_map.character_data.character_coords[0];
+	game_data->character.orientation
+		= parse_data->game_map.character_data.character_orientation;
 }

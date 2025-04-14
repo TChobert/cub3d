@@ -12,32 +12,32 @@
 
 #include "cub_parsing.h"
 
-static size_t	find_last_full_line_in_file(t_game_data *game_data)
+static size_t	find_last_full_line_in_file(t_parse_data *parse_data)
 {
 	size_t	i;
 
-	i = game_data->map_file_lines_number - 1;
-	while (i > game_data->current_line)
+	i = parse_data->map_file_lines_number - 1;
+	while (i > parse_data->current_line)
 	{
-		if (game_data->map_file_content[i] != NULL
-			&& !is_empty_line(game_data->map_file_content[i]))
+		if (parse_data->map_file_content[i] != NULL
+			&& !is_empty_line(parse_data->map_file_content[i]))
 			return (i);
 		i--;
 	}
-	return (game_data->current_line);
+	return (parse_data->current_line);
 }
 
-void	check_if_invalid_content_below_map(t_game_data *game_data)
+void	check_if_invalid_content_below_map(t_parse_data *parse_data)
 {
 	size_t	last_full_line_index;
 
-	last_full_line_index = find_last_full_line_in_file(game_data);
+	last_full_line_index = find_last_full_line_in_file(parse_data);
 	if (is_map_last_line(
-			game_data->map_file_content[last_full_line_index]) == false)
+			parse_data->map_file_content[last_full_line_index]) == false)
 	{
 		ft_dprintf(STDERR_FILENO,
 			"Error\nInvalid content detected.\n");
-		parser_exit_routine(game_data);
+		parser_exit_routine(parse_data);
 		exit(FAILURE);
 	}
 }

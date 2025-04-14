@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_parsing.h"
+#include "cub_game.h"
 
-void	exec_game_cub(char *map_file_path)
+void	exec_game_cub(t_game_data *game_data)
 {
-	(void)map_file_path;
+	(void)game_data;
 	printf("Game part reached\n");
 }

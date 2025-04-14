@@ -12,7 +12,7 @@
 
 #include "cub_parsing.h"
 
-static char	*read_entire_file(t_game_data *game_data)
+static char	*read_entire_file(t_parse_data *parse_data)
 {
 	char	*file_content;
 	char	*current_line;
@@ -21,7 +21,7 @@ static char	*read_entire_file(t_game_data *game_data)
 	file_content = ft_strdup("");
 	if (file_content == NULL)
 		return (NULL);
-	current_line = get_next_line(game_data->file_fd);
+	current_line = get_next_line(parse_data->file_fd);
 	while (current_line != NULL)
 	{
 		temp = file_content;
@@ -31,26 +31,26 @@ static char	*read_entire_file(t_game_data *game_data)
 			return (NULL);
 		}
 		free(current_line);
-		current_line = get_next_line(game_data->file_fd);
+		current_line = get_next_line(parse_data->file_fd);
 		free(temp);
-		++game_data->map_file_lines_number;
+		++parse_data->map_file_lines_number;
 	}
 	free(current_line);
 	return (file_content);
 }
 
-void	get_file_content(t_game_data *game_data)
+void	get_file_content(t_parse_data *parse_data)
 {
 	char	*file_content;
 
-	file_content = read_entire_file(game_data);
+	file_content = read_entire_file(parse_data);
 	if (file_content == NULL)
 	{
 		ft_dprintf(STDERR_FILENO, "Error.\n"
 			"Failed to read file content. Exit.\n");
 		exit(FAILURE);
 	}
-	save_file_content(game_data, file_content);
-	close (game_data->file_fd);
+	save_file_content(parse_data, file_content);
+	close (parse_data->file_fd);
 	free(file_content);
 }

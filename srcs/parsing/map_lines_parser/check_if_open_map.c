@@ -44,7 +44,7 @@ static t_map_status	is_open_map_line(const char *map_line)
 	return (VALID_MAP);
 }
 
-t_map_status	check_if_open_map(t_map_data *map)
+t_map_status	check_if_open_map(t_parse_map_data *map)
 {
 	size_t	i;
 

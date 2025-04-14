@@ -35,23 +35,23 @@ static size_t	add_line_to_splitted_content(char *file_content,
 	return (line_size + 1);
 }
 
-static void	split_file_content(t_game_data *game_data, char *file_content)
+static void	split_file_content(t_parse_data *parse_data, char *file_content)
 {
 	char	**splitted_file_content;
 	size_t	lines;
 
 	lines = 1;
 	splitted_file_content = malloc(sizeof(char *)
-			* (game_data->map_file_lines_number + 1));
+			* (parse_data->map_file_lines_number + 1));
 	if (splitted_file_content == NULL)
 	{
 		ft_dprintf(STDERR_FILENO, "Error\n"
 			"Malloc failure during split_file_content.\n");
-		parser_exit_routine(game_data);
+		parser_exit_routine(parse_data);
 		exit(FAILURE);
 	}
-	splitted_file_content[game_data->map_file_lines_number] = NULL;
-	while (lines < game_data->map_file_lines_number)
+	splitted_file_content[parse_data->map_file_lines_number] = NULL;
+	while (lines < parse_data->map_file_lines_number)
 	{
 		file_content += add_line_to_splitted_content(file_content,
 				splitted_file_content);
@@ -59,13 +59,13 @@ static void	split_file_content(t_game_data *game_data, char *file_content)
 	}
 	if (*file_content != '\0')
 		add_line_to_splitted_content(file_content, splitted_file_content);
-	game_data->map_file_content = splitted_file_content;
+	parse_data->map_file_content = splitted_file_content;
 }
 
-void	save_file_content(t_game_data *game_data, char *file_content)
+void	save_file_content(t_parse_data *parse_data, char *file_content)
 {
-	split_file_content(game_data, file_content);
-	if (game_data->map_file_content == NULL)
+	split_file_content(parse_data, file_content);
+	if (parse_data->map_file_content == NULL)
 	{
 		ft_dprintf(STDERR_FILENO, "Error.\n"
 			"Failed to save file content. Exit.\n");

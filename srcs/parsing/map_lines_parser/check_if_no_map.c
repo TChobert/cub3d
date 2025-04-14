@@ -17,12 +17,12 @@ static void	display_map_absence(void)
 	ft_dprintf(STDERR_FILENO, "Error\nNo map found.\n");
 }
 
-void	check_if_no_map(t_game_data *game_data, size_t map_size)
+void	check_if_no_map(t_parse_data *parse_data, size_t map_size)
 {
 	if (map_size == 0)
 	{
 		display_map_absence();
-		parser_exit_routine(game_data);
+		parser_exit_routine(parse_data);
 		exit(FAILURE);
 	}
 }

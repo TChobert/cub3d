@@ -20,11 +20,11 @@ static void	free_textures(t_textures *textures)
 	free(textures->west_texture);
 }
 
-void	parser_exit_routine(t_game_data *game_data)
+void	parser_exit_routine(t_parse_data *parse_data)
 {
-	ft_free_and_null(game_data->map_file_content);
-	free(game_data->parse_error_info.invalid_element);
-	free_textures(&game_data->textures);
-	if (game_data->game_map.map_array)
-		ft_free_and_null(game_data->game_map.map_array);
+	ft_free_and_null(parse_data->map_file_content);
+	free(parse_data->parse_error_info.invalid_element);
+	free_textures(&parse_data->textures);
+	if (parse_data->game_map.map_array)
+		ft_free_and_null(parse_data->game_map.map_array);
 }

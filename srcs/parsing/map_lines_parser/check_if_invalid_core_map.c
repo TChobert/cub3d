@@ -26,7 +26,7 @@ static bool	check_relative_chars(const char *valid_chars_list, char **map,
 	return (true);
 }
 
-static bool	is_invalid_core_character(t_map_data *map, const char c,
+static bool	is_invalid_core_character(t_parse_map_data *map, const char c,
 				size_t i, size_t j)
 {
 	if (c == ' ')
@@ -56,7 +56,7 @@ static bool	is_invalid_core_character(t_map_data *map, const char c,
 	return (false);
 }
 
-t_map_status	check_if_invalid_core_map(t_map_data *map)
+t_map_status	check_if_invalid_core_map(t_parse_map_data *map)
 {
 	size_t	i;
 	size_t	j;

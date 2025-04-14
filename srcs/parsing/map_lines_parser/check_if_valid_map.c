@@ -12,7 +12,7 @@
 
 #include "cub_parsing.h"
 
-t_content_status	check_if_valid_map(t_map_data *map_data)
+t_content_status	check_if_valid_map(t_parse_map_data *map_data)
 {
 	if (check_if_valid_map_characters(map_data) == INVALID_MAP)
 	{
