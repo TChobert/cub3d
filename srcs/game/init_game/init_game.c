@@ -18,7 +18,6 @@ static void	setup_mlx_hooks(t_game_data *game_data)
 		game_data);
 	mlx_hook(game_data->mlx_data.win_ptr, KeyPress, KeyPressMask, on_key_press,
 		game_data);
-	//setup_character_moves_hooks(game_data);
 }
 
 void	init_game(t_game_data *game_data)
