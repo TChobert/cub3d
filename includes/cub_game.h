@@ -14,6 +14,10 @@
 # define CUB_GAME_H
 
 # include "cub_parsing.h"
+# include "mlx.h"
+
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
 
 // ENUM ////////////////////////////////////////////////////////////////////////
 
@@ -29,6 +33,8 @@ typedef struct s_mlx_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	int		win_width;
+	int		win_height;
 }			t_mlx_data;
 
 typedef struct s_character

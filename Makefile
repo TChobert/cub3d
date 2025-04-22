@@ -8,6 +8,22 @@ PATH_LIBFT := libft/
 
 LIBFT := $(PATH_LIBFT)libft.a
 
+##### MLX #####
+
+MLX_DIR = ./minilibx
+MLX = $(MLX_DIR)/libmlx_Linux.a
+MLX_INCLUDES_DIR = $(MLX_DIR)
+MLX_HEADER = $(MLX_INCLUDES_DIR)/mlx.h
+
+##### MLX_LINKS #####
+
+MLX_LINKS += -L/usr/lib
+MLX_LINKS += -lXext
+MLX_LINKS += -lX11
+MLX_LINKS += -lm
+MLX_LINKS += -lz
+#MLX_LINKS += -lbsd
+
 ##### SOURCES #####
 
 PATH_SRCS += srcs/
@@ -212,12 +228,14 @@ CPPCHECK_OPTIONS =  --enable=all \
 
 all: $(NAME)
 
-all: $(NAME)
-
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(OBJS)
 	@echo "$(BLUE)Compiling $(NAME)...$(WHITE)"
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(MLX_LINKS) -o $(NAME) $(LIBFT) $(MLX) -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_LIBFT) -I$(MLX_INCLUDES_DIR)
 	@echo "$(GREEN)$(NAME) Compiled!$(WHITE)"
+
+$(MLX):
+	@$(MAKE) -C $(MLX_DIR) >/dev/null
+	@echo "$(GREEN)Minilibx compiled !$(RESET)"
 
 $(OBJS): $(PATH_OBJS)%.o: %.c $(HEADERS)
 	@mkdir -p $(PATH_OBJS)
