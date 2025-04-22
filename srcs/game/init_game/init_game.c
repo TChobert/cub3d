@@ -24,7 +24,7 @@ void	init_game(t_game_data *game_data)
 {
 	if (init_mlx_data(&game_data->mlx_data) == FAILURE)
 	{
-		ft_dprintf(STDERR_FILENO, "Error\nFailed to initialize MLX.\n");
+		ft_dprintf(STDERR_FILENO, "Error\nFailed to initialize mlx.\n");
 		game_exit_routine(game_data);
 		exit(FAILURE);
 	}
