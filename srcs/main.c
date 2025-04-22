@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		if (run_game_cub(av[1]) == EXIT_FAILURE)
+		if (launch_game_cub(av[1]) == EXIT_FAILURE)
 			return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);

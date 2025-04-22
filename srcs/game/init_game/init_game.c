@@ -25,7 +25,8 @@ static int	init_mlx_data(t_mlx_data *mlx_data)
 		return (FAILURE);
 	set_default_window_size(mlx_data);
 	mlx_data->win_ptr = mlx_new_window(mlx_data->mlx_ptr,
-		mlx_data->win_width, mlx_data->win_height);
+		mlx_data->win_width, mlx_data->win_height,
+		"Cub3D");
 	if (mlx_data->win_ptr == NULL)
 		return (FAILURE);
 	return (SUCCESS);

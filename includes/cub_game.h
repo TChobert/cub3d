@@ -80,12 +80,13 @@ typedef struct s_game_data
 
 // FUNCTIONS ///////////////////////////////////////////////////////////////////
 
+void				run_game(t_game_data *game_data);
+
 // INIT GAME DATA //
 t_parsing_status	parse_game_input(t_game_data *game_data,
 						char *map_file_path);
 void				transfer_game_data(t_game_data *game_data,
 						t_parse_data *parse_data);
-void				exec_game_cub(t_game_data *game_data);
 int					transfer_map(t_game_data *game_data,
 						t_parse_data *parse_data);
 void				transfer_textures(t_game_data *game_data,
@@ -94,6 +95,7 @@ void				transfer_colors(t_game_data *game_data,
 						t_parse_data *parse_data);
 void				transfer_character_data(t_game_data *game_data,
 						t_parse_data *parse_data);
+void				init_game(t_game_data *game_data);
 
 // FREE //
 void				game_exit_routine(t_game_data *game_data);

@@ -12,8 +12,8 @@ LIBFT := $(PATH_LIBFT)libft.a
 
 MLX_DIR = ./minilibx
 MLX = $(MLX_DIR)/libmlx_Linux.a
-MLX_INCLUDES_DIR = $(MLX_DIR)
-MLX_HEADER = $(MLX_INCLUDES_DIR)/mlx.h
+PATH_INCLUDES_MLX = $(MLX_DIR)
+MLX_HEADER = $(PATH_INCLUDES_MLX)/mlx.h
 
 ##### MLX_LINKS #####
 
@@ -37,6 +37,7 @@ PATH_SRCS += srcs/parsing/map_lines_parser
 PATH_SRCS += srcs/parsing/transfer_game_data
 PATH_SRCS += srcs/parsing/utils
 PATH_SRCS += srcs/game/
+PATH_SRCS += srcs/game/init_game
 
 SRCS += main.c
 
@@ -107,11 +108,16 @@ SRCS += is_empty_line.c
 SRCS += parser_exit_routine.c
 SRCS += copy_map.c
 
-# srcs game #
+### srcs game ###
 
-SRCS += launch_game.c
+SRCS += run_game.c
 
-# utils #
+#init game
+
+SRCS += init_game.c
+
+#exit_routine
+
 SRCS += game_exit_routine.c
 
 vpath %.c $(PATH_SRCS)
@@ -228,9 +234,9 @@ CPPCHECK_OPTIONS =  --enable=all \
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
 	@echo "$(BLUE)Compiling $(NAME)...$(WHITE)"
-	$(CC) $(CFLAGS) $(OBJS) $(MLX_LINKS) -o $(NAME) $(LIBFT) $(MLX) -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_LIBFT) -I$(MLX_INCLUDES_DIR)
+	$(CC) $(CFLAGS) $(OBJS) $(MLX_LINKS) -o $(NAME) $(LIBFT) $(MLX) -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_LIBFT) -I$(PATH_INCLUDES_MLX)
 	@echo "$(GREEN)$(NAME) Compiled!$(WHITE)"
 
 $(MLX):
@@ -239,7 +245,7 @@ $(MLX):
 
 $(OBJS): $(PATH_OBJS)%.o: %.c $(HEADERS)
 	@mkdir -p $(PATH_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_LIBFT)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_LIBFT) -I$(PATH_INCLUDES_MLX)
 
 $(TESTS_OBJS): $(PATH_TESTS_OBJS)%.o: %.c $(HEADERS)
 	@mkdir -p $(PATH_TESTS_OBJS)
