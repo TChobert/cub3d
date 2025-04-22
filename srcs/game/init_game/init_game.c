@@ -32,6 +32,12 @@ static int	init_mlx_data(t_mlx_data *mlx_data)
 	return (SUCCESS);
 }
 
+static void	setup_mlx_hooks(t_game_data *game_data)
+{
+	mlx_hook(game_data->mlx_data.win_ptr, DestroyNotify, NoEventMask, on_close_window,
+			game_data);
+}
+
 void	init_game(t_game_data *game_data)
 {
 	if (init_mlx_data(&game_data->mlx_data) == FAILURE)
@@ -40,4 +46,5 @@ void	init_game(t_game_data *game_data)
 		game_exit_routine(game_data);
 		exit(FAILURE);
 	}
+	setup_mlx_hooks(game_data);
 }

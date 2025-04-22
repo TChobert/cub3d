@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   launch_game.c                                      :+:      :+:    :+:   */
+/*   on_close_window.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 11:08:12 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/24 14:33:34 by racoutte         ###   ########.fr       */
+/*   Created: 2025/04/22 17:46:25 by tchobert          #+#    #+#             */
+/*   Updated: 2025/04/22 17:46:38 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_game.h"
 
-void	run_game(t_game_data *game_data)
+int	on_close_window(void *param)
 {
-	init_game(game_data);
-	mlx_loop(game_data->mlx_data.mlx_ptr);
-	printf("Game part reached\n");
+	t_game_data	*game_data;
+
+	game_data = (t_game_data *)param;
+	game_exit_routine(game_data);
+	exit(SUCCESS);
+	return (EXIT_SUCCESS);
 }

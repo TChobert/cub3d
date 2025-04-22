@@ -13,11 +13,19 @@
 #ifndef CUB_GAME_H
 # define CUB_GAME_H
 
+# include <X11/X.h>
 # include "cub_parsing.h"
 # include "mlx.h"
 
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 600
+// DEFINES /////////////////////////////////////////////////////////////////////
+
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
+
+// for MLX
+
+# define MASK_NONE 0
+# define EVENT_CLOSE 17
 
 // ENUM ////////////////////////////////////////////////////////////////////////
 
@@ -96,6 +104,10 @@ void				transfer_colors(t_game_data *game_data,
 void				transfer_character_data(t_game_data *game_data,
 						t_parse_data *parse_data);
 void				init_game(t_game_data *game_data);
+
+// EVENTS HANDLING
+
+int					on_close_window(void *param);
 
 // FREE //
 void				game_exit_routine(t_game_data *game_data);

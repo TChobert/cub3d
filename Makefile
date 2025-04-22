@@ -38,6 +38,7 @@ PATH_SRCS += srcs/parsing/transfer_game_data
 PATH_SRCS += srcs/parsing/utils
 PATH_SRCS += srcs/game/
 PATH_SRCS += srcs/game/init_game
+PATH_SRCS += srcs/game/game_events
 
 SRCS += main.c
 
@@ -115,6 +116,10 @@ SRCS += run_game.c
 #init game
 
 SRCS += init_game.c
+
+#game events
+
+SRCS += on_close_window.c
 
 #exit_routine
 
