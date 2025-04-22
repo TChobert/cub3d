@@ -39,7 +39,7 @@ void	print_game_data(t_game_data *game_data)
 	printf("ORIENTATION = %c\n\n", game_data->character.orientation);
 }
 
-void	init_game_data(t_game_data *game_data, t_parse_data *parse_data)
+void	transfer_game_data(t_game_data *game_data, t_parse_data *parse_data)
 {
 	if (transfer_map(game_data, parse_data) == FAILURE)
 	{

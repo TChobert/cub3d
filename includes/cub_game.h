@@ -25,6 +25,12 @@ typedef struct s_vector
 	double	y;
 }				t_vector;
 
+typedef struct s_mlx_data
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+}			t_mlx_data;
+
 typedef struct s_character
 {
 	t_vector	position;
@@ -58,6 +64,7 @@ typedef struct s_map_data
 
 typedef struct s_game_data
 {
+	t_mlx_data		mlx_data;
 	t_images_data	images;
 	t_map_data		map;
 	t_character		character;
@@ -70,7 +77,7 @@ typedef struct s_game_data
 // INIT GAME DATA //
 t_parsing_status	parse_game_input(t_game_data *game_data,
 						char *map_file_path);
-void				init_game_data(t_game_data *game_data,
+void				transfer_game_data(t_game_data *game_data,
 						t_parse_data *parse_data);
 void				exec_game_cub(t_game_data *game_data);
 int					transfer_map(t_game_data *game_data,

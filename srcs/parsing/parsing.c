@@ -29,7 +29,7 @@ t_parsing_status	parse_game_input(t_game_data *game_data,
 		return (PARSE_ERROR);
 	}
 	printf("End of parsing reached\n");
-	init_game_data(game_data, &parse_data);
+	transfer_game_data(game_data, &parse_data);
 	parser_exit_routine(&parse_data);
 	return (PARSE_SUCCESS);
 }
