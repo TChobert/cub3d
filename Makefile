@@ -116,11 +116,12 @@ SRCS += run_game.c
 #init game
 
 SRCS += init_game.c
+SRCS += init_mlx_data.c
 
 #game events
 
-SRCS += on_close_window.c
 SRCS += on_key_press.c
+SRCS += on_close_window.c
 
 #exit_routine
 

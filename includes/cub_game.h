@@ -100,6 +100,7 @@ typedef struct s_game_data
 void				run_game(t_game_data *game_data);
 
 // INIT GAME DATA //
+
 t_parsing_status	parse_game_input(t_game_data *game_data,
 						char *map_file_path);
 void				transfer_game_data(t_game_data *game_data,
@@ -114,10 +115,14 @@ void				transfer_character_data(t_game_data *game_data,
 						t_parse_data *parse_data);
 void				init_game(t_game_data *game_data);
 
+// INIT MLX DATA
+
+int					init_mlx_data(t_mlx_data *mlx_data);
+
 // EVENTS HANDLING
 
-int					on_close_window(void *param);
 int					on_key_press(int keycode, void *param);
+int					on_close_window(void *param);
 
 // FREE //
 void				game_exit_routine(t_game_data *game_data);

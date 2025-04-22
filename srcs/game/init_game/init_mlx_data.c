@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   on_key_press.c                                     :+:      :+:    :+:   */
+/*   init_mlx_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 20:47:41 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/22 20:47:53 by tchobert         ###   ########.fr       */
+/*   Created: 2025/04/22 20:40:49 by tchobert          #+#    #+#             */
+/*   Updated: 2025/04/22 20:41:00 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_game.h"
 
-int	on_key_press(int keycode, void *param)
+static void	set_default_window_size(t_mlx_data *mlx)
 {
-	if (keycode == ESC_KEY)
-		on_close_window(param);
+	mlx->win_width = WIN_WIDTH;
+	mlx->win_height = WIN_HEIGHT;
+}
+
+int	init_mlx_data(t_mlx_data *mlx_data)
+{
+	mlx_data->mlx_ptr = mlx_init();
+	if (mlx_data->mlx_ptr == NULL)
+		return (FAILURE);
+	set_default_window_size(mlx_data);
+	mlx_data->win_ptr = mlx_new_window(mlx_data->mlx_ptr,
+		mlx_data->win_width, mlx_data->win_height,
+		"Cub3D");
+	if (mlx_data->win_ptr == NULL)
+		return (FAILURE);
 	return (SUCCESS);
 }

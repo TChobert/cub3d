@@ -12,36 +12,12 @@
 
 #include "cub_game.h"
 
-static void	set_default_window_size(t_mlx_data *mlx)
-{
-	mlx->win_width = WIN_WIDTH;
-	mlx->win_height = WIN_HEIGHT;
-}
-
-static int	init_mlx_data(t_mlx_data *mlx_data)
-{
-	mlx_data->mlx_ptr = mlx_init();
-	if (mlx_data->mlx_ptr == NULL)
-		return (FAILURE);
-	set_default_window_size(mlx_data);
-	mlx_data->win_ptr = mlx_new_window(mlx_data->mlx_ptr,
-		mlx_data->win_width, mlx_data->win_height,
-		"Cub3D");
-	if (mlx_data->win_ptr == NULL)
-		return (FAILURE);
-	return (SUCCESS);
-}
-
-static void	setup_close_game_hooks(t_game_data *game_data)
+static void	setup_mlx_hooks(t_game_data *game_data)
 {
 	mlx_hook(game_data->mlx_data.win_ptr, DestroyNotify, NoEventMask, on_close_window,
 		game_data);
-	mlx_key_hook(game_data->mlx_data.win_ptr, on_key_press, game_data);
-}
-
-static void	setup_mlx_hooks(t_game_data *game_data)
-{
-	setup_close_game_hooks(game_data);
+	mlx_hook(game_data->mlx_data.win_ptr, KeyPress, KeyPressMask, on_key_press,
+		game_data);
 	//setup_character_moves_hooks(game_data);
 }
 
