@@ -32,10 +32,17 @@ static int	init_mlx_data(t_mlx_data *mlx_data)
 	return (SUCCESS);
 }
 
-static void	setup_mlx_hooks(t_game_data *game_data)
+static void	setup_close_game_hooks(t_game_data *game_data)
 {
 	mlx_hook(game_data->mlx_data.win_ptr, DestroyNotify, NoEventMask, on_close_window,
-			game_data);
+		game_data);
+	mlx_key_hook(game_data->mlx_data.win_ptr, on_key_press, game_data);
+}
+
+static void	setup_mlx_hooks(t_game_data *game_data)
+{
+	setup_close_game_hooks(game_data);
+	//setup_character_moves_hooks(game_data);
 }
 
 void	init_game(t_game_data *game_data)

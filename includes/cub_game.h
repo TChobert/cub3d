@@ -37,6 +37,15 @@ typedef struct s_vector
 	double	y;
 }				t_vector;
 
+typedef enum e_key_codes
+{
+	W_KEY = 119,
+	A_KEY = 97,
+	D_KEY = 100,
+	S_KEY = 115,
+	ESC_KEY = 65307
+}			t_key_codes;
+
 typedef struct s_mlx_data
 {
 	void	*mlx_ptr;
@@ -108,6 +117,7 @@ void				init_game(t_game_data *game_data);
 // EVENTS HANDLING
 
 int					on_close_window(void *param);
+int					on_key_press(int keycode, void *param);
 
 // FREE //
 void				game_exit_routine(t_game_data *game_data);

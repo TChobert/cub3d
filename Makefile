@@ -120,6 +120,7 @@ SRCS += init_game.c
 #game events
 
 SRCS += on_close_window.c
+SRCS += on_key_press.c
 
 #exit_routine
 
