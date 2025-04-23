@@ -39,6 +39,7 @@ PATH_SRCS += srcs/parsing/utils
 PATH_SRCS += srcs/game/
 PATH_SRCS += srcs/game/init_game
 PATH_SRCS += srcs/game/game_events
+PATH_SRCS += srcs/game/character_actions
 
 SRCS += main.c
 
@@ -114,13 +115,15 @@ SRCS += copy_map.c
 SRCS += run_game.c
 
 #init game
-
 SRCS += init_game.c
 SRCS += init_mlx_data.c
 SRCS += init_character_data.c
 
-#game events
+#character actions
+SRCS += character_moves.c
+SRCS += character_rotations.c
 
+#game events
 SRCS += on_key_press.c
 SRCS += on_close_window.c
 

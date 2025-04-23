@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 15:22:08 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/11 19:24:49 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/23 18:26:07 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB_GAME_H
 
 # include <X11/X.h>
+# include <math.h>
 # include "cub_parsing.h"
 # include "mlx.h"
 
@@ -22,6 +23,7 @@
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
 # define MOVE_SPEED 0.1
+# define ROT_SPEED 0.05
 
 // ENUM ////////////////////////////////////////////////////////////////////////
 
@@ -121,6 +123,14 @@ void				init_character_data(t_game_data *game_data);
 // INIT MLX DATA
 
 int					init_mlx_data(t_game_data *game_data);
+
+// CHARACTER ACTIONS
+int					move_left(t_game_data *game_data);
+int					move_right(t_game_data *game_data);
+int					move_backward(t_game_data *game_data);
+int					move_forward(t_game_data *game_data);
+void				rotate_right(t_game_data *game_data);
+void				rotate_left(t_game_data *game_data);
 
 // EVENTS HANDLING
 
