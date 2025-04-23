@@ -22,11 +22,6 @@
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
 
-// for MLX
-
-# define MASK_NONE 0
-# define EVENT_CLOSE 17
-
 // ENUM ////////////////////////////////////////////////////////////////////////
 
 // STRUCTURES //////////////////////////////////////////////////////////////////
@@ -66,8 +61,12 @@ typedef struct s_image_data
 {
 	char	*img_path;
 	void	*img_ptr;
+	char	*pixel_info;
 	int		width;
 	int		height;
+	int		bpp;
+	int		line_length;
+	int		endian;
 }			t_image_data;
 
 typedef struct s_images_data
@@ -117,7 +116,7 @@ void				init_game(t_game_data *game_data);
 
 // INIT MLX DATA
 
-int					init_mlx_data(t_mlx_data *mlx_data);
+int					init_mlx_data(t_game_data *game_data);
 
 // EVENTS HANDLING
 

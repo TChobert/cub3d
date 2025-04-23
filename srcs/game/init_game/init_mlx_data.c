@@ -18,16 +18,46 @@ static void	set_default_window_size(t_mlx_data *mlx)
 	mlx->win_height = WIN_HEIGHT;
 }
 
-int	init_mlx_data(t_mlx_data *mlx_data)
+static int	load_texture(t_mlx_data *mlx_data, t_image_data *texture)
 {
-	mlx_data->mlx_ptr = mlx_init();
-	if (mlx_data->mlx_ptr == NULL)
+	texture->img_ptr = mlx_xpm_file_to_image(mlx_data->mlx_ptr,
+		texture->img_path, &texture->width, &texture->height);
+	if (texture->img_ptr == NULL)
 		return (FAILURE);
-	set_default_window_size(mlx_data);
-	mlx_data->win_ptr = mlx_new_window(mlx_data->mlx_ptr,
-		mlx_data->win_width, mlx_data->win_height,
+	texture->pixel_info = mlx_get_data_addr(texture->img_ptr, &texture->bpp,
+		&texture->line_length, &texture->endian);
+	return (SUCCESS);
+}
+
+static int	load_game_textures(t_game_data *game_data)
+{
+	if (load_texture(&game_data->mlx_data,
+		&game_data->images.north_texture_img) == FAILURE)
+		return (FAILURE);
+	if (load_texture(&game_data->mlx_data,
+		&game_data->images.south_texture_img) == FAILURE)
+		return (FAILURE);
+	if (load_texture(&game_data->mlx_data,
+		&game_data->images.east_texture_img) == FAILURE)
+		return (FAILURE);
+	if (load_texture(&game_data->mlx_data,
+		&game_data->images.west_texture_img) == FAILURE)
+		return (FAILURE);
+	return (SUCCESS);
+}
+
+int	init_mlx_data(t_game_data *game_data)
+{
+	game_data->mlx_data.mlx_ptr = mlx_init();
+	if (game_data->mlx_data.mlx_ptr == NULL)
+		return (FAILURE);
+	set_default_window_size(&game_data->mlx_data);
+	if (load_game_textures(game_data) == FAILURE)
+		return (FAILURE);
+	game_data->mlx_data.win_ptr = mlx_new_window(game_data->mlx_data.mlx_ptr,
+		game_data->mlx_data.win_width, game_data->mlx_data.win_height,
 		"Cub3D");
-	if (mlx_data->win_ptr == NULL)
+	if (game_data->mlx_data.win_ptr == NULL)
 		return (FAILURE);
 	return (SUCCESS);
 }
