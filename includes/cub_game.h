@@ -113,6 +113,7 @@ void				transfer_colors(t_game_data *game_data,
 void				transfer_character_data(t_game_data *game_data,
 						t_parse_data *parse_data);
 void				init_game(t_game_data *game_data);
+void				init_character_data(t_game_data *game_data);
 
 // INIT MLX DATA
 

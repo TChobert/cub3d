@@ -29,4 +29,5 @@ void	init_game(t_game_data *game_data)
 		exit(FAILURE);
 	}
 	setup_mlx_hooks(game_data);
+	init_character_data(game_data);
 }

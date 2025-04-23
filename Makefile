@@ -117,6 +117,7 @@ SRCS += run_game.c
 
 SRCS += init_game.c
 SRCS += init_mlx_data.c
+SRCS += init_character_data.c
 
 #game events
 
