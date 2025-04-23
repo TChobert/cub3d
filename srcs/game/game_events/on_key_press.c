@@ -25,9 +25,9 @@ int	on_key_press(int keycode, void *param)
 		move_left(game_data);
 	else if (keycode == D_KEY)
 		move_right(game_data);
-	// else if (keycode == LEFT_ARROW)
-	// 	rotate_left(game_data);
-	// else if (keycode == RIGHT_ARROW)
+	else if (keycode == LEFT_ARROW)
+		rotate_left(game_data);
+	else if (keycode == RIGHT_ARROW)
 		rotate_right(game_data);
 	return (SUCCESS);
 }

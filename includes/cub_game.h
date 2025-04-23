@@ -39,7 +39,9 @@ typedef enum e_key_codes
 	A_KEY = 97,
 	D_KEY = 100,
 	S_KEY = 115,
-	ESC_KEY = 65307
+	ESC_KEY = 65307,
+	RIGHT_ARROW = 65363,
+	LEFT_ARROW = 65361,
 }			t_key_codes;
 
 typedef struct s_mlx_data
