@@ -48,10 +48,10 @@ void	init_character_data(t_game_data *game_data)
 {
 	if (game_data->character.orientation == 'N')
 		setup_north_orientation(game_data);
-	if (game_data->character.orientation == 'S')
+	else if (game_data->character.orientation == 'S')
 		setup_south_orientation(game_data);
-	if (game_data->character.orientation == 'E')
+	else if (game_data->character.orientation == 'E')
 		setup_east_orientation(game_data);
-	if (game_data->character.orientation == 'W')
+	else if (game_data->character.orientation == 'W')
 		setup_west_orientation(game_data);
 }
