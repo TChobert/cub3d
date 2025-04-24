@@ -238,6 +238,7 @@ CPPCHECK_OPTIONS =  --enable=all \
 					--suppress=variableScope \
 					-I includes/ \
 					-I libft/includes \
+					-I$(PATH_INCLUDES_MLX) \
 					#--suppress=variableScope \
 
 
@@ -268,7 +269,7 @@ $(LIBFT):
 	@echo "$(GREEN)$(LIBFT) Compiled ! $(WHITE)"
 
 clang_analyzer:
-	$(CL) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) $(wildcard srcs/**/*.c)
+	$(CL) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) -I$(PATH_INCLUDES_MLX) $(wildcard srcs/**/*.c)
 
 cppcheck:
 	cppcheck $(CPPCHECK_OPTIONS) $(PATH_SRCS)
