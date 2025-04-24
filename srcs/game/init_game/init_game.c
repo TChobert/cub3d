@@ -14,8 +14,8 @@
 
 static void	setup_mlx_hooks(t_game_data *game_data)
 {
-	mlx_hook(game_data->mlx_data.win_ptr, DestroyNotify, NoEventMask, on_close_window,
-		game_data);
+	mlx_hook(game_data->mlx_data.win_ptr, DestroyNotify,
+		NoEventMask, on_close_window, game_data);
 	mlx_hook(game_data->mlx_data.win_ptr, KeyPress, KeyPressMask, on_key_press,
 		game_data);
 }
