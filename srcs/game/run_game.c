@@ -12,8 +12,9 @@
 
 #include "cub_game.h"
 
-void	exec_game_cub(t_game_data *game_data)
+void	run_game(t_game_data *game_data)
 {
-	(void)game_data;
+	init_game(game_data);
+	mlx_loop(game_data->mlx_data.mlx_ptr);
 	printf("Game part reached\n");
 }

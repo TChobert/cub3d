@@ -8,6 +8,22 @@ PATH_LIBFT := libft/
 
 LIBFT := $(PATH_LIBFT)libft.a
 
+##### MLX #####
+
+MLX_DIR = ./minilibx
+MLX = $(MLX_DIR)/libmlx_Linux.a
+PATH_INCLUDES_MLX = $(MLX_DIR)
+MLX_HEADER = $(PATH_INCLUDES_MLX)/mlx.h
+
+##### MLX_LINKS #####
+
+MLX_LINKS += -L/usr/lib
+MLX_LINKS += -lXext
+MLX_LINKS += -lX11
+MLX_LINKS += -lm
+MLX_LINKS += -lz
+#MLX_LINKS += -lbsd
+
 ##### SOURCES #####
 
 PATH_SRCS += srcs/
@@ -18,9 +34,12 @@ PATH_SRCS += srcs/parsing/map_file_opener
 PATH_SRCS += srcs/parsing/map_file_parser
 PATH_SRCS += srcs/parsing/textures_and_colors_parser
 PATH_SRCS += srcs/parsing/map_lines_parser
-PATH_SRCS += srcs/parsing/init_game_data
+PATH_SRCS += srcs/parsing/transfer_game_data
 PATH_SRCS += srcs/parsing/utils
 PATH_SRCS += srcs/game/
+PATH_SRCS += srcs/game/init_game
+PATH_SRCS += srcs/game/game_events
+PATH_SRCS += srcs/game/character_actions
 
 SRCS += main.c
 
@@ -79,8 +98,8 @@ SRCS += check_if_valid_map.c
 SRCS += is_valid_number_of_players.c
 SRCS += save_character_coordinates.c
 
-#init game data
-SRCS += init_game_data.c
+#transfer game data
+SRCS += transfer_game_data.c
 SRCS += transfer_map.c
 SRCS += transfer_textures.c
 SRCS += transfer_colors.c
@@ -91,11 +110,25 @@ SRCS += is_empty_line.c
 SRCS += parser_exit_routine.c
 SRCS += copy_map.c
 
-# srcs game #
+### srcs game ###
 
-SRCS += launch_game.c
+SRCS += run_game.c
 
-# utils #
+#init game
+SRCS += init_game.c
+SRCS += init_mlx_data.c
+SRCS += init_character_data.c
+
+#character actions
+SRCS += character_moves.c
+SRCS += character_rotations.c
+
+#game events
+SRCS += on_key_press.c
+SRCS += on_close_window.c
+
+#exit_routine
+
 SRCS += game_exit_routine.c
 
 vpath %.c $(PATH_SRCS)
@@ -205,6 +238,7 @@ CPPCHECK_OPTIONS =  --enable=all \
 					--suppress=variableScope \
 					-I includes/ \
 					-I libft/includes \
+					-I$(PATH_INCLUDES_MLX) \
 					#--suppress=variableScope \
 
 
@@ -212,16 +246,18 @@ CPPCHECK_OPTIONS =  --enable=all \
 
 all: $(NAME)
 
-all: $(NAME)
-
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
 	@echo "$(BLUE)Compiling $(NAME)...$(WHITE)"
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(MLX_LINKS) -o $(NAME) $(LIBFT) $(MLX) -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_LIBFT) -I$(PATH_INCLUDES_MLX)
 	@echo "$(GREEN)$(NAME) Compiled!$(WHITE)"
+
+$(MLX):
+	@$(MAKE) -C $(MLX_DIR) >/dev/null
+	@echo "$(GREEN)Minilibx compiled !$(RESET)"
 
 $(OBJS): $(PATH_OBJS)%.o: %.c $(HEADERS)
 	@mkdir -p $(PATH_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_LIBFT)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INCLUDES) -I $(PATH_INCLUDES_LIBFT) -I$(PATH_INCLUDES_MLX)
 
 $(TESTS_OBJS): $(PATH_TESTS_OBJS)%.o: %.c $(HEADERS)
 	@mkdir -p $(PATH_TESTS_OBJS)
@@ -233,7 +269,7 @@ $(LIBFT):
 	@echo "$(GREEN)$(LIBFT) Compiled ! $(WHITE)"
 
 clang_analyzer:
-	$(CL) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) $(wildcard srcs/**/*.c)
+	$(CL) $(CFLAGS) $(CLANG_ANALYZE_OPTIONS) -I$(PATH_INCLUDES_MLX) $(wildcard srcs/**/*.c)
 
 cppcheck:
 	cppcheck $(CPPCHECK_OPTIONS) $(PATH_SRCS)

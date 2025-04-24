@@ -21,7 +21,7 @@ int	launch_game_cub(char *map_file_path)
 	ft_bzero(&game_data, sizeof(game_data));
 	if (parse_game_input(&game_data, map_file_path) == PARSE_ERROR)
 		return (EXIT_FAILURE);
-	exec_game_cub(&game_data);
+	run_game(&game_data);
 	game_exit_routine(&game_data);
 	return (EXIT_SUCCESS);
 }
