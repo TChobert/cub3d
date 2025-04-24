@@ -35,6 +35,12 @@ typedef struct s_vector
 	double	y;
 }				t_vector;
 
+typedef enum e_key_state
+{
+	KEY_FREE = 0,
+	KEY_PRESSED = 1
+}			t_key_state;
+
 typedef enum e_key_codes
 {
 	W_KEY = 119,
@@ -45,6 +51,16 @@ typedef enum e_key_codes
 	RIGHT_ARROW = 65363,
 	LEFT_ARROW = 65361,
 }			t_key_codes;
+
+typedef struct	s_player_input
+{
+	t_key_state	w;
+	t_key_state	a;
+	t_key_state	s;
+	t_key_state	d;
+	t_key_state	left_arrow;
+	t_key_state	right_arrow;
+}				t_player_input;
 
 typedef struct s_mlx_data
 {
@@ -96,6 +112,7 @@ typedef struct s_game_data
 	t_map_data		map;
 	t_character		character;
 	t_colors		floor_and_ceiling;
+	t_player_input	player_inputs;
 }				t_game_data;
 
 
@@ -132,9 +149,14 @@ int					move_forward(t_game_data *game_data);
 void				rotate_right(t_game_data *game_data);
 void				rotate_left(t_game_data *game_data);
 
-// EVENTS HANDLING
+// PLAYER INPUTS HANDLING
 
 int					on_key_press(int keycode, void *param);
+int					on_key_released(int keycode, void *param);
+
+// EVENTS HANDLING
+
+int					move_character(t_game_data *game_data);
 int					on_close_window(void *param);
 
 // FREE //

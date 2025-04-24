@@ -38,6 +38,7 @@ PATH_SRCS += srcs/parsing/transfer_game_data
 PATH_SRCS += srcs/parsing/utils
 PATH_SRCS += srcs/game/
 PATH_SRCS += srcs/game/init_game
+PATH_SRCS += srcs/game/handle_player_inputs
 PATH_SRCS += srcs/game/game_events
 PATH_SRCS += srcs/game/character_actions
 
@@ -123,8 +124,13 @@ SRCS += init_character_data.c
 SRCS += character_moves.c
 SRCS += character_rotations.c
 
-#game events
+#player_input
+
 SRCS += on_key_press.c
+SRCS += on_key_release.c
+
+#game events
+SRCS += move_character.c
 SRCS += on_close_window.c
 
 #exit_routine
