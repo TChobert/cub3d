@@ -61,7 +61,7 @@ typedef enum e_key_codes
 typedef struct	s_ray
 {
 	t_vector	ray_dir;
-	t_map_coord	map_coord;
+	t_map_coord	map;
 	t_vector	side_dist;
 	t_vector	delta_dist;
 	int			step_x;

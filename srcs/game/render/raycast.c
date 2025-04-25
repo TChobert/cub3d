@@ -19,13 +19,14 @@ int	raycast(t_game_data *game_data)
 	x = 0;
 	while (x < WIN_WIDTH)
 	{
-		t_ray	ray;
+		t_ray		ray;
+		t_wall_line	wall_line;
 
 		init_ray(game_data, &ray, x);
 		set_dda_data(game_data, &ray);
 		launch_dda(game_data, &ray);
-		calculate_line_height(game_data, &ray);
-		//draw_vertical_line(game_data->image, x, &ray); // à venir
+		calculate_line_height(game_data, &ray, &wall_line);
+		//draw_vertical_line(game_data->image, x, &ray, &wall); // à venir
 		++x;
 	}
 	return (SUCCESS);
