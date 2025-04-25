@@ -187,6 +187,7 @@ void				launch_dda(t_game_data *game_data, t_ray *ray);
 int					raycast(t_game_data *game_data);
 int					render(t_game_data *game_data);
 void				set_dda_data(t_game_data *game_data, t_ray *ray);
+void				draw_frame_to_window(t_game_data *game_data);
 
 // EVENTS HANDLING
 

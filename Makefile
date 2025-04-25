@@ -146,6 +146,7 @@ SRCS += launch_dda.c
 SRCS += raycast.c
 SRCS += render.c
 SRCS += set_dda_data.c
+SRCS += draw_frame_to_window.c
 
 #exit_routine
 

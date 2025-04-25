@@ -15,5 +15,6 @@
 int	render(t_game_data *game_data)
 {
 	raycast(game_data);
+	draw_frame_to_window(game_data);
 	return (SUCCESS);
 }
