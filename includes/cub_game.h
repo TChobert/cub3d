@@ -29,6 +29,12 @@
 
 // STRUCTURES //////////////////////////////////////////////////////////////////
 
+typedef struct	s_map_coord
+{
+	int	x;
+	int	y;
+}				t_map_coord;
+
 typedef struct s_vector
 {
 	double	x;
@@ -51,6 +57,22 @@ typedef enum e_key_codes
 	RIGHT_ARROW = 65363,
 	LEFT_ARROW = 65361,
 }			t_key_codes;
+
+typedef struct	s_ray
+{
+	t_vector	ray_dir;
+	t_map_coord	map_coord;
+	t_vector	side_dist;
+	t_vector	delta_dist;
+	int			step_x;
+	int			step_y;
+	int			hit;
+	int			side;
+	double		perp_wall_dist;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+}				t_ray;
 
 typedef struct	s_player_input
 {
