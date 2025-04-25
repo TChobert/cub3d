@@ -12,6 +12,20 @@
 
 #include "cub_game.h"
 
+static void	calculate_draw_start(t_ray *ray)
+{
+	ray->draw_start = -ray->line_height / 2 + WIN_HEIGHT / 2;
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
+}
+
+static void	calculate_draw_end(t_ray *ray)
+{
+	ray->draw_end = ray->line_height / 2 + WIN_HEIGHT / 2;
+	if (ray->draw_end >= WIN_HEIGHT)
+		ray->draw_end = WIN_HEIGHT - 1;
+}
+
 static void	calculate_wall_distance(t_game_data *game_data, t_ray *ray)
 {
 	if (ray->side == 0)
@@ -28,5 +42,7 @@ void	calculate_line_height(t_game_data *game_data, t_ray *ray)
 
 	calculate_wall_distance(game_data, ray);
 	line_height = (int)(WIN_HEIGHT / ray->perp_wall_dist);
-	
+	ray->line_height = line_height;
+	calculate_draw_start(ray);
+	calculate_draw_end(ray);
 }

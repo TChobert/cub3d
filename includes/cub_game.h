@@ -84,14 +84,6 @@ typedef struct	s_player_input
 	t_key_state	right_arrow;
 }				t_player_input;
 
-typedef struct s_mlx_data
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int		win_width;
-	int		win_height;
-}			t_mlx_data;
-
 typedef struct s_character
 {
 	t_vector	position;
@@ -119,6 +111,15 @@ typedef struct s_images_data
 	t_image_data	east_texture_img;
 	t_image_data	west_texture_img;
 }				t_images_data;
+
+typedef struct s_mlx_data
+{
+	void			*mlx_ptr;
+	void			*win_ptr;
+	int				win_width;
+	int				win_height;
+	t_image_data	frame_img;
+}			t_mlx_data;
 
 typedef struct s_map_data
 {
@@ -175,6 +176,17 @@ void				rotate_left(t_game_data *game_data);
 
 int					on_key_press(int keycode, void *param);
 int					on_key_released(int keycode, void *param);
+
+// GAME LOOP & RENDER
+int					update_game_state(t_game_data *game_data);
+int					game_loop(t_game_data *game_data);
+void				calculate_line_height(t_game_data *game_data, t_ray *ray);
+void				draw_vertical_line(t_image_data *img, int x, t_ray *ray);
+void				init_ray(t_game_data *game_data, t_ray *ray, size_t	x);
+void				launch_dda(t_game_data *game_data, t_ray *ray);
+int					raycast(t_game_data *game_data);
+int					render(t_game_data *game_data);
+void				set_dda_data(t_game_data *game_data, t_ray *ray);
 
 // EVENTS HANDLING
 

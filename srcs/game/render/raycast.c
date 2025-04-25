@@ -20,14 +20,14 @@ int	raycast(t_game_data *game_data)
 	while (x < WIN_WIDTH)
 	{
 		t_ray		ray;
-		t_wall_line	wall_line;
 
 		init_ray(game_data, &ray, x);
 		set_dda_data(game_data, &ray);
 		launch_dda(game_data, &ray);
-		calculate_line_height(game_data, &ray, &wall_line);
-		//draw_vertical_line(game_data->image, x, &ray, &wall); // à venir
+		calculate_line_height(game_data, &ray);
+		draw_vertical_line(&game_data->mlx_data.frame_img, x, &ray);
 		++x;
 	}
+	mlx_put_image_to_window(game_data->mlx_data.mlx_ptr, game_data->mlx_data.win_ptr, game_data->mlx_data.frame_img.img_ptr, 0, 0);
 	return (SUCCESS);
 }

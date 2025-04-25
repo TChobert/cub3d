@@ -15,4 +15,5 @@
 int	render(t_game_data *game_data)
 {
 	raycast(game_data);
+	return (SUCCESS);
 }
