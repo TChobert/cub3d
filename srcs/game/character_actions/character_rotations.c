@@ -6,13 +6,13 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:41:02 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/23 18:20:55 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/28 09:48:41 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_game.h"
 
-void	rotate_left(t_game_data *game_data)
+void	rotate_right(t_game_data *game_data)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -29,7 +29,7 @@ void	rotate_left(t_game_data *game_data)
 		* sin(ROT_SPEED) + game_data->character.plane.y * cos(ROT_SPEED);
 }
 
-void	rotate_right(t_game_data *game_data)
+void	rotate_left(t_game_data *game_data)
 {
 	double	old_dir_x;
 	double	old_plane_x;
