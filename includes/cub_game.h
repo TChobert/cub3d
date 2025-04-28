@@ -189,6 +189,9 @@ int					render(t_game_data *game_data);
 void				set_dda_data(t_game_data *game_data, t_ray *ray);
 void				draw_frame_to_window(t_game_data *game_data);
 unsigned int		create_color(int r, int g, int b);
+void				draw_wall(t_game_data *game_data, t_image_data *img, t_ray *ray,
+						int x);
+t_image_data		*choose_texture(t_game_data *game_data, t_ray *ray);
 
 // EVENTS HANDLING
 

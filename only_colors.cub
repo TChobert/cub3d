@@ -1,11 +1,11 @@
-NO assets/1_north_texture_basic.xpm
-WE assets/1_west_texture_basic.xpm
-SO assets/1_south_texture_basic.xpm
-EA assets/1_east_texture_basic.xpm
+NO assets/wall_texture_64.xpm
+WE assets/wall_texture_64.xpm
+SO assets/wall_texture_64.xpm
+EA assets/wall_texture_64.xpm
 
 
-C 232, 5, 98
-F 56, 236, 2
+C 128,128,128
+F 0, 0, 0
 
 111111111111111111111111111111
 100000000000000000000000000001

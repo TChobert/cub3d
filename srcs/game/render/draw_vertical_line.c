@@ -31,18 +31,6 @@ static void	draw_sky(t_game_data *game_data, t_image_data *img,
 	}
 }
 
-static void	draw_wall(t_image_data *img, t_ray *ray, int x)
-{
-	int	y;
-
-	y = ray->draw_start;
-	while (y < ray->draw_end)
-	{
-		*((unsigned int *)(img->pixel_info + y * img->line_length + x * (img->bpp / 8))) = 0x808080;
-		++y;
-	}
-}
-
 static void	draw_floor(t_game_data *game_data, t_image_data *img,
 				t_ray *ray, int x)
 {
@@ -65,6 +53,6 @@ static void	draw_floor(t_game_data *game_data, t_image_data *img,
 void	draw_vertical_line(t_game_data *game_data, t_image_data *img, int x, t_ray *ray)
 {
 	draw_sky(game_data, img, ray, x);
-	draw_wall(img, ray, x);
+	draw_wall(game_data, img, ray, x);
 	draw_floor(game_data, img, ray, x);
 }

@@ -148,6 +148,8 @@ SRCS += render.c
 SRCS += set_dda_data.c
 SRCS += draw_frame_to_window.c
 SRCS += draw_color.c
+SRCS += draw_wall.c
+SRCS += choose_texture.c
 
 #exit_routine
 
