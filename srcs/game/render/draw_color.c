@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast.c                                          :+:      :+:    :+:   */
+/*   draw_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/25 15:51:22 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/28 10:36:36 by racoutte         ###   ########.fr       */
+/*   Created: 2025/04/28 10:28:40 by racoutte          #+#    #+#             */
+/*   Updated: 2025/04/28 10:33:55 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_game.h"
 
-int	raycast(t_game_data *game_data)
+unsigned int	create_color(int r, int g, int b)
 {
-	size_t	x;
-
-	x = 0;
-	while (x < WIN_WIDTH)
-	{
-		t_ray		ray;
-
-		init_ray(game_data, &ray, x);
-		set_dda_data(game_data, &ray);
-		launch_dda(game_data, &ray);
-		calculate_line_height(game_data, &ray);
-		draw_vertical_line(game_data, &game_data->mlx_data.frame_img, x, &ray);
-		++x;
-	}
-	return (SUCCESS);
+	return ((0xFF << 24) | (r << 16) | (g << 8) | b);
 }
+

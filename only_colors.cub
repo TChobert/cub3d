@@ -4,8 +4,8 @@ SO assets/1_south_texture_basic.xpm
 EA assets/1_east_texture_basic.xpm
 
 
-C 		54, 12,          124
-F 1,32,98
+C 232, 5, 98
+F 56, 236, 2
 
 111111111111111111111111111111
 100000000000000000000000000001

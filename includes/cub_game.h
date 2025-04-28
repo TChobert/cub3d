@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 15:22:08 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/23 18:26:07 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/28 10:36:58 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,13 +181,14 @@ int					on_key_released(int keycode, void *param);
 int					update_game_state(t_game_data *game_data);
 int					game_loop(t_game_data *game_data);
 void				calculate_line_height(t_game_data *game_data, t_ray *ray);
-void				draw_vertical_line(t_image_data *img, int x, t_ray *ray);
+void				draw_vertical_line(t_game_data *game_data, t_image_data *img, int x, t_ray *ray);
 void				init_ray(t_game_data *game_data, t_ray *ray, size_t	x);
 void				launch_dda(t_game_data *game_data, t_ray *ray);
 int					raycast(t_game_data *game_data);
 int					render(t_game_data *game_data);
 void				set_dda_data(t_game_data *game_data, t_ray *ray);
 void				draw_frame_to_window(t_game_data *game_data);
+unsigned int		create_color(int r, int g, int b);
 
 // EVENTS HANDLING
 
