@@ -34,6 +34,8 @@ static void	destroy_images(t_mlx_data *mlx_data, t_images_data *images)
 		mlx_destroy_image(mlx_data->mlx_ptr, images->east_texture_img.img_ptr);
 	if (images->west_texture_img.img_ptr != NULL)
 		mlx_destroy_image(mlx_data->mlx_ptr, images->west_texture_img.img_ptr);
+	if (mlx_data->frame_img.img_ptr != NULL)
+		mlx_destroy_image(mlx_data->mlx_ptr, mlx_data->frame_img.img_ptr);
 }
 
 static void	free_images_paths(t_images_data images)

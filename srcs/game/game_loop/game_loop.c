@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   launch_game.c                                      :+:      :+:    :+:   */
+/*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 11:08:12 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/24 14:33:34 by racoutte         ###   ########.fr       */
+/*   Created: 2025/04/25 15:32:22 by tchobert          #+#    #+#             */
+/*   Updated: 2025/04/25 15:32:30 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_game.h"
 
-void	run_game(t_game_data *game_data)
+int	game_loop(t_game_data *game_data)
 {
-	init_game(game_data);
-	mlx_loop_hook(game_data->mlx_data.mlx_ptr,
-		game_loop, game_data);
-	mlx_loop(game_data->mlx_data.mlx_ptr);
-	printf("Game part reached\n");
+	update_game_state(game_data);
+	render(game_data);
+	return (SUCCESS);
 }

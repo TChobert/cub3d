@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 15:22:08 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/23 18:26:07 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/28 10:36:58 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,30 @@
 
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
-# define MOVE_SPEED 0.1
-# define ROT_SPEED 0.05
+# define MOVE_SPEED 0.03
+# define ROT_SPEED 0.01
 
 // ENUM ////////////////////////////////////////////////////////////////////////
 
 // STRUCTURES //////////////////////////////////////////////////////////////////
+
+typedef struct s_map_coord
+{
+	int	x;
+	int	y;
+}				t_map_coord;
 
 typedef struct s_vector
 {
 	double	x;
 	double	y;
 }				t_vector;
+
+typedef enum e_key_state
+{
+	KEY_FREE = 0,
+	KEY_PRESSED = 1
+}			t_key_state;
 
 typedef enum e_key_codes
 {
@@ -46,13 +58,31 @@ typedef enum e_key_codes
 	LEFT_ARROW = 65361,
 }			t_key_codes;
 
-typedef struct s_mlx_data
+typedef struct s_ray
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int		win_width;
-	int		win_height;
-}			t_mlx_data;
+	t_vector	ray_dir;
+	t_map_coord	map;
+	t_vector	side_dist;
+	t_vector	delta_dist;
+	int			step_x;
+	int			step_y;
+	int			hit;
+	int			side;
+	double		perp_wall_dist;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+}				t_ray;
+
+typedef struct s_player_input
+{
+	t_key_state	w;
+	t_key_state	a;
+	t_key_state	s;
+	t_key_state	d;
+	t_key_state	left_arrow;
+	t_key_state	right_arrow;
+}				t_player_input;
 
 typedef struct s_character
 {
@@ -72,7 +102,7 @@ typedef struct s_image_data
 	int		bpp;
 	int		line_length;
 	int		endian;
-}			t_image_data;
+}				t_image_data;
 
 typedef struct s_images_data
 {
@@ -81,6 +111,26 @@ typedef struct s_images_data
 	t_image_data	east_texture_img;
 	t_image_data	west_texture_img;
 }				t_images_data;
+
+typedef struct s_wall_params
+{
+	t_image_data	*img;
+	t_image_data	*texture;
+	t_ray			*ray;
+	int				x;
+	int				tex_x;
+	double			tex_pos_start;
+	double			step;
+}				t_wall_params;
+
+typedef struct s_mlx_data
+{
+	void			*mlx_ptr;
+	void			*win_ptr;
+	int				win_width;
+	int				win_height;
+	t_image_data	frame_img;
+}				t_mlx_data;
 
 typedef struct s_map_data
 {
@@ -96,8 +146,8 @@ typedef struct s_game_data
 	t_map_data		map;
 	t_character		character;
 	t_colors		floor_and_ceiling;
+	t_player_input	player_inputs;
 }				t_game_data;
-
 
 // FUNCTIONS ///////////////////////////////////////////////////////////////////
 
@@ -131,10 +181,34 @@ int					move_backward(t_game_data *game_data);
 int					move_forward(t_game_data *game_data);
 void				rotate_right(t_game_data *game_data);
 void				rotate_left(t_game_data *game_data);
+bool				is_valid_move(t_game_data *game_data,
+						double new_x, double new_y);
+
+// PLAYER INPUTS HANDLING
+
+int					on_key_press(int keycode, void *param);
+int					on_key_released(int keycode, void *param);
+
+// GAME LOOP & RENDER
+int					update_game_state(t_game_data *game_data);
+int					game_loop(t_game_data *game_data);
+void				calculate_line_height(t_game_data *game_data, t_ray *ray);
+void				draw_vertical_line(t_game_data *game_data,
+						t_image_data *img, int x, t_ray *ray);
+void				init_ray(t_game_data *game_data, t_ray *ray, size_t	x);
+void				launch_dda(t_game_data *game_data, t_ray *ray);
+int					raycast(t_game_data *game_data);
+int					render(t_game_data *game_data);
+void				set_dda_data(t_game_data *game_data, t_ray *ray);
+void				draw_frame_to_window(t_game_data *game_data);
+unsigned int		create_color(int r, int g, int b);
+void				draw_wall(t_game_data *game_data, t_image_data *img,
+						t_ray *ray, int x);
+t_image_data		*choose_texture(t_game_data *game_data, t_ray *ray);
 
 // EVENTS HANDLING
 
-int					on_key_press(int keycode, void *param);
+int					move_character(t_game_data *game_data);
 int					on_close_window(void *param);
 
 // FREE //

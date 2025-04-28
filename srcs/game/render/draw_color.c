@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   launch_game.c                                      :+:      :+:    :+:   */
+/*   draw_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 11:08:12 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/24 14:33:34 by racoutte         ###   ########.fr       */
+/*   Created: 2025/04/28 10:28:40 by racoutte          #+#    #+#             */
+/*   Updated: 2025/04/28 10:33:55 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_game.h"
 
-void	run_game(t_game_data *game_data)
+unsigned int	create_color(int r, int g, int b)
 {
-	init_game(game_data);
-	mlx_loop_hook(game_data->mlx_data.mlx_ptr,
-		game_loop, game_data);
-	mlx_loop(game_data->mlx_data.mlx_ptr);
-	printf("Game part reached\n");
+	return (((unsigned int)0xFF << 24) | (r << 16) | (g << 8) | b);
 }

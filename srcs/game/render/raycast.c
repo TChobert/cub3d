@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   launch_game.c                                      :+:      :+:    :+:   */
+/*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 11:08:12 by racoutte          #+#    #+#             */
-/*   Updated: 2025/03/24 14:33:34 by racoutte         ###   ########.fr       */
+/*   Created: 2025/04/25 15:51:22 by tchobert          #+#    #+#             */
+/*   Updated: 2025/04/28 10:36:36 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_game.h"
 
-void	run_game(t_game_data *game_data)
+int	raycast(t_game_data *game_data)
 {
-	init_game(game_data);
-	mlx_loop_hook(game_data->mlx_data.mlx_ptr,
-		game_loop, game_data);
-	mlx_loop(game_data->mlx_data.mlx_ptr);
-	printf("Game part reached\n");
+	size_t	x;
+	t_ray	ray;
+
+	x = 0;
+	while (x < WIN_WIDTH)
+	{
+		init_ray(game_data, &ray, x);
+		set_dda_data(game_data, &ray);
+		launch_dda(game_data, &ray);
+		calculate_line_height(game_data, &ray);
+		draw_vertical_line(game_data, &game_data->mlx_data.frame_img, x, &ray);
+		++x;
+	}
+	return (SUCCESS);
 }

@@ -38,8 +38,11 @@ PATH_SRCS += srcs/parsing/transfer_game_data
 PATH_SRCS += srcs/parsing/utils
 PATH_SRCS += srcs/game/
 PATH_SRCS += srcs/game/init_game
+PATH_SRCS += srcs/game/handle_player_inputs
 PATH_SRCS += srcs/game/game_events
 PATH_SRCS += srcs/game/character_actions
+PATH_SRCS += srcs/game/game_loop
+PATH_SRCS += srcs/game/render
 
 SRCS += main.c
 
@@ -122,10 +125,32 @@ SRCS += init_character_data.c
 #character actions
 SRCS += character_moves.c
 SRCS += character_rotations.c
+SRCS += is_valid_move.c
+
+#player_input
+SRCS += on_key_press.c
+SRCS += on_key_release.c
 
 #game events
-SRCS += on_key_press.c
+SRCS += move_character.c
 SRCS += on_close_window.c
+SRCS += update_game_state.c
+
+#game loop
+SRCS += game_loop.c
+
+#render
+SRCS += calculate_line_height.c
+SRCS += draw_vertical_line.c
+SRCS += init_ray.c
+SRCS += launch_dda.c
+SRCS += raycast.c
+SRCS += render.c
+SRCS += set_dda_data.c
+SRCS += draw_frame_to_window.c
+SRCS += draw_color.c
+SRCS += draw_wall.c
+SRCS += choose_texture.c
 
 #exit_routine
 

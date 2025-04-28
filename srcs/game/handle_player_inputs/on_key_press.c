@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   on_key_press.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 20:47:41 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/24 14:24:32 by racoutte         ###   ########.fr       */
+/*   Created: 2025/04/24 20:06:24 by tchobert          #+#    #+#             */
+/*   Updated: 2025/04/24 20:06:34 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,18 @@ int	on_key_press(int keycode, void *param)
 	if (keycode == ESC_KEY)
 		on_close_window(param);
 	else if (keycode == W_KEY)
-		move_forward(game_data);
+		game_data->player_inputs.w = KEY_PRESSED;
 	else if (keycode == S_KEY)
-		move_backward(game_data);
+		game_data->player_inputs.s = KEY_PRESSED;
 	else if (keycode == A_KEY)
-		move_left(game_data);
+		game_data->player_inputs.a = KEY_PRESSED;
 	else if (keycode == D_KEY)
-		move_right(game_data);
+		game_data->player_inputs.d = KEY_PRESSED;
 	else if (keycode == LEFT_ARROW)
-		rotate_left(game_data);
+		game_data->player_inputs.left_arrow = KEY_PRESSED;
 	else if (keycode == RIGHT_ARROW)
-		rotate_right(game_data);
+		game_data->player_inputs.right_arrow = KEY_PRESSED;
 	return (SUCCESS);
 }
+
+// garder les else if pour simultaneite ?

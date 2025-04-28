@@ -46,6 +46,24 @@ static int	load_game_textures(t_game_data *game_data)
 	return (SUCCESS);
 }
 
+static int	load_frame_image(t_mlx_data *mlx_data)
+{
+	mlx_data->frame_img.width = mlx_data->win_width;
+	mlx_data->frame_img.height = mlx_data->win_height;
+	mlx_data->frame_img.img_ptr = mlx_new_image(
+			mlx_data->mlx_ptr,
+			mlx_data->frame_img.width,
+			mlx_data->frame_img.height);
+	if (mlx_data->frame_img.img_ptr == NULL)
+		return (FAILURE);
+	mlx_data->frame_img.pixel_info = mlx_get_data_addr(
+			mlx_data->frame_img.img_ptr,
+			&mlx_data->frame_img.bpp,
+			&mlx_data->frame_img.line_length,
+			&mlx_data->frame_img.endian);
+	return (SUCCESS);
+}
+
 int	init_mlx_data(t_game_data *game_data)
 {
 	game_data->mlx_data.mlx_ptr = mlx_init();
@@ -53,6 +71,8 @@ int	init_mlx_data(t_game_data *game_data)
 		return (FAILURE);
 	set_default_window_size(&game_data->mlx_data);
 	if (load_game_textures(game_data) == FAILURE)
+		return (FAILURE);
+	if (load_frame_image(&game_data->mlx_data) == FAILURE)
 		return (FAILURE);
 	game_data->mlx_data.win_ptr = mlx_new_window(game_data->mlx_data.mlx_ptr,
 			game_data->mlx_data.win_width, game_data->mlx_data.win_height,
