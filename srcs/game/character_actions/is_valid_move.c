@@ -19,8 +19,8 @@ static bool	is_in_map(t_game_data *game_data, double new_x, double new_y)
 	const int	map_x = (int)new_x;
 	const int	map_y = (int)new_y;
 
-	if (map_x < 0 || map_y < 0 || map_x >= map_length
-		|| map_y >= map_width)
+	if (map_x < 0 || map_y < 0 || map_x >= map_length - 1
+		|| map_y >= map_width - 1)
 		return (false);
 	return (true);
 }
