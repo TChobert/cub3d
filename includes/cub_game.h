@@ -22,8 +22,8 @@
 
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
-# define MOVE_SPEED 0.1
-# define ROT_SPEED 0.05
+# define MOVE_SPEED 0.03
+# define ROT_SPEED 0.01
 
 // ENUM ////////////////////////////////////////////////////////////////////////
 
