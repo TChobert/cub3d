@@ -29,7 +29,7 @@
 
 // STRUCTURES //////////////////////////////////////////////////////////////////
 
-typedef struct	s_map_coord
+typedef struct s_map_coord
 {
 	int	x;
 	int	y;
@@ -58,7 +58,7 @@ typedef enum e_key_codes
 	LEFT_ARROW = 65361,
 }			t_key_codes;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	t_vector	ray_dir;
 	t_map_coord	map;
@@ -74,7 +74,7 @@ typedef struct	s_ray
 	int			draw_end;
 }				t_ray;
 
-typedef struct	s_player_input
+typedef struct s_player_input
 {
 	t_key_state	w;
 	t_key_state	a;
@@ -102,7 +102,7 @@ typedef struct s_image_data
 	int		bpp;
 	int		line_length;
 	int		endian;
-}			t_image_data;
+}				t_image_data;
 
 typedef struct s_images_data
 {
@@ -112,6 +112,17 @@ typedef struct s_images_data
 	t_image_data	west_texture_img;
 }				t_images_data;
 
+typedef struct s_wall_params
+{
+	t_image_data	*img;
+	t_image_data	*texture;
+	t_ray			*ray;
+	int				x;
+	int				tex_x;
+	double			tex_pos_start;
+	double			step;
+}				t_wall_params;
+
 typedef struct s_mlx_data
 {
 	void			*mlx_ptr;
@@ -119,7 +130,7 @@ typedef struct s_mlx_data
 	int				win_width;
 	int				win_height;
 	t_image_data	frame_img;
-}			t_mlx_data;
+}				t_mlx_data;
 
 typedef struct s_map_data
 {
@@ -137,7 +148,6 @@ typedef struct s_game_data
 	t_colors		floor_and_ceiling;
 	t_player_input	player_inputs;
 }				t_game_data;
-
 
 // FUNCTIONS ///////////////////////////////////////////////////////////////////
 
@@ -171,7 +181,7 @@ int					move_backward(t_game_data *game_data);
 int					move_forward(t_game_data *game_data);
 void				rotate_right(t_game_data *game_data);
 void				rotate_left(t_game_data *game_data);
-bool 				is_valid_move(t_game_data *game_data,
+bool				is_valid_move(t_game_data *game_data,
 						double new_x, double new_y);
 
 // PLAYER INPUTS HANDLING
@@ -183,7 +193,8 @@ int					on_key_released(int keycode, void *param);
 int					update_game_state(t_game_data *game_data);
 int					game_loop(t_game_data *game_data);
 void				calculate_line_height(t_game_data *game_data, t_ray *ray);
-void				draw_vertical_line(t_game_data *game_data, t_image_data *img, int x, t_ray *ray);
+void				draw_vertical_line(t_game_data *game_data,
+						t_image_data *img, int x, t_ray *ray);
 void				init_ray(t_game_data *game_data, t_ray *ray, size_t	x);
 void				launch_dda(t_game_data *game_data, t_ray *ray);
 int					raycast(t_game_data *game_data);
@@ -191,8 +202,8 @@ int					render(t_game_data *game_data);
 void				set_dda_data(t_game_data *game_data, t_ray *ray);
 void				draw_frame_to_window(t_game_data *game_data);
 unsigned int		create_color(int r, int g, int b);
-void				draw_wall(t_game_data *game_data, t_image_data *img, t_ray *ray,
-						int x);
+void				draw_wall(t_game_data *game_data, t_image_data *img,
+						t_ray *ray, int x);
 t_image_data		*choose_texture(t_game_data *game_data, t_ray *ray);
 
 // EVENTS HANDLING

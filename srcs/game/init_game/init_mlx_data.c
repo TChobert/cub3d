@@ -51,16 +51,16 @@ static int	load_frame_image(t_mlx_data *mlx_data)
 	mlx_data->frame_img.width = mlx_data->win_width;
 	mlx_data->frame_img.height = mlx_data->win_height;
 	mlx_data->frame_img.img_ptr = mlx_new_image(
-		mlx_data->mlx_ptr,
-		mlx_data->frame_img.width,
-		mlx_data->frame_img.height);
+			mlx_data->mlx_ptr,
+			mlx_data->frame_img.width,
+			mlx_data->frame_img.height);
 	if (mlx_data->frame_img.img_ptr == NULL)
 		return (FAILURE);
 	mlx_data->frame_img.pixel_info = mlx_get_data_addr(
-		mlx_data->frame_img.img_ptr,
-		&mlx_data->frame_img.bpp,
-		&mlx_data->frame_img.line_length,
-		&mlx_data->frame_img.endian);
+			mlx_data->frame_img.img_ptr,
+			&mlx_data->frame_img.bpp,
+			&mlx_data->frame_img.line_length,
+			&mlx_data->frame_img.endian);
 	return (SUCCESS);
 }
 

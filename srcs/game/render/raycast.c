@@ -15,12 +15,11 @@
 int	raycast(t_game_data *game_data)
 {
 	size_t	x;
+	t_ray	ray;
 
 	x = 0;
 	while (x < WIN_WIDTH)
 	{
-		t_ray		ray;
-
 		init_ray(game_data, &ray, x);
 		set_dda_data(game_data, &ray);
 		launch_dda(game_data, &ray);

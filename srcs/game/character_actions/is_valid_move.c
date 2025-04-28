@@ -25,56 +25,58 @@ static bool	is_in_map(t_game_data *game_data, double new_x, double new_y)
 	return (true);
 }
 
-static bool is_not_in_wall(t_game_data *game_data, double new_x, double new_y)
+static bool	is_in_wall(t_game_data *game_data, int x, int y)
 {
-    const int map_x = (int)new_x;
-    const int map_y = (int)new_y;
-    const double tolerance = 0.15;  // Distance minimale d'approche du mur (ajuste cette valeur)
-    
-    // Vérifier directement la case où le joueur se trouve
-    if (game_data->map.map[map_y][map_x] == '1') {
-        return false;  // Le joueur est déjà dans un mur, mouvement invalide
-    }
-
-    // Initialiser les variables pour parcourir autour du joueur
-    double i = -tolerance;
-    
-    // Vérifier autour du joueur sur une petite zone, en utilisant une boucle while
-    while (i <= tolerance) {
-        double j = -tolerance;
-
-        // Boucle interne pour vérifier dans la direction Y
-        while (j <= tolerance) {
-            int check_x = (int)(new_x + i);
-            int check_y = (int)(new_y + j);
-
-            // Vérifier que les coordonnées sont dans les limites de la carte
-            if (check_x >= 0 && check_x < (int)game_data->map.map_length &&
-                check_y >= 0 && check_y < (int)game_data->map.map_width) {
-                // Si un mur est trop proche, retourner false
-                if (game_data->map.map[check_y][check_x] == '1') {
-                    return false; // Le joueur est trop proche d'un mur
-                }
-            }
-            j += 0.05;  // Pas de vérification pour Y
-        }
-        i += 0.05;  // Pas de vérification pour X
-    }
-
-    return true;  // Le mouvement est valide si aucun mur n'est trop proche
+	if (game_data->map.map[y][x] == '1')
+		return (true);
+	return (false);
 }
 
-// static bool	is_not_in_wall(t_game_data *game_data, double new_x, double new_y)
-// {
-// 	const int	map_x = (int)new_x;
-// 	const int	map_y = (int)new_y;
+static bool	is_near_wall(t_game_data *game_data, double new_x, double new_y,
+				double tolerance)
+{
+	double	i;
+	double	j;
+	int		check_x;
+	int		check_y;
 
-// 	if (game_data->map.map[map_y][map_x] == '1')
-// 		return (false);
-// 	return (true);
-// }
+	i = -tolerance;
+	while (i <= tolerance)
+	{
+		j = -tolerance;
+		while (j <= tolerance)
+		{
+			check_x = (int)(new_x + i);
+			check_y = (int)(new_y + j);
+			if (check_x >= 0 && check_x < (int)game_data->map.map_length
+				&& check_y >= 0 && check_y < (int)game_data->map.map_width)
+			{
+				if (is_in_wall(game_data, check_x, check_y))
+					return (true);
+			}
+			j += 0.05;
+		}
+		i += 0.05;
+	}
+	return (false);
+}
 
-bool is_valid_move(t_game_data *game_data, double new_x, double new_y)
+static bool	is_not_in_wall(t_game_data *game_data, double new_x,
+				double new_y)
+{
+	const int		map_x = (int)new_x;
+	const int		map_y = (int)new_y;
+	const double	tolerance = 0.17;
+
+	if (is_in_wall(game_data, map_x, map_y))
+		return (false);
+	if (is_near_wall(game_data, new_x, new_y, tolerance))
+		return (false);
+	return (true);
+}
+
+bool	is_valid_move(t_game_data *game_data, double new_x,
+			double new_y)
 {
 	if (is_in_map(game_data, new_x, new_y) == false)
 		return (false);

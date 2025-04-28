@@ -26,21 +26,21 @@ static void	calculate_draw_end(t_ray *ray)
 		ray->draw_end = WIN_HEIGHT - 1;
 }
 
-static void    calculate_wall_distance(t_game_data *game_data, t_ray *ray)
+static void	calculate_wall_distance(t_game_data *game_data, t_ray *ray)
 {
-    if (ray->side == 0)
-        ray->perp_wall_dist = (ray->map.x - game_data->character.position.x
-            + (1 - ray->step_x) / 2) / ray->ray_dir.x;
-    else
-        ray->perp_wall_dist = (ray->map.y - game_data->character.position.y
-            + (1 - ray->step_y) / 2) / ray->ray_dir.y;
-    if (ray->perp_wall_dist < 0.05)
-        ray->perp_wall_dist = 0.05;
+	if (ray->side == 0)
+		ray->perp_wall_dist = (ray->map.x - game_data->character.position.x
+				+ (1 - ray->step_x) / 2) / ray->ray_dir.x;
+	else
+		ray->perp_wall_dist = (ray->map.y - game_data->character.position.y
+				+ (1 - ray->step_y) / 2) / ray->ray_dir.y;
+	if (ray->perp_wall_dist < 0.05)
+		ray->perp_wall_dist = 0.05;
 }
 
 void	calculate_line_height(t_game_data *game_data, t_ray *ray)
 {
-	int line_height;
+	int	line_height;
 
 	calculate_wall_distance(game_data, ray);
 	if (ray->perp_wall_dist < 0.1)

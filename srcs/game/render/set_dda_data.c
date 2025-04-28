@@ -18,14 +18,14 @@ static void	set_ray_dir_x(t_game_data *game_data, t_ray *ray)
 	{
 		ray->step_x = -1;
 		ray->side_dist.x = (game_data->character.position.x
-			- ray->map.x)
+				- ray->map.x)
 			* ray->delta_dist.x;
 	}
 	else
 	{
 		ray->step_x = 1;
 		ray->side_dist.x = (ray->map.x + 1.0
-			- game_data->character.position.x)
+				- game_data->character.position.x)
 			* ray->delta_dist.x;
 	}
 }
