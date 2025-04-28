@@ -171,6 +171,8 @@ int					move_backward(t_game_data *game_data);
 int					move_forward(t_game_data *game_data);
 void				rotate_right(t_game_data *game_data);
 void				rotate_left(t_game_data *game_data);
+bool 				is_valid_move(t_game_data *game_data,
+						double new_x, double new_y);
 
 // PLAYER INPUTS HANDLING
 

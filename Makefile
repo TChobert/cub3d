@@ -125,6 +125,7 @@ SRCS += init_character_data.c
 #character actions
 SRCS += character_moves.c
 SRCS += character_rotations.c
+SRCS += is_valid_move.c
 
 #player_input
 SRCS += on_key_press.c

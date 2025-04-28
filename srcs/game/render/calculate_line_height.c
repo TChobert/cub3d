@@ -41,6 +41,8 @@ void	calculate_line_height(t_game_data *game_data, t_ray *ray)
 	int	line_height;
 
 	calculate_wall_distance(game_data, ray);
+	if (ray->perp_wall_dist < 0.1)
+		ray->perp_wall_dist = 0.1;
 	line_height = (int)(WIN_HEIGHT / ray->perp_wall_dist);
 	ray->line_height = line_height;
 	calculate_draw_start(ray);
