@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 15:22:08 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/30 15:34:22 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:16:01 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,9 +226,11 @@ int					move_character(t_game_data *game_data);
 int					on_close_window(void *param);
 
 // MINIMAP
-void				put_pixel(t_image_data *img, int x, int y, unsigned int color);
+void				put_pixel(t_image_data *img, int x, int y,
+						unsigned int color);
 void				draw_minimap(t_game_data *game_data);
-void				draw_minimap_player(t_game_data *game_data, t_minimap_data *minimap);
+void				draw_minimap_player(t_game_data *game_data,
+						t_minimap_data *minimap);
 
 // FREE //
 void				game_exit_routine(t_game_data *game_data);
