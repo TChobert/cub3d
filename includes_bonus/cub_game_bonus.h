@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 15:22:08 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/30 15:26:51 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/30 15:34:22 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define COLOR_WHITE 0xFFFFFF
 # define COLOR_BLACK 0x000000
 # define COLOR_GREEN 0x00FF00
+# define COLOR_LIGHT_GREY 0xDDDDDD
+# define COLOR_RED 0xFF0000
 
 // ENUM ////////////////////////////////////////////////////////////////////////
 

@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:14:09 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/30 15:26:22 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/30 15:33:41 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static void	choose_color_minimap(char cell, unsigned int *color)
 {
 	if (cell == '1')
-		*color = 0xFF0000;
+		*color = COLOR_BLACK;
 	else
-		*color = 0xFFFFFF;
+		*color = COLOR_LIGHT_GREY;
 }
 
 static void	put_pixel_minimap(t_game_data *game_data, t_minimap_data *minimap,

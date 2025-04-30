@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 15:23:33 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/30 15:29:04 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/30 15:34:30 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	draw_minimap_player(t_game_data *game_data, t_minimap_data *minimap)
 	int				dy;
 
 	player_pixel = calculate_player_position_minimap(game_data, minimap);
-	player_color = COLOR_GREEN;
+	player_color = COLOR_RED;
 	dy = 0;
 	while (dy < minimap->cell_size)
 	{
