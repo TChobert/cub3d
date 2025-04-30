@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_game.h                                         :+:      :+:    :+:   */
+/*   cub_game_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 15:22:08 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/30 12:58:18 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:16:01 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_GAME_H
-# define CUB_GAME_H
+#ifndef CUB_GAME_BONUS_H
+# define CUB_GAME_BONUS_H
 
 # include <X11/X.h>
 # include <math.h>
-# include "cub_parsing.h"
+# include "cub_parsing_bonus.h"
 # include "mlx.h"
 
 // DEFINES /////////////////////////////////////////////////////////////////////
@@ -24,6 +24,15 @@
 # define WIN_HEIGHT 720
 # define MOVE_SPEED 0.03
 # define ROT_SPEED 0.01
+# define MINIMAP_SCALE 10
+# define MINIMAP_SIZE_X 150
+# define MINIMAP_SIZE_Y 150
+# define COLOR_GREY 0x808080
+# define COLOR_WHITE 0xFFFFFF
+# define COLOR_BLACK 0x000000
+# define COLOR_GREEN 0x00FF00
+# define COLOR_LIGHT_GREY 0xDDDDDD
+# define COLOR_RED 0xFF0000
 
 // ENUM ////////////////////////////////////////////////////////////////////////
 
@@ -139,6 +148,12 @@ typedef struct s_map_data
 	size_t	map_length;
 }				t_map_data;
 
+typedef struct s_minimap_data
+{
+	int			cell_size;
+	t_map_coord	offset;
+}				t_minimap_data;
+
 typedef struct s_game_data
 {
 	t_mlx_data		mlx_data;
@@ -207,9 +222,15 @@ void				draw_wall(t_game_data *game_data, t_image_data *img,
 t_image_data		*choose_texture(t_game_data *game_data, t_ray *ray);
 
 // EVENTS HANDLING
-
 int					move_character(t_game_data *game_data);
 int					on_close_window(void *param);
+
+// MINIMAP
+void				put_pixel(t_image_data *img, int x, int y,
+						unsigned int color);
+void				draw_minimap(t_game_data *game_data);
+void				draw_minimap_player(t_game_data *game_data,
+						t_minimap_data *minimap);
 
 // FREE //
 void				game_exit_routine(t_game_data *game_data);
