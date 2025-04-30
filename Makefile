@@ -177,6 +177,7 @@ PATH_SRCS_BONUS += srcs_bonus/game/game_events
 PATH_SRCS_BONUS += srcs_bonus/game/character_actions
 PATH_SRCS_BONUS += srcs_bonus/game/game_loop
 PATH_SRCS_BONUS += srcs_bonus/game/render
+PATH_SRCS_BONUS += srcs_bonus/minimap
 
 SRCS_BONUS += main_bonus.c
 
@@ -283,8 +284,10 @@ SRCS_BONUS += draw_color_bonus.c
 SRCS_BONUS += draw_wall_bonus.c
 SRCS_BONUS += choose_texture_bonus.c
 
-# exit_routine
+# minimap
+SRCS_BONUS += draw_minimap_bonus.c
 
+# exit_routine
 SRCS_BONUS += game_exit_routine_bonus.c
 
 vpath %.c $(PATH_SRCS_BONUS)
