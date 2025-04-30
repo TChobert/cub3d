@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"cub_game.h": "c"
+		"cub_game.h": "c",
+		"cub_parsing.h": "c",
+		"cub_game_bonus.h": "c"
 	}
 }
