@@ -203,6 +203,7 @@ bool				is_valid_move(t_game_data *game_data,
 
 int					on_key_press(int keycode, void *param);
 int					on_key_released(int keycode, void *param);
+int					on_mouse_move(int x, int y, void *param);
 
 // GAME LOOP & RENDER
 int					update_game_state(t_game_data *game_data);

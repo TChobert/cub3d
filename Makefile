@@ -262,6 +262,7 @@ SRCS_BONUS += is_valid_move_bonus.c
 # player_input
 SRCS_BONUS += on_key_press_bonus.c
 SRCS_BONUS += on_key_release_bonus.c
+SRCS_BONUS += on_mouse_move.c
 
 # game events
 SRCS_BONUS += move_character_bonus.c
