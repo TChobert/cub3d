@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 15:22:08 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/30 14:19:44 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/30 15:26:51 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 # define MINIMAP_SIZE_X 150
 # define MINIMAP_SIZE_Y 150
 # define COLOR_GREY 0x808080
-
+# define COLOR_WHITE 0xFFFFFF
+# define COLOR_BLACK 0x000000
+# define COLOR_GREEN 0x00FF00
 
 // ENUM ////////////////////////////////////////////////////////////////////////
 
@@ -224,6 +226,7 @@ int					on_close_window(void *param);
 // MINIMAP
 void				put_pixel(t_image_data *img, int x, int y, unsigned int color);
 void				draw_minimap(t_game_data *game_data);
+void				draw_minimap_player(t_game_data *game_data, t_minimap_data *minimap);
 
 // FREE //
 void				game_exit_routine(t_game_data *game_data);

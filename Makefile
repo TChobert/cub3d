@@ -286,6 +286,7 @@ SRCS_BONUS += choose_texture_bonus.c
 
 # minimap
 SRCS_BONUS += draw_minimap_bonus.c
+SRCS_BONUS += draw_minimap_player_bonus.c
 
 # exit_routine
 SRCS_BONUS += game_exit_routine_bonus.c

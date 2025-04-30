@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:14:09 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/30 14:59:26 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/04/30 15:26:22 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,8 @@ static void	choose_color_minimap(char cell, unsigned int *color)
 {
 	if (cell == '1')
 		*color = 0xFF0000;
-	else if (cell == '0')
-		*color = 0xFFFFFF;
-	else if (is_valid_player_character(cell))
-		*color = 0x00FF00;
 	else
-		*color = COLOR_GREY;
+		*color = 0xFFFFFF;
 }
 
 static void	put_pixel_minimap(t_game_data *game_data, t_minimap_data *minimap,
@@ -43,6 +39,25 @@ static void	put_pixel_minimap(t_game_data *game_data, t_minimap_data *minimap,
 			j++;
 		}
 		i++;
+	}
+}
+
+static void	clear_minimap(t_game_data *game_data, t_minimap_data *minimap)
+{
+	t_map_coord		map;
+	unsigned int	color;
+
+	map.y = 0;
+	color = COLOR_WHITE;
+	while (map.y < (int)game_data->map.map_width)
+	{
+		map.x = 0;
+		while (map.x < (int)game_data->map.map_length)
+		{
+			put_pixel_minimap(game_data, minimap, map, color);
+			map.x++;
+		}
+		map.y++;
 	}
 }
 
@@ -75,5 +90,7 @@ void	draw_minimap(t_game_data *game_data)
 	minimap.cell_size = 5;
 	minimap.offset.x = 10;
 	minimap.offset.y = 10;
+	clear_minimap(game_data, &minimap);
 	draw_minimap_background(game_data, &minimap);
+	draw_minimap_player(game_data, &minimap);
 }
