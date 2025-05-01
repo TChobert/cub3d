@@ -17,14 +17,11 @@ static void rotate_view(t_game_data *game_data, double angle)
 	const double old_dir_x = game_data->character.direction.x;
 	const double old_plane_x = game_data->character.plane.x;
 
-	// Rotate direction vector
 	game_data->character.direction.x = game_data->character.direction.x
 		* cos(angle)
 		- game_data->character.direction.y * sin(angle);
 	game_data->character.direction.y = old_dir_x * sin(angle)
 		+ game_data->character.direction.y * cos(angle);
-
-	// Rotate camera plane
 	game_data->character.plane.x = game_data->character.plane.x * cos(angle)
 		- game_data->character.plane.y * sin(angle);
 	game_data->character.plane.y = old_plane_x * sin(angle)
