@@ -12,10 +12,10 @@
 
 #include "cub_game_bonus.h"
 
-static void rotate_view(t_game_data *game_data, double angle)
+static void	rotate_view(t_game_data *game_data, double angle)
 {
-	const double old_dir_x = game_data->character.direction.x;
-	const double old_plane_x = game_data->character.plane.x;
+	const double	old_dir_x = game_data->character.direction.x;
+	const double	old_plane_x = game_data->character.plane.x;
 
 	game_data->character.direction.x = game_data->character.direction.x
 		* cos(angle)
