@@ -6,7 +6,7 @@
 /*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 11:00:48 by racoutte          #+#    #+#             */
-/*   Updated: 2025/04/02 19:19:26 by racoutte         ###   ########.fr       */
+/*   Updated: 2025/05/01 17:43:39 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_parsing_status	parse_game_input(t_game_data *game_data,
 		parser_exit_routine(&parse_data);
 		return (PARSE_ERROR);
 	}
-	printf("End of parsing reached\n");
 	transfer_game_data(game_data, &parse_data);
 	parser_exit_routine(&parse_data);
 	return (PARSE_SUCCESS);
