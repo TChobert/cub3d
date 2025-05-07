@@ -474,4 +474,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re clang_analyzer cppcheck norminette tests
+.PHONY: all clean fclean re clang_analyzer cppcheck norminette tests bonus

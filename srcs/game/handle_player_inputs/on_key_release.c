@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   on_key_released.c                                  :+:      :+:    :+:   */
+/*   on_key_release.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 20:23:40 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/24 20:24:00 by tchobert         ###   ########.fr       */
+/*   Updated: 2025/05/01 17:41:43 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,3 @@ int	on_key_released(int keycode, void *param)
 		game_data->player_inputs.right_arrow = KEY_FREE;
 	return (SUCCESS);
 }
-
-//ESC ??

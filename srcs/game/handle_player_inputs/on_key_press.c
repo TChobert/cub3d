@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   on_key_press.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: racoutte <racoutte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 20:06:24 by tchobert          #+#    #+#             */
-/*   Updated: 2025/04/24 20:06:34 by tchobert         ###   ########.fr       */
+/*   Updated: 2025/05/01 17:41:47 by racoutte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,3 @@ int	on_key_press(int keycode, void *param)
 		game_data->player_inputs.right_arrow = KEY_PRESSED;
 	return (SUCCESS);
 }
-
-// garder les else if pour simultaneite ?
